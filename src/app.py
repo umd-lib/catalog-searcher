@@ -129,13 +129,12 @@ def search():
         }, 500
 
     if response.status_code not in [200, 206]:
-        logger.error(f'Received {response.status_code} with {query=}')
+        logger.error(f'Received {response.status_code} with q={query}')
 
         return {
             'endpoint': endpoint,
             'error': {
-                'msg': f'Received {response.status_code} when '
-                'submitted {query=}',
+                'msg': f'Received {response.status_code} for q={query}',
             },
         }, 500
 
@@ -243,7 +242,7 @@ def build_item_format(general_format, specific_format):
             and specific_format == 'Digital':
         f = general_format + '_' + specific_format
     general_formats_map = {
-        'Archiv': 'archival_material',
+        'Archv': 'archival_material',
         'Artcl': 'article',
         'ArtChap': 'article',
         'Music': 'audio',
