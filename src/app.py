@@ -82,7 +82,9 @@ def search():
     if 'page' in args and args['page'] != "":
         page = int(args['page'])
         if page > 1:
-            offset = limit * page
+            offset = limit * (page - 1) + 1
+
+    logger.debug(f'Pagination debug offset={offset} page={page} limit={limit}')
 
     # Prepare OCLC API search
     params = {

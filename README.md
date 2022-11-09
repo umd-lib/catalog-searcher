@@ -46,13 +46,13 @@ Root endpoint (just returns `{status: ok}` to all requests):
 Books and More:
 
 ```bash
-http://localhost:5000/search?endpoint=books-and-more&q={query}&page={page number?}&per_page={results per page?}
+http://localhost:5000/search?endpoint=books-and-more&q={query}&page={page number}&per_page={results per page}
 ```
 
 Articles:
 
 ```bash
-http://localhost:5000/search?endpoint=articles&q={query}&page={page number?}&per_page={results per page?}
+http://localhost:5000/search?endpoint=articles&q={query}&page={page number}&per_page={results per page}
 ```
 
 Example:
