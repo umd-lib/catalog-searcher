@@ -42,8 +42,18 @@ Root endpoint (just returns `{status: ok}` to all requests):
 <http://localhost:5000/ping>
 
 /search endpoints:
-Books and More: <http://localhost:5000/search?endpoint=books-and-more&q={query}&page={page number?}&per_page={results per page?}>
-Articles: <http://localhost:5000/search?endpoint=articles&q={query}&page={page number?}&per_page={results per page?}>
+
+Books and More:
+
+```bash
+http://localhost:5000/search?endpoint=books-and-more&q={query}&page={page number?}&per_page={results per page?}
+```
+
+Articles:
+
+```bash
+http://localhost:5000/search?endpoint=articles&q={query}&page={page number?}&per_page={results per page?}
+```
 
 Example:
 
