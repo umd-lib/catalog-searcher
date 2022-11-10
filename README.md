@@ -4,7 +4,7 @@ Python 3 Flask application to search the OCLC Discovery API.
 
 ## Requires
 
-* Python 3
+* Python 3.10.8
 
 ## Running the Webapp
 
@@ -26,8 +26,8 @@ $ python3 -m flask run
 ### Running in Docker
 
 ```bash
-$ docker build -t worldcat-searcher .
-$ docker run -it --rm -p 5000:5000 --env-file=.env --read-only worldcat-searcher
+$ docker build -t docker.lib.umd.edu/worldcat-searcher .
+$ docker run -it --rm -p 5000:5000 --env-file=.env --read-only docker.lib.umd.edu/worldcat-searcher
 ```
 
 ### Endpoints
@@ -60,33 +60,33 @@ Example:
 ```bash
 curl 'http://localhost:5000/search?q=cheese+making&endpoint=books-and-more&per_page=3&page=2'
 {
-  "endpoint": "world_cat_discovery_api_article", 
-  "page": 2, 
-  "per_page": 3, 
-  "query": "cheese making", 
+  "endpoint": "world_cat_discovery_api_article",
+  "page": 2,
+  "per_page": 3,
+  "query": "cheese making",
   "results": [
     {
-      "author": "Francis T. Bond", 
-      "date": "1905", 
-      "format": "article", 
-      "link": "https://www.jstor.org/stable/20286827", 
+      "author": "Francis T. Bond",
+      "date": "1905",
+      "format": "article",
+      "link": "https://www.jstor.org/stable/20286827",
       "title": "Cheese-Making"
-    }, 
+    },
     {
-      "author": "Muiris O’Sullivan", 
-      "date": "2018", 
-      "format": "article", 
-      "link": "https://www.jstor.org/stable/26565827", 
+      "author": "Muiris O’Sullivan",
+      "date": "2018",
+      "format": "article",
+      "link": "https://www.jstor.org/stable/26565827",
       "title": "CHEESE-MAKING"
-    }, 
+    },
     {
-      "author": "null", 
-      "date": "2019", 
-      "format": "article", 
-      "link": "https://umaryland.on.worldcat.org/oclc/8100216678", 
+      "author": "null",
+      "date": "2019",
+      "format": "article",
+      "link": "https://umaryland.on.worldcat.org/oclc/8100216678",
       "title": "Cheese Making"
     }
-  ], 
+  ],
   "total": 186043
 }
 ```
