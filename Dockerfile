@@ -1,4 +1,11 @@
-FROM python:3
+# Dockerfile for the generating worldcat-searcher application Docker image
+#
+# To build:
+#
+# docker build -t docker.lib.umd.edu/worldcat-searcher:<VERSION> -f Dockerfile .
+#
+# where <VERSION> is the Docker image version to create.
+FROM python:3.10.8-slim
 
 LABEL MAINTAINER SSDR "lib-ssdr@umd.edu"
 
