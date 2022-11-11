@@ -6,13 +6,6 @@ Python 3 Flask application to search the OCLC Discovery API.
 
 * Python 3.10.8
 
-## Running the Webapp
-
-```bash
-# create a .env file (then manually update environment variables)
-$ cp env-template .env
-```
-
 ### Development Setup
 
 See [docs/DevelopmentSetup.md](docs/DevelopmentSetup.md).

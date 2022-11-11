@@ -48,7 +48,15 @@ Once "pyenv" and "pyenv-virtualenv" have been installed, install Python 3.8.2:
 > pip3 install -r requirements.txt
 ```
 
-5) Run the app:
+## Running the Webapp
+
+Create a .env file (then manually update environment variables):
+
+```bash
+$ cp env-template .env
+```
+
+To start the app:
 
 ```bash
 > python3 -m flask run
