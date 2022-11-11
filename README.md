@@ -13,15 +13,9 @@ Python 3 Flask application to search the OCLC Discovery API.
 $ cp env-template .env
 ```
 
-### Running locally
+### Development Setup
 
-```bash
-# install requirements
-$ pip install -r requirements.txt
-
-# run the app with Flask
-$ python3 -m flask run
-```
+See [docs/DevelopmentSetup.md](docs/DevelopmentSetup.md).
 
 ### Running in Docker
 
@@ -91,7 +85,7 @@ curl 'http://localhost:5000/search?q=cheese+making&endpoint=books-and-more&per_p
 }
 ```
 
-[Flask's debug mode]: https://flask.palletsprojects.com/en/2.0.x/quickstart/#debug-mode
+[Flask's debug mode]: https://flask.palletsprojects.com/en/2.2.x/cli/?highlight=debug%20mode
 
 ## License
 

@@ -33,7 +33,7 @@ no_results_url = env['NO_RESULTS_URL']
 
 basic = HTTPBasicAuth(api_key, api_secret)
 
-debug = os.environ.get('FLASK_ENV') == 'development'
+debug = os.environ.get('FLASK_DEBUG')
 
 logger = logging.getLogger('worldcat-searcher')
 loggerWaitress = logging.getLogger('waitress')
@@ -51,6 +51,11 @@ app.config['JSON_AS_ASCII'] = False
 
 @app.route('/')
 def root():
+    return {'status': 'ok'}
+
+
+@app.route('/ping')
+def ping():
     return {'status': 'ok'}
 
 
