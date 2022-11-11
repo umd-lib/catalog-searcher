@@ -15,7 +15,7 @@ See the following for setup instructions:
 * https://github.com/pyenv/pyenv
 * https://github.com/pyenv/pyenv-virtualenv
 
-Once "pyenv" and "pyenv-virtualenv" have been installed, install Python 3.8.2:
+Once "pyenv" and "pyenv-virtualenv" have been installed, install Python 3.10.8
 
 ```bash
 > pyenv install 3.10.8
