@@ -17,6 +17,12 @@ $ docker build -t docker.lib.umd.edu/worldcat-searcher .
 $ docker run -it --rm -p 5000:5000 --env-file=.env --read-only docker.lib.umd.edu/worldcat-searcher
 ```
 
+### Building for Kubernetes
+
+```bash
+$ docker buildx build . --builder=kube -t docker.lib.umd.edu/worldcat-searcher:VERSION --push
+```
+
 ### Endpoints
 
 This will start the webapp listening on the default port 5000 on localhost
