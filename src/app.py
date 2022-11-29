@@ -214,7 +214,7 @@ def build_response(json_content):
                 'title': item['title'],
                 'date': item['date'] if 'date' in item else 'null',
                 'author': item['creator'] if 'creator' in item else 'null',
-                'format': build_item_format(general_format, specific_format),
+                'item_format': build_item_format(general_format, specific_format),
                 'link': build_resource_url(item)
             })
     return results
