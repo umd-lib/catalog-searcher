@@ -151,12 +151,15 @@ def search():
     json_content = json.loads(response.text)
     total_records = get_total_records(json_content)
 
+    module_link = no_results_url + '?queryString=' + query
+
     api_response = {
         'endpoint': endpoint,
         'query': query,
         'per_page': limit,
         'page': page,
         'total': total_records,
+        'module_link': module_link,
     }
 
     if debug:
