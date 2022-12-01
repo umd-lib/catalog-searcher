@@ -7,3 +7,4 @@ WORLDCAT_BOOKS_ITEM_TYPES=archv,audiobook,book,compfile,encyc,game,image,intmm,j
 WORLDCAT_ARTICLES_ITEM_TYPES=artchapter
 WORLDCAT_ARTICLES_ITEM_SUBTYPES=artchap-artcl,artchap-chptr,artchap-digital,artchap-mss
 NO_RESULTS_URL=https://umaryland.on.worldcat.org/discovery
+MODULE_URL=https://umaryland.on.worldcat.org/search

@@ -18,7 +18,7 @@ load_dotenv('../.env')
 env = {}
 for key in ('WORLDCAT_CLIENT_ID', 'WORLDCAT_SECRET', 'WORLDCAT_API_BASE',
             'WORLDCAT_BOOKS_ITEM_TYPES', 'WORLDCAT_ARTICLES_ITEM_TYPES',
-            'WORLDCAT_ARTICLES_ITEM_SUBTYPES', 'NO_RESULTS_URL'):
+            'WORLDCAT_ARTICLES_ITEM_SUBTYPES', 'NO_RESULTS_URL', 'MODULE_URL'):
     env[key] = os.environ.get(key)
     if env[key] is None:
         raise RuntimeError(f'Missing environment variable: {key}')
@@ -30,6 +30,7 @@ book_item_types = env['WORLDCAT_BOOKS_ITEM_TYPES']
 article_item_types = env['WORLDCAT_ARTICLES_ITEM_TYPES']
 article_item_subtypes = env['WORLDCAT_ARTICLES_ITEM_SUBTYPES']
 no_results_url = env['NO_RESULTS_URL']
+module_url = env['MODULE_URL']
 
 basic = HTTPBasicAuth(api_key, api_secret)
 
@@ -151,7 +152,7 @@ def search():
     json_content = json.loads(response.text)
     total_records = get_total_records(json_content)
 
-    module_link = no_results_url + '?queryString=' + query
+    module_link = module_url + '?queryString=' + query
 
     api_response = {
         'endpoint': endpoint,
