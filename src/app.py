@@ -18,7 +18,8 @@ load_dotenv('../.env')
 env = {}
 for key in ('WORLDCAT_CLIENT_ID', 'WORLDCAT_SECRET', 'WORLDCAT_API_BASE',
             'WORLDCAT_BOOKS_ITEM_TYPES', 'WORLDCAT_ARTICLES_ITEM_TYPES',
-            'WORLDCAT_ARTICLES_ITEM_SUBTYPES', 'NO_RESULTS_URL', 'MODULE_URL'):
+            'WORLDCAT_ARTICLES_ITEM_SUBTYPES', 'NO_RESULTS_URL', 'MODULE_URL',
+            'WORLDCAT_SUBTYPES_URL'):
     env[key] = os.environ.get(key)
     if env[key] is None:
         raise RuntimeError(f'Missing environment variable: {key}')
@@ -29,6 +30,7 @@ api_secret = env['WORLDCAT_SECRET']
 book_item_types = env['WORLDCAT_BOOKS_ITEM_TYPES']
 article_item_types = env['WORLDCAT_ARTICLES_ITEM_TYPES']
 article_item_subtypes = env['WORLDCAT_ARTICLES_ITEM_SUBTYPES']
+subtypes_url = env['WORLDCAT_SUBTYPES_URL']
 no_results_url = env['NO_RESULTS_URL']
 module_url = env['MODULE_URL']
 
@@ -101,10 +103,12 @@ def search():
         'groupRelatedEditions': 'true',
     }
 
+    module_link = module_url + '?queryString=' + query
     match endpoint:
         case 'articles':
             params['itemType'] = article_item_types
             params['itemSubType'] = article_item_subtypes
+            module_link = module_url + '?' + subtypes_url + '&queryString=' + query
         case _:
             # Default to books-and-more searcher
             params['itemType'] = book_item_types
@@ -151,8 +155,6 @@ def search():
 
     json_content = json.loads(response.text)
     total_records = get_total_records(json_content)
-
-    module_link = module_url + '?expandSearch=off&queryString=' + query
 
     api_response = {
         'endpoint': endpoint,

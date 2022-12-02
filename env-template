@@ -6,5 +6,6 @@ WORLDCAT_API_BASE=https://discovery.api.oclc.org/worldcat-org-ci/search/detailed
 WORLDCAT_BOOKS_ITEM_TYPES=archv,audiobook,book,compfile,encyc,game,image,intmm,jrnl,kit,map,msscr,music,news,object,snd,toy,video,vis,Web
 WORLDCAT_ARTICLES_ITEM_TYPES=artchapter
 WORLDCAT_ARTICLES_ITEM_SUBTYPES=artchap-artcl,artchap-chptr,artchap-digital,artchap-mss
+WORLDCAT_SUBTYPES_URL=subformat=Artchap::artchap_artcl&subformat=Artchap::artchap_chptr&subformat=Artchap::artchap_digital&subformat=Artchap::artchap_mss
 NO_RESULTS_URL=https://umaryland.on.worldcat.org/discovery
 MODULE_URL=https://umaryland.on.worldcat.org/search
