@@ -1,6 +1,6 @@
-# worldcat-searcher
+# Legacy worldcat-searcher
 
-Python 3 Flask application to search the OCLC Discovery API.
+Python 3 Flask application to search the deprecated beta OCLC Discovery API.
 
 ## Requires
 
@@ -13,14 +13,14 @@ See [docs/DevelopmentSetup.md](docs/DevelopmentSetup.md).
 ### Running in Docker
 
 ```bash
-$ docker build -t docker.lib.umd.edu/worldcat-searcher .
-$ docker run -it --rm -p 5000:5000 --env-file=.env --read-only docker.lib.umd.edu/worldcat-searcher
+$ docker build -t docker.lib.umd.edu/legacy-worldcat-searcher .
+$ docker run -it --rm -p 5000:5000 --env-file=.env --read-only docker.lib.umd.edu/legacy-worldcat-searcher
 ```
 
 ### Building for Kubernetes
 
 ```bash
-$ docker buildx build . --builder=kube -t docker.lib.umd.edu/worldcat-searcher:VERSION --push
+$ docker buildx build . --builder=kube -t docker.lib.umd.edu/legacy-worldcat-searcher:VERSION --push
 ```
 
 ### Endpoints
@@ -54,6 +54,7 @@ Example:
 curl 'http://localhost:5000/search?q=cheese+making&endpoint=books-and-more&per_page=3&page=2'
 {
   "endpoint": "world_cat_discovery_api_article",
+  "version": "legacy",
   "page": 2,
   "per_page": 3,
   "query": "cheese making",

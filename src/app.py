@@ -9,6 +9,7 @@ from dotenv import load_dotenv
 from requests.auth import HTTPBasicAuth
 from waitress import serve
 from paste.translogger import TransLogger
+from authliboclc import wskey, user
 
 # Employs the OCLC Discovery API. See:
 # https://developer.api.oclc.org/worldcat-discovery#/Bibliographic%20Resources/search-bibs-details
@@ -16,27 +17,29 @@ from paste.translogger import TransLogger
 load_dotenv('../.env')
 
 env = {}
-for key in ('WORLDCAT_CLIENT_ID', 'WORLDCAT_SECRET', 'WORLDCAT_API_BASE',
-            'WORLDCAT_BOOKS_ITEM_TYPES', 'WORLDCAT_ARTICLES_ITEM_TYPES',
-            'WORLDCAT_ARTICLES_ITEM_SUBTYPES', 'NO_RESULTS_URL', 'MODULE_URL',
-            'WORLDCAT_SUBTYPES_URL'):
+for key in ('WORLDCAT_AUTHENTICATING_INSTITUTION_ID',
+            'WORLDCAT_DISCOVERY_API_WSKEY',
+            'WORLDCAT_DISCOVERY_API_SECRET',
+            'WORLDCAT_OPEN_URL_RESOLVER_WSKEY',
+            'WORLDCAT_CONTEXT_INSTITUTIONAL_ID',
+            'RESOLVER_SERVICE_LINK', 'NO_RESULTS_URL',
+            'MODULE_URL', 'WORLDCAT_API_BASE'):
     env[key] = os.environ.get(key)
     if env[key] is None:
         raise RuntimeError(f'Missing environment variable: {key}')
 
 search_url = furl.furl(env['WORLDCAT_API_BASE'])
-api_key = env['WORLDCAT_CLIENT_ID']
-api_secret = env['WORLDCAT_SECRET']
-book_item_types = env['WORLDCAT_BOOKS_ITEM_TYPES']
-article_item_types = env['WORLDCAT_ARTICLES_ITEM_TYPES']
-article_item_subtypes = env['WORLDCAT_ARTICLES_ITEM_SUBTYPES']
-subtypes_url = env['WORLDCAT_SUBTYPES_URL']
+key = env['WORLDCAT_DISCOVERY_API_WSKEY']
+client_secret = env['WORLDCAT_DISCOVERY_API_SECRET']
+institutional_id = env['WORLDCAT_AUTHENTICATING_INSTITUTION_ID']
+context_id = env['WORLDCAT_CONTEXT_INSTITUTIONAL_ID']
+resolver_wskey = env['WORLDCAT_OPEN_URL_RESOLVER_WSKEY']
+resolver_service_link = env['RESOLVER_SERVICE_LINK']
+
 no_results_url = env['NO_RESULTS_URL']
 module_url = env['MODULE_URL']
 
-basic = HTTPBasicAuth(api_key, api_secret)
-
-debug = os.environ.get('FLASK_DEBUG')
+debug = os.environ.get('FLASK_ENV')
 
 logger = logging.getLogger('worldcat-searcher')
 loggerWaitress = logging.getLogger('waitress')
@@ -98,20 +101,14 @@ def search():
     params = {
         'q': query,
         'limit': limit,
+        'itemsPerPage': limit,
         'offset': offset,
-        'orderBy': 'library',
-        'groupRelatedEditions': 'true',
+        'startIndex': offset,
+        'sortBy': 'library_plus_relevance',
+        'dbIds': '638'
+        # 'orderBy': 'library',
+        # 'groupRelatedEditions': 'true',
     }
-
-    module_link = module_url + '?queryString=' + query
-    match endpoint:
-        case 'articles':
-            params['itemType'] = article_item_types
-            params['itemSubType'] = article_item_subtypes
-            module_link = module_url + '?' + subtypes_url + '&queryString=' + query
-        case _:
-            # Default to books-and-more searcher
-            params['itemType'] = book_item_types
 
     token = authorize_oclc()
 
@@ -122,6 +119,19 @@ def search():
             }
         }
 
+    module_link = module_url + '?queryString=' + query
+
+    if endpoint == 'articles':
+        params['itemType'] = 'artchap'
+    # match endpoint:
+    #     case 'articles':
+    #         params['itemType'] = article_item_types
+    #         params['itemSubType'] = article_item_subtypes
+    #         module_link = module_url + '?' + subtypes_url + '&queryString=' + query
+    #     case _:
+    #         # Default to books-and-more searcher
+    #         params['itemType'] = book_item_types
+
     headers = {
         'Authorization': 'Bearer ' + token
     }
@@ -129,10 +139,10 @@ def search():
     # Execute OCLC API search
     try:
         response = requests.get(search_url.url, params=params, headers=headers)
+        logger.warn(response.url)
     except Exception as err:
         logger.error(f'Search error at url'
                      '{search_url.url}, params={params}\n{err}')
-
         return {
             'endpoint': endpoint,
             'results': [],
@@ -140,6 +150,8 @@ def search():
                 'msg': f'Search error',
             },
         }, 500
+    
+    logger.warn(response)
 
     if response.status_code not in [200, 206]:
         logger.error(f'Received {response.status_code} with q={query}')
@@ -155,11 +167,16 @@ def search():
     logger.debug(f'Submitted url={search_url.url}, params={params}')
     logger.debug(f'Received response {response.status_code}')
 
-    json_content = json.loads(response.text)
-    total_records = get_total_records(json_content)
+    json_raw = json.loads(response.text)
+
+    if '@graph' in json_raw:
+        graph = json_raw['@graph'][0]
+
+    total_records = get_total_records(graph)
 
     api_response = {
         'endpoint': endpoint,
+        'version': "legacy",
         'query': query,
         'per_page': limit,
         'page': page,
@@ -168,9 +185,10 @@ def search():
     }
 
     if debug:
-        api_response['raw'] = json_content
+        api_response['raw'] = graph 
 
-    if total_records != 0:
+    if total_records != 0 and 'discovery:hasPart' in graph:
+        json_content = graph['discovery:hasPart']
         api_response['results'] = build_response(json_content)
     else:
         api_response['error'] = build_no_results()
@@ -180,28 +198,21 @@ def search():
 
 
 def authorize_oclc():
-    params = {
-        'scope': 'WorldCatDiscoveryAPI',
-        'grant_type': 'client_credentials'
-    }
+    scope = 'WorldCatDiscoveryAPI'
+    my_wskey = wskey.Wskey(
+        key=key,
+        secret=client_secret,
+        options={
+            'services': ['WorldCatDiscoveryAPI']
+        }
+    )
 
-    token = ''
-    try:
-        response = requests.post('https://oauth.oclc.org/token',
-                                 params=params, auth=basic)
-    except Exception as err:
-        logger.error(f'Auth error {err}')
+    access_token = my_wskey.get_access_token_with_client_credentials(
+        authenticating_institution_id=institutional_id,
+        context_institution_id=context_id
+    )
 
-        return {
-            'error': {
-                'msg': 'Backend auth error',
-            },
-        }, 500
-
-    auth = json.loads(response.text)
-    token = auth['access_token']
-
-    return token
+    return access_token.access_token_string 
 
 
 def build_no_results():
@@ -213,80 +224,144 @@ def build_no_results():
 
 def build_response(json_content):
     results = []
-    if 'detailedRecords' in json_content:
-        for item in json_content['detailedRecords']:
-            general_format = item['generalFormat'] if 'generalFormat' \
-                in item else 'null'
-            specific_format = item['specificFormat'] if 'specificFormat' \
-                in item else 'null'
-            results.append({
-                'title': item['title'],
-                'date': item['date'] if 'date' in item else 'null',
-                'author': item['creator'] if 'creator' in item else 'null',
-                'item_format': build_item_format(general_format, specific_format),
-                'link': build_resource_url(item)
-            })
+    for item in json_content:
+        if 'schema:about' in item:
+            item_format = get_item_format(item['schema:about'])
+            item_name = get_item_title(item['schema:about'])
+            item_date = get_item_date(item['schema:about'])
+            item_author = get_item_author(item['schema:about'])
+            item_url = build_resource_url(item)
+        results.append({
+            'title': item_name,
+            'date': item_date,
+            'author': item_author,
+            'item_format': item_format,
+            'link': item_url
+        })
     return results
 
 
 def get_total_records(json_content):
-    if 'numberOfRecords' not in json_content:
+    if 'discovery:totalResults' not in json_content:
         return None
-    return int(json_content['numberOfRecords'])
+    return int(json_content['discovery:totalResults']['@value'])
 
 
 def build_resource_url(item):
-    url = None
-    if 'digitalAccessAndLocations' in item and \
-            item['digitalAccessAndLocations'] is not None:
-        for locations in item['digitalAccessAndLocations']:
-            if 'uri' in locations and locations['uri'] is not None:
-                url = locations['uri']
-                # DOI is preferred so break and return.
-                if 'https://doi.org/' in url:
-                    return url
-    if url is not None:
-        return url
-    if 'oclcNumber' in item and item['oclcNumber'] is not None:
-        return 'https://umaryland.on.worldcat.org/oclc/' + item['oclcNumber']
+    # we prefer a direct link
+    digital_url = None
+    if 'schema:about' in item:
+        about = item['schema:about']
+        if 'schema:url' in about:
+            for url in about['schema:url']:
+                logger.warn(url)
+                # if '@id' in url:
+                #     url_id = url['@id']
+                #     if 'https://doi.org' in url_id:
+                        # and really really prefer a DOI
+                #         return url_id
+                #     digital_url = url_id 
+        if digital_url is not None:
+            return digital_url
+
+    # otherwise we construct a link from the oclc number
+    oclc_num = None
+    if 'http://www.w3.org/2007/05/powder-s#describedby' in item:
+        described_by = item['http://www.w3.org/2007/05/powder-s#describedby']
+        if 'library:oclcnum' in described_by:
+            oclc_num = described_by['library:oclcnum']
+    if oclc_num is not None and oclc_num.isnumeric():
+        return 'https://umaryland.on.worldcat.org/oclc/' + oclc_num
+    if '@id' in item:
+        oclc_num = item['@id'].replace('http://www.worldcat.org/title/-/oclc/', '')
+    if oclc_num is not None and oclc_num.isnumeric():
+        return 'https://umaryland.on.worldcat.org/oclc/' + oclc_num
+    
+    # fallback to search URL
     return 'https://umaryland.on.worldcat.org/discovery'
 
 
-def build_item_format(general_format, specific_format):
-    f = general_format
-    if general_format in ['Book', 'Music', 'Video'] \
-            and specific_format == 'Digital':
-        f = general_format + '_' + specific_format
+def get_item_title(content):
+    if 'schema:name' in content:
+        name = content['schema:name']
+        if '@value' in name:
+            return name['@value']
+        if name is not None:
+            return name
+    return None
+
+
+def get_item_date(content):
+    if 'schema:datePublished' in content:
+        date = content['schema:datePublished']
+        if date is not None:
+            return date
+    return None
+
+
+def get_item_author(content):
+    if 'schema:author' in content:
+        author = content['schema:author']
+        if 'schema:name' in author:
+            return author['schema:name']
+
+    if 'schema:creator' in content:
+        creator = content['schema:creator']
+        if 'schema:name' in creator:
+            return creator['schema:name']
+    return None
+
+
+def get_item_format(schema_about):
     general_formats_map = {
-        'Archv': 'archival_material',
-        'Artcl': 'article',
-        'ArtChap': 'article',
-        'Music': 'audio',
-        'AudioBook': 'audio_book',
-        'Book': 'book',
-        'CD': 'cd',
-        'CompFile': 'computer_file',
-        'DVD': 'dvd',
-        'Image': 'image',
-        'Jrnl': 'journal',
-        'LP': 'lp',
-        'Map': 'map',
-        'News': 'newspaper',
-        'MsScr': 'score',
-        'Thsis': 'thesis',
-        'Video': 'video_recording',
-        'Book_Digital': 'e_book',
-        'Music_Digital': 'e_music',
-        'Video_Digital': 'e_book',
-        'null': 'other'
+        'http://purl.org/library/ArchiveMaterial': 'archival_material',
+        'http://schema.org/Article': 'article',
+        'http://bibliograph.net/AudioBook': 'audio_book',
+        'http://schema.org/Book': 'book',
+        'http://schema.org/Hardcover': 'book',
+        'http://bibliograph.net/LargePrintBook': 'book',
+        'http://schema.org/Paperback': 'book',
+        'http://bibliograph.net/PrintBook': 'book',
+        'http://bibliograph.net/CD': 'cd',
+        'http://www.productontology.org/id/Compact_Disc': 'cd',
+        'http://bibliograph.net/ComputerFile': 'computer_file',
+        'http://bibliograph.net/DVD': 'dvd',
+        'http://www.productontology.org/doc/DVD': 'dvd',
+        'http://schema.org/EBook': 'e_book',
+        'http://bibliograph.net/Image': 'image',
+        'http://www.productontology.org/doc/Image': 'image',
+        'http://purl.org/library/VisualMaterial': 'image',
+        'http://schema.org/Periodical': 'journal',
+        'http://purl.org/library/Serial': 'journal',
+        'http://bibliograph.net/LPRecord': 'lp',
+        'http://www.productontology.org/id/LP_record': 'lp',
+        'http://bibliograph.net/Atlas': 'map',
+        'http://schema.org/Map': 'map',
+        'http://bibliograph.net/Newspaper': 'newspaper',
+        'http://bibliograph.net/MusicScore': 'score',
+        'http://purl.org/ontology/mo/Score': 'score',
+        'http://www.productontology.org/id/Sheet_music': 'score',
+        'http://bibliograph.net/Thesis': 'thesis',
+        'http://www.productontology.org/id/Thesis': 'thesis',
+        'Streaming audio': 'e_music',
+        'Downloadable audio file': 'e_music',
+        'Internet videos': 'e_video',
+        'Streaming videos': 'e_video'
     }
 
-    try:
-        return general_formats_map[f]
-    except KeyError as key_error:
-        logger.error(f'Missing format {key_error}')
-        return 'other'
+    test_type = None
+    if '@type' in schema_about:
+        types = schema_about['@type']
+        for type in types:
+            try:
+                test_type = general_formats_map[type]
+            except KeyError as key_error:
+                # do nothing
+                continue
 
+    if test_type is not None:
+        return test_type
+    return 'other'
 
 if __name__ == '__main__':
     # This code is not reached when running "flask run". However the Docker

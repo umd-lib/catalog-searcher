@@ -38,7 +38,8 @@ Once "pyenv" and "pyenv-virtualenv" have been installed, install Python 3.10.8
 3) Set up the virtual environment:
 
 ```bash
-> pyenv virtualenv 3.10.8 worldcat-searcher
+# > pyenv virtualenv 3.10.8 worldcat-searcher
+> pyenv virtualenv 3.6.15 worldcat-searcher
 > pyenv shell worldcat-searcher
 ```
 

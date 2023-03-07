@@ -1,6 +1,7 @@
-Flask==2.2.2
+Flask==2.0.3
 python-dotenv==0.20.0
 requests==2.26.0
 furl==2.1.3
 waitress==2.0.0
 Paste==3.5.2
+git+https://github.com/OCLC-Developer-Network/oclc-auth-python
