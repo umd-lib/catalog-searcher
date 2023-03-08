@@ -101,7 +101,7 @@ def search():
     params = {
         'q': query,
         'limit': limit,
-        'itemsPerPage': limit,
+        'itemsPerPage': 10,
         'offset': offset,
         'startIndex': offset,
         'sortBy': 'library_plus_relevance',
@@ -139,7 +139,6 @@ def search():
     # Execute OCLC API search
     try:
         response = requests.get(search_url.url, params=params, headers=headers)
-        logger.warn(response.url)
     except Exception as err:
         logger.error(f'Search error at url'
                      '{search_url.url}, params={params}\n{err}')
@@ -151,8 +150,6 @@ def search():
             },
         }, 500
     
-    logger.warn(response)
-
     if response.status_code not in [200, 206]:
         logger.error(f'Received {response.status_code} with q={query}')
 
@@ -189,7 +186,7 @@ def search():
 
     if total_records != 0 and 'discovery:hasPart' in graph:
         json_content = graph['discovery:hasPart']
-        api_response['results'] = build_response(json_content)
+        api_response['results'] = build_response(json_content, limit)
     else:
         api_response['error'] = build_no_results()
         api_response['results'] = []
@@ -222,8 +219,9 @@ def build_no_results():
     }
 
 
-def build_response(json_content):
+def build_response(json_content, limit):
     results = []
+    limit_check = 0
     for item in json_content:
         if 'schema:about' in item:
             item_format = get_item_format(item['schema:about'])
@@ -231,13 +229,21 @@ def build_response(json_content):
             item_date = get_item_date(item['schema:about'])
             item_author = get_item_author(item['schema:about'])
             item_url = build_resource_url(item)
-        results.append({
-            'title': item_name,
-            'date': item_date,
-            'author': item_author,
-            'item_format': item_format,
-            'link': item_url
-        })
+            item_desc = get_description(item['schema:about'])
+
+        if item_name is not None:
+            results.append({
+                'title': item_name,
+                'date': item_date,
+                'author': item_author,
+                'item_format': item_format,
+                'link': item_url,
+                'description': item_desc
+            })
+            limit_check = limit_check + 1
+
+        if limit_check > limit:
+            break
     return results
 
 
@@ -248,21 +254,17 @@ def get_total_records(json_content):
 
 
 def build_resource_url(item):
-    # we prefer a direct link
-    digital_url = None
     if 'schema:about' in item:
         about = item['schema:about']
         if 'schema:url' in about:
             for url in about['schema:url']:
-                logger.warn(url)
-                # if '@id' in url:
-                #     url_id = url['@id']
-                #     if 'https://doi.org' in url_id:
+                if isinstance(url, str):
+                    # it seems some of these are coming through as strings rather than arrays
+                    continue
+                if '@id' in url:
+                    if 'https://doi.org' in url['@id']:
                         # and really really prefer a DOI
-                #         return url_id
-                #     digital_url = url_id 
-        if digital_url is not None:
-            return digital_url
+                        return url['@id'] 
 
     # otherwise we construct a link from the oclc number
     oclc_num = None
@@ -279,6 +281,14 @@ def build_resource_url(item):
     
     # fallback to search URL
     return 'https://umaryland.on.worldcat.org/discovery'
+
+
+def get_description(content):
+    if 'schema:description' in content:
+        desc = content['schema:description']
+        if '@value' in desc:
+            return desc['@value']
+    return None
 
 
 def get_item_title(content):
@@ -346,8 +356,23 @@ def get_item_format(schema_about):
         'Streaming audio': 'e_music',
         'Downloadable audio file': 'e_music',
         'Internet videos': 'e_video',
-        'Streaming videos': 'e_video'
+        'Streaming videos': 'e_video',
+        'schema:Book': 'book',
+        'schema:EBook': 'e_book',
+        'http://www.w3.org/2006/gen/ont#InformationResource': 'other',
     }
+
+    book_format = None
+    if 'schema:bookFormat' in schema_about:
+        book_formats = schema_about['schema:bookFormat']
+        try:
+            format = book_formats['@id']
+            book_format = general_formats_map[format]
+        except KeyError as key_error:
+            book_format = None
+
+    if book_format is not None:
+        return book_format
 
     test_type = None
     if '@type' in schema_about:
