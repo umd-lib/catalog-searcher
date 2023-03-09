@@ -123,14 +123,6 @@ def search():
 
     if endpoint == 'articles':
         params['itemType'] = 'artchap'
-    # match endpoint:
-    #     case 'articles':
-    #         params['itemType'] = article_item_types
-    #         params['itemSubType'] = article_item_subtypes
-    #         module_link = module_url + '?' + subtypes_url + '&queryString=' + query
-    #     case _:
-    #         # Default to books-and-more searcher
-    #         params['itemType'] = book_item_types
 
     headers = {
         'Authorization': 'Bearer ' + token
@@ -149,10 +141,9 @@ def search():
                 'msg': f'Search error',
             },
         }, 500
-    
+
     if response.status_code not in [200, 206]:
         logger.error(f'Received {response.status_code} with q={query}')
-
         return {
             'endpoint': endpoint,
             'results': [],
@@ -182,15 +173,13 @@ def search():
     }
 
     if debug:
-        api_response['raw'] = graph 
-
+        api_response['raw'] = graph
     if total_records != 0 and 'discovery:hasPart' in graph:
         json_content = graph['discovery:hasPart']
-        api_response['results'] = build_response(json_content, limit)
+        api_response['results'] = build_response(json_content, limit, endpoint)
     else:
         api_response['error'] = build_no_results()
         api_response['results'] = []
-
     return api_response
 
 
@@ -209,7 +198,7 @@ def authorize_oclc():
         context_institution_id=context_id
     )
 
-    return access_token.access_token_string 
+    return access_token.access_token_string
 
 
 def build_no_results():
@@ -219,7 +208,7 @@ def build_no_results():
     }
 
 
-def build_response(json_content, limit):
+def build_response(json_content, limit, endpoint):
     results = []
     limit_check = 0
     for item in json_content:
@@ -228,7 +217,7 @@ def build_response(json_content, limit):
             item_name = get_item_title(item['schema:about'])
             item_date = get_item_date(item['schema:about'])
             item_author = get_item_author(item['schema:about'])
-            item_url = build_resource_url(item)
+            item_url = get_resource_url(item)
             item_desc = get_description(item['schema:about'])
 
         if item_name is not None:
@@ -242,7 +231,7 @@ def build_response(json_content, limit):
             })
             limit_check = limit_check + 1
 
-        if limit_check > limit:
+        if limit_check >= limit:
             break
     return results
 
@@ -253,20 +242,31 @@ def get_total_records(json_content):
     return int(json_content['discovery:totalResults']['@value'])
 
 
-def build_resource_url(item):
+def get_resource_url(item):
+    proxy_prefix = 'https://proxy-um.researchport.umd.edu/login?url='
     if 'schema:about' in item:
         about = item['schema:about']
+        if 'schema:sameAs' in about:
+            # seems some (but not all) articles hide the url here
+            same_as = about['schema:sameAs']
+            if '@id' in same_as:
+                if 'doi.org/' in same_as['@id']:
+                    return proxy_prefix + same_as['@id']
+                
         if 'schema:url' in about:
             for url in about['schema:url']:
+                # seems some books hide the url here
                 if isinstance(url, str):
-                    # it seems some of these are coming through as strings rather than arrays
+                    # it seems some of these are coming through as blank
+                    # strings rather than arrays
                     continue
                 if '@id' in url:
-                    if 'https://doi.org' in url['@id']:
+                    if 'doi.org/' in url['@id']:
                         # and really really prefer a DOI
-                        return url['@id'] 
+                        return proxy_prefix + url['@id']
 
     # otherwise we construct a link from the oclc number
+    # this is our catch-all
     oclc_num = None
     if 'http://www.w3.org/2007/05/powder-s#describedby' in item:
         described_by = item['http://www.w3.org/2007/05/powder-s#describedby']
@@ -278,8 +278,7 @@ def build_resource_url(item):
         oclc_num = item['@id'].replace('http://www.worldcat.org/title/-/oclc/', '')
     if oclc_num is not None and oclc_num.isnumeric():
         return 'https://umaryland.on.worldcat.org/oclc/' + oclc_num
-    
-    # fallback to search URL
+    # if we really have to, fallback to search URL
     return 'https://umaryland.on.worldcat.org/discovery'
 
 
@@ -326,6 +325,8 @@ def get_item_format(schema_about):
     general_formats_map = {
         'http://purl.org/library/ArchiveMaterial': 'archival_material',
         'http://schema.org/Article': 'article',
+        'schema:Article': 'article',
+        'schema:ScholarlyArticle': 'article',
         'http://bibliograph.net/AudioBook': 'audio_book',
         'http://schema.org/Book': 'book',
         'http://schema.org/Hardcover': 'book',
@@ -362,6 +363,7 @@ def get_item_format(schema_about):
         'http://www.w3.org/2006/gen/ont#InformationResource': 'other',
     }
 
+    # this is called in the Ruby lib: https://github.com/OCLC-Developer-Network/worldcat-discovery-ruby/blob/d3c84863df2aa129a351fc0b365ea2ca68b3f2ec/lib/worldcat/discovery/bib.rb#L243
     book_format = None
     if 'schema:bookFormat' in schema_about:
         book_formats = schema_about['schema:bookFormat']
@@ -369,6 +371,9 @@ def get_item_format(schema_about):
             format = book_formats['@id']
             book_format = general_formats_map[format]
         except KeyError as key_error:
+            # Is KeyError catching really the only way to do this?
+            # Seems ugly to me. But None and empty string validation
+            # don't seem to always work for key checking in Python.
             book_format = None
 
     if book_format is not None:
@@ -381,12 +386,13 @@ def get_item_format(schema_about):
             try:
                 test_type = general_formats_map[type]
             except KeyError as key_error:
-                # do nothing
+                # Do nothing. See comment above.
                 continue
 
     if test_type is not None:
         return test_type
     return 'other'
+
 
 if __name__ == '__main__':
     # This code is not reached when running "flask run". However the Docker
