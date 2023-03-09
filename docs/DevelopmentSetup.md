@@ -5,6 +5,9 @@
 This page describes how to set up a development environment, and other
 information useful for developers to be aware of.
 
+Note that this documentation assumes you are using the OCLC beta API.
+If using the current OCLC discovery API, switch to the main branch.
+
 ## Prerequisites
 
 The following instructions assume that "pyenv" and "pyenv-virtualenv" are
@@ -35,12 +38,17 @@ Once "pyenv" and "pyenv-virtualenv" have been installed, install Python 3.10.8
 > cd worldcat-searcher
 ```
 
+And switch to the *legacy/main* branch.
+
+```bash
+> git checkout legacy/main
+```
+
 3) Set up the virtual environment:
 
 ```bash
-# > pyenv virtualenv 3.10.8 worldcat-searcher
-> pyenv virtualenv 3.6.15 worldcat-searcher
-> pyenv shell worldcat-searcher
+> pyenv virtualenv 3.6.15 legacy-worldcat-searcher
+> pyenv shell legacy-worldcat-searcher
 ```
 
 4) Run "pip install" to download dependencies:

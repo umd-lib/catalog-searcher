@@ -2,6 +2,8 @@
 
 Python 3 Flask application to search the deprecated beta OCLC Discovery API.
 
+Find this API here: <https://beta.worldcat.org/discovery/bib/search>
+
 ## Requires
 
 * Python 3.10.8
@@ -12,12 +14,17 @@ See [docs/DevelopmentSetup.md](docs/DevelopmentSetup.md).
 
 ### Running in Docker
 
+This should be tagged with the legacy-* prefix.
+
 ```bash
 $ docker build -t docker.lib.umd.edu/legacy-worldcat-searcher .
 $ docker run -it --rm -p 5000:5000 --env-file=.env --read-only docker.lib.umd.edu/legacy-worldcat-searcher
 ```
 
 ### Building for Kubernetes
+
+When building for production, do use the legacy-* prefix to differenciate
+from the non-beta version.
 
 ```bash
 $ docker buildx build . --builder=kube -t docker.lib.umd.edu/legacy-worldcat-searcher:VERSION --push
@@ -53,36 +60,38 @@ Example:
 ```bash
 curl 'http://localhost:5000/search?q=cheese+making&endpoint=books-and-more&per_page=3&page=2'
 {
-  "endpoint": "world_cat_discovery_api_article",
-  "version": "legacy",
-  "page": 2,
-  "per_page": 3,
-  "query": "cheese making",
-  "results": [
+  "endpoint":"books-and-more",
+  "module_link":"https://umaryland.on.worldcat.org/search?queryString=cheese making",
+  "page":0,
+  "per_page":3,
+  "query":"cheese making",
+  "results":
+  [
     {
-      "author": "Francis T. Bond",
-      "date": "1905",
-      "format": "article",
-      "link": "https://www.jstor.org/stable/20286827",
-      "title": "Cheese-Making"
+      "author":"Gabriel Henry",
+      "date":"1897",
+      "description":null,
+      "item_format":"e_book",
+      "link":"https://umaryland.on.worldcat.org/oclc/890903730",
+      "title":"Cheese making"
     },
     {
-      "author": "Muiris O’Sullivan",
-      "date": "2018",
-      "format": "article",
-      "link": "https://www.jstor.org/stable/26565827",
-      "title": "CHEESE-MAKING"
-    },
-    {
-      "author": "null",
-      "date": "2019",
-      "format": "article",
-      "link": "https://umaryland.on.worldcat.org/oclc/8100216678",
-      "title": "Cheese Making"
+      "author":"John Wright Decker",
+      "date":"1895","description":null,
+      "item_format":"e_book",
+      "link":"https://proxy-um.researchport.umd.edu/login?url=https://doi.org/10.5962/bhl.title.58759",
+      "title":"Cheddar cheese making."
+    },{
+      "author":"Don Radke",
+      "date":"1974",
+      "description":"Rediscover the fun of cheese making at home.",
+      "item_format":"book","link":"https://umaryland.on.worldcat.org/oclc/874088",
+      "title":"Cheese making at home: the complete illustrated guide."
     }
   ],
-  "total": 186043
-}
+  "total":14648,
+  "version":"legacy"
+  }
 ```
 
 [Flask's debug mode]: https://flask.palletsprojects.com/en/2.2.x/cli/?highlight=debug%20mode
