@@ -46,19 +46,19 @@ Root endpoint (just returns `{status: ok}` to all requests):
 Books and More:
 
 ```bash
-http://localhost:5000/search?endpoint=books-and-more&q={query}&page={page number}&per_page={results per page}
+http://localhost:5000/search?endpoint=books-and-more&q={query}&per_page={results per page}
 ```
 
 Articles:
 
 ```bash
-http://localhost:5000/search?endpoint=articles&q={query}&page={page number}&per_page={results per page}
+http://localhost:5000/search?endpoint=articles&q={query}&per_page={results per page}
 ```
 
 Example:
 
 ```bash
-curl 'http://localhost:5000/search?q=cheese+making&endpoint=books-and-more&per_page=3&page=2'
+curl 'http://localhost:5000/search?q=cheese+making&endpoint=books-and-more&per_page=3'
 {
   "endpoint":"books-and-more",
   "module_link":"https://umaryland.on.worldcat.org/search?queryString=cheese making",

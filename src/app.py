@@ -3,6 +3,7 @@ import logging
 import furl
 import os
 import requests
+import xmltodict
 
 from flask import Flask, request
 from dotenv import load_dotenv
@@ -106,8 +107,6 @@ def search():
         'startIndex': offset,
         'sortBy': 'library_plus_relevance',
         'dbIds': '638'
-        # 'orderBy': 'library',
-        # 'groupRelatedEditions': 'true',
     }
 
     token = authorize_oclc()
@@ -252,7 +251,6 @@ def get_resource_url(item):
             if '@id' in same_as:
                 if 'doi.org/' in same_as['@id']:
                     return proxy_prefix + same_as['@id']
-                
         if 'schema:url' in about:
             for url in about['schema:url']:
                 # seems some books hide the url here
@@ -309,16 +307,59 @@ def get_item_date(content):
 
 
 def get_item_author(content):
-    if 'schema:author' in content:
-        author = content['schema:author']
-        if 'schema:name' in author:
-            return author['schema:name']
-
     if 'schema:creator' in content:
+        # creator should be the default, so check this first
         creator = content['schema:creator']
         if 'schema:name' in creator:
             return creator['schema:name']
+        elif '@id' in creator:
+            id = creator['@id']
+            if 'viaf.org/viaf/' in id:
+                # if creator is just a VIAF link, parse that
+                return get_viaf_author(id)
+
+    if 'schema:author' in content:
+        # author is the deprecated value, but still seems used
+        author = content['schema:author']
+        if 'schema:name' in author:
+            return author['schema:name']
+        elif '@id' in author:
+            id = author['@id']
+            if 'viaf.org/viaf/' in id:
+                return get_viaf_author(id)
+
     return None
+
+
+def get_viaf_author(uri):
+    logger.warn(uri)
+    viaf_url = furl.furl(uri) / "rdf.xml"
+    try:
+        response = requests.get(viaf_url.url)
+    except Exception as err:
+        logger.warn(f'VIAF error at url {viaf_url.url}')
+        return None
+
+    if response.status_code not in [200, 206]:
+        logger.warn(f'Received {response.status_code}')
+        return None
+
+    doc = xmltodict.parse(response.text)
+
+    output = None
+    if 'rdf:RDF' in doc and 'rdf:Description' in doc['rdf:RDF']:
+        for desc in doc['rdf:RDF']['rdf:Description']:
+            if desc['@rdf:about'] == uri:
+                if 'schema:name' in desc:
+                    author_names = desc['schema:name']
+                    for name in author_names:
+                        if '@xml:lang' in name:
+                            if name['@xml:lang'] == 'en-US':
+                                if '#text' in name:
+                                    output = name['#text']
+                                    break
+
+    return output
 
 
 def get_item_format(schema_about):
@@ -344,6 +385,7 @@ def get_item_format(schema_about):
         'http://purl.org/library/VisualMaterial': 'image',
         'http://schema.org/Periodical': 'journal',
         'http://purl.org/library/Serial': 'journal',
+        'schema:Periodical': 'journal',
         'http://bibliograph.net/LPRecord': 'lp',
         'http://www.productontology.org/id/LP_record': 'lp',
         'http://bibliograph.net/Atlas': 'map',

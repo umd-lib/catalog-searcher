@@ -2,10 +2,10 @@
 #
 # To build:
 #
-# docker build -t docker.lib.umd.edu/worldcat-searcher:<VERSION> -f Dockerfile .
+# docker build -t docker.lib.umd.edu/legacy-worldcat-searcher:<VERSION> -f Dockerfile .
 #
 # where <VERSION> is the Docker image version to create.
-FROM python:3.10.8-slim
+FROM python:3.6.15
 
 LABEL MAINTAINER SSDR "lib-ssdr@umd.edu"
 
