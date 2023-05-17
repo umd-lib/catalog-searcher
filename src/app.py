@@ -96,6 +96,7 @@ def search():
 
     # Prepare OCLC API search
     params = {
+        'dbIds': 638,
         'q': query,
         'limit': limit,
         'offset': offset,
@@ -103,7 +104,7 @@ def search():
         'groupRelatedEditions': 'true',
     }
 
-    module_link = module_url + '?queryString=' + query
+    module_link = module_url + '?expandSearch=off&queryString=' + query
     match endpoint:
         case 'articles':
             params['itemType'] = article_item_types
@@ -216,15 +217,17 @@ def build_response(json_content):
     if 'detailedRecords' in json_content:
         for item in json_content['detailedRecords']:
             general_format = item['generalFormat'] if 'generalFormat' \
-                in item else 'null'
+                in item else '' 
             specific_format = item['specificFormat'] if 'specificFormat' \
-                in item else 'null'
+                in item else '' 
+            desc = item['summary'] if 'summary' in item else ''
             results.append({
                 'title': item['title'],
-                'date': item['date'] if 'date' in item else 'null',
-                'author': item['creator'] if 'creator' in item else 'null',
+                'date': item['date'] if 'date' in item else '',
+                'author': item['creator'] if 'creator' in item else '',
                 'item_format': build_item_format(general_format, specific_format),
-                'link': build_resource_url(item)
+                'link': build_resource_url(item),
+                'description': desc,
             })
     return results
 
@@ -237,6 +240,8 @@ def get_total_records(json_content):
 
 def build_resource_url(item):
     url = None
+    if 'oclcNumber' in item and item['oclcNumber'] is not None:
+        return 'https://umaryland.on.worldcat.org/oclc/' + item['oclcNumber']
     if 'digitalAccessAndLocations' in item and \
             item['digitalAccessAndLocations'] is not None:
         for locations in item['digitalAccessAndLocations']:
@@ -247,8 +252,6 @@ def build_resource_url(item):
                     return url
     if url is not None:
         return url
-    if 'oclcNumber' in item and item['oclcNumber'] is not None:
-        return 'https://umaryland.on.worldcat.org/oclc/' + item['oclcNumber']
     return 'https://umaryland.on.worldcat.org/discovery'
 
 
@@ -278,6 +281,7 @@ def build_item_format(general_format, specific_format):
         'Book_Digital': 'e_book',
         'Music_Digital': 'e_music',
         'Video_Digital': 'e_book',
+        'Web': 'article',
         'null': 'other'
     }
 
