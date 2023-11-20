@@ -9,6 +9,7 @@ from dotenv import load_dotenv
 from requests.auth import HTTPBasicAuth
 from waitress import serve
 from paste.translogger import TransLogger
+from requests.exceptions import ConnectionError
 
 # Employs the OCLC Discovery API. See:
 # https://developer.api.oclc.org/worldcat-discovery#/Bibliographic%20Resources/search-bibs-details
@@ -130,9 +131,9 @@ def search():
     # Execute OCLC API search
     try:
         response = requests.get(search_url.url, params=params, headers=headers)
-    except Exception as err:
+    except ConnectionError as e:
         logger.error(f'Search error at url'
-                     '{search_url.url}, params={params}\n{err}')
+                     f'{search_url.url}, params={params}\n{e}')
 
         return {
             'endpoint': endpoint,
@@ -186,7 +187,6 @@ def authorize_oclc():
         'grant_type': 'client_credentials'
     }
 
-    token = ''
     try:
         response = requests.post('https://oauth.oclc.org/token',
                                  params=params, auth=basic)
@@ -202,7 +202,7 @@ def authorize_oclc():
     auth = json.loads(response.text)
     token = auth['access_token']
 
-    return token
+    return str(token)
 
 
 def build_no_results():
@@ -293,7 +293,7 @@ def build_item_format(general_format, specific_format):
 
 
 if __name__ == '__main__':
-    # This code is not reached when running "flask run". However the Docker
+    # This code is not reached when running "flask run". However, the Docker
     # container runs "python app.py" and host='0.0.0.0' is set to ensure
     # that flask listens on port 5000 on all interfaces.
 
