@@ -1,0 +1,366 @@
+{
+  "detailedRecords": [
+    {
+      "additionalPhysicalFormEntries": [
+        {
+          "displayConstant": "Online version:",
+          "mainEntryHeadings": [
+            "Maryland."
+          ],
+          "recordControlOclcNumbers": [
+            "762076195"
+          ],
+          "titles": [
+            "Michie's annotated code of the public general laws of Maryland."
+          ],
+          "uniformTitle": "Laws, etc."
+        }
+      ],
+      "contentNotes": {
+        "text": [
+          "[v.1] Agriculture",
+          "[v. 2] Courts and judicial proceedings",
+          "[v. 3] Natural resources",
+          "[v. 5] Estates and trusts",
+          "[v. 6] Real property",
+          "[v. 7] Commercial law",
+          "[v. 8] General provisions",
+          "[v. 9] Corporations and associations",
+          "[v. 12] Education",
+          "[v.13] Financial institutions",
+          "[v. 14] Constitutions",
+          "[v. 15] Maryland rules",
+          "[v. 16] Health occupations",
+          "[v. 17] Health : general",
+          "[v. 18] Environment",
+          "[v. 19] Family law",
+          "[v. 20] State government",
+          "[v. 21] State finance and procurement",
+          "[v. 22] Tax : property",
+          "[v. 23] Tax : general",
+          "[v. 24] Business occupations and professions",
+          "[v. 25] Labor and employment",
+          "[v. 26] Business regulation",
+          "[v. 27] State personnel and pensions",
+          "[v. 28] Insurance",
+          "[v. 29] Land use",
+          "[v. 30] Public utilities",
+          "[v. 31] Annotation citator",
+          "[v. 32] Correctional services",
+          "[v. 33] Criminal procedure",
+          "[v. 34] Election law",
+          "[v. 35] Criminal law",
+          "[v. 36] Public safety",
+          "[v.37] Housing and community development",
+          "[v. 38] Human services",
+          "[v. 39] Economic development",
+          "[v. 40] Local government",
+          "[v. 41] Alcoholic beverages",
+          "Tables",
+          "Index"
+        ]
+      },
+      "contributors": [
+        {
+          "isPrimary": true,
+          "nonPersonName": {
+            "text": "Maryland"
+          }
+        },
+        {
+          "isPrimary": false,
+          "nonPersonName": {
+            "text": "LEXIS Law Publishing"
+          }
+        },
+        {
+          "isPrimary": false,
+          "nonPersonName": {
+            "text": "Michie (Firm)"
+          }
+        },
+        {
+          "isPrimary": false,
+          "nonPersonName": {
+            "text": "Michie Company"
+          }
+        }
+      ],
+      "creator": "Maryland",
+      "date": "1974-",
+      "generalFormat": "Book",
+      "generalNotes": [
+        {
+          "local": "N",
+          "text": "On cover: Annotated code of Maryland"
+        },
+        {
+          "local": "N",
+          "text": "On cover of some volumes: Michie's Annotated code of Maryland"
+        },
+        {
+          "local": "N",
+          "text": "Title history: The annotated code of the public general laws of Maryland (1974-1998)"
+        },
+        {
+          "local": "N",
+          "text": "Publisher: Michie Co. (1974-   ); Michie (1995?-1998); LEXIS Law Pub. (1999?-2002?)"
+        },
+        {
+          "local": "N",
+          "text": "Statement of responsibility varies"
+        },
+        {
+          "local": "N",
+          "text": "Includes Tables volume, separately numbered rules volumes, unnumbered index volumes which also index the Annotated code of the public general laws of Maryland, 1957, and Annotation citator volume"
+        },
+        {
+          "local": "N",
+          "text": "Kept up to date by pocket parts, supplements, special supplements, replacement volumes, Advance code service (previously published as Advance annotation service), Advance legislative service, Advance court rules service and Legislative review service"
+        }
+      ],
+      "language": "eng",
+      "machineReadableDate": "1974-",
+      "mergedOclcNumbers": [
+        "4287590"
+      ],
+      "oclcDbCollectionId": 283,
+      "oclcDbCollectionName": "WorldCat",
+      "oclcNumber": "886895",
+      "otherFormats": [
+        {
+          "generalFormat": "Book",
+          "oclcNumber": "1007326281",
+          "specificFormat": "Digital"
+        },
+        {
+          "generalFormat": "Book",
+          "oclcNumber": "47640239",
+          "specificFormat": "Mic"
+        }
+      ],
+      "peerReviewed": "N",
+      "physicalDescription": "v. 27 cm.",
+      "publicationPlace": "Charlottesville, Va.",
+      "publisher": "LexisNexis",
+      "publisherName": {
+        "text": "LexisNexis"
+      },
+      "specificFormat": "PrintBook",
+      "subjectsText": [
+        "Law Maryland",
+        "Law",
+        "Maryland"
+      ],
+      "title": "Michie's annotated code of the public general laws of Maryland",
+      "titleInfo": {
+        "text": "Michie's annotated code of the public general laws of Maryland"
+      },
+      "totalEditions": 10
+    },
+    {
+      "additionalPhysicalFormEntries": [
+        {
+          "displayConstant": "Print version:",
+          "recordControlOclcNumbers": [
+            "1090811136"
+          ],
+          "titles": [
+            "Welcome to your VA Maryland health care system"
+          ]
+        }
+      ],
+      "citationUrl": "https://purl.fdlp.gov/GPO/gpo117711",
+      "contributors": [
+        {
+          "isPrimary": false,
+          "nonPersonName": {
+            "text": "VA Maryland Health Care System (U.S.)"
+          },
+          "relatorCodes": [
+            "isb"
+          ]
+        }
+      ],
+      "creator": "VA Maryland Health Care System (U.S.)",
+      "date": "2018",
+      "digitalAccessAndLocations": [
+        {
+          "uri": "https://purl.fdlp.gov/GPO/gpo117711"
+        },
+        {
+          "publicNote": "Address at time of PURL creation",
+          "uri": "https://www.maryland.va.gov/publications/VAMHCSPatientFlyer.pdf"
+        }
+      ],
+      "generalFormat": "Book",
+      "generalNotes": [
+        {
+          "local": "N",
+          "text": "\"Choose VA.\""
+        }
+      ],
+      "genre": "Government publications United States",
+      "govDoc": [
+        "VA 1.2:M 36/3"
+      ],
+      "gpoNumber": [
+        "0985 (online)"
+      ],
+      "itemType": "dct gpb ngp url",
+      "language": "eng",
+      "machineReadableDate": "2018",
+      "oclcDbCollectionId": 283,
+      "oclcDbCollectionName": "WorldCat",
+      "__disabled__oclcNumber": "1090811361",
+      "openAccessLinks": [
+        {
+          "contentSource": "other",
+          "source": "bibrec-856",
+          "url": "https://purl.fdlp.gov/GPO/gpo117711"
+        },
+        {
+          "contentSource": "other",
+          "source": "bibrec-856",
+          "url": "https://purl.fdlp.gov/GPO/gpo117711"
+        }
+      ],
+      "otherFormats": [
+        {
+          "generalFormat": "Book",
+          "oclcNumber": "1090811136",
+          "specificFormat": "PrintBook"
+        }
+      ],
+      "peerReviewed": "N",
+      "physicalDescription": "1 online resource (2 unnumbered pages)",
+      "publicationPlace": "Baltimore, MD",
+      "publisher": "U.S. Department of Veterans Affairs, Veterans Health Administration, VA Maryland Health Care System",
+      "publisherName": {
+        "text": "U.S. Department of Veterans Affairs, Veterans Health Administration, VA Maryland Health Care System"
+      },
+      "specificFormat": "Digital",
+      "subjectsText": [
+        "VA Maryland Health Care System (U.S.)",
+        "Veterans' hospitals Maryland Handbooks, manuals, etc",
+        "Hôpitaux pour anciens combattants Maryland Guides, manuels, etc",
+        "Veterans' hospitals",
+        "Maryland",
+        "Government publications United States",
+        "Handbook",
+        "Handbooks and manuals",
+        "Guides et manuels"
+      ],
+      "title": "Welcome to your VA Maryland health care system",
+      "titleInfo": {
+        "text": "Welcome to your VA Maryland health care system"
+      },
+      "totalEditions": 2
+    },
+    {
+      "additionalPhysicalFormEntries": [
+        {
+          "displayConstant": "Print version:",
+          "recordControlOclcNumbers": [
+            "1111802482"
+          ],
+          "titles": [
+            "Welcome to your VA Maryland health care system."
+          ]
+        }
+      ],
+      "citationUrl": "https://purl.fdlp.gov/GPO/gpo123333",
+      "contributors": [
+        {
+          "isPrimary": false,
+          "nonPersonName": {
+            "text": "VA Maryland Health Care System (U.S.)"
+          },
+          "relatorCodes": [
+            "isb"
+          ]
+        }
+      ],
+      "creator": "VA Maryland Health Care System (U.S.)",
+      "date": "2019",
+      "digitalAccessAndLocations": [
+        {
+          "uri": "https://doi.org/gpo123333"
+        },
+        {
+          "uri": "https://purl.fdlp.gov/GPO/gpo123333"
+        },
+        {
+          "publicNote": "Address at time of PURL creation",
+          "uri": "https://www.maryland.va.gov/publications/PatientFlyer2019.pdf"
+        }
+      ],
+      "edition": "[2019 edition]",
+      "generalFormat": "Book",
+      "generalNotes": [
+        {
+          "local": "N",
+          "text": "\"VA health care - apply now.\""
+        }
+      ],
+      "genre": "Government publications United States",
+      "govDoc": [
+        "VA 1.2:M 36/3/2019"
+      ],
+      "gpoNumber": [
+        "0985 (online)"
+      ],
+      "itemType": "dct gpb ngp url",
+      "language": "eng",
+      "machineReadableDate": "2019",
+      "oclcDbCollectionId": 283,
+      "oclcDbCollectionName": "WorldCat",
+      "__disabled__oclcNumber": "1111802365",
+      "openAccessLinks": [
+        {
+          "contentSource": "other",
+          "source": "bibrec-856",
+          "url": "https://purl.fdlp.gov/GPO/gpo123333"
+        },
+        {
+          "contentSource": "other",
+          "source": "bibrec-856",
+          "url": "https://purl.fdlp.gov/GPO/gpo123333"
+        }
+      ],
+      "otherFormats": [
+        {
+          "generalFormat": "Book",
+          "oclcNumber": "1111802482",
+          "specificFormat": "PrintBook"
+        }
+      ],
+      "peerReviewed": "N",
+      "physicalDescription": "1 online resource (2 unnumbered pages) : one color map",
+      "publicationPlace": "Baltimore, MD",
+      "publisher": "U.S. Department of Veterans Affairs, Veterans Health Administration, VA Maryland Health Care System",
+      "publisherName": {
+        "text": "U.S. Department of Veterans Affairs, Veterans Health Administration, VA Maryland Health Care System"
+      },
+      "specificFormat": "Digital",
+      "subjectsText": [
+        "VA Maryland Health Care System (U.S.)",
+        "Veterans' hospitals Maryland Handbooks, manuals, etc",
+        "Hôpitaux pour anciens combattants Maryland Guides, manuels, etc",
+        "Veterans' hospitals",
+        "Maryland",
+        "Government publications United States",
+        "manuals (instructional materials)",
+        "handbooks",
+        "Handbooks and manuals",
+        "Guides et manuels"
+      ],
+      "title": "Welcome to your VA Maryland health care system : proudly serving the unique health care needs of Maryland's veterans",
+      "titleInfo": {
+        "text": "Welcome to your VA Maryland health care system : proudly serving the unique health care needs of Maryland's veterans"
+      },
+      "totalEditions": 2
+    }
+  ],
+  "numberOfRecords": 868034
+}

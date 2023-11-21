@@ -1,0 +1,19 @@
+[project]
+name = "catalog-searcher"
+version = "2.0.0-dev"
+dependencies = [
+    "environs",
+    "flask",
+    "furl",
+    "paste",
+    "requests",
+    "waitress",
+]
+
+[project.optional-dependencies]
+test = [
+    "httpretty",
+    "pytest",
+    "pytest-cov",
+    "pytest-datadir",
+]

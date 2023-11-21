@@ -12,14 +12,10 @@ LABEL MAINTAINER SSDR "lib-ssdr@umd.edu"
 EXPOSE 5000
 
 # We copy just the requirements.txt first to leverage Docker cache
-COPY ./requirements.txt /app/requirements.txt
+COPY ./requirements.txt /tmp/requirements.txt
+RUN pip install -r /tmp/requirements.txt && rm /tmp/requirements.txt
 
-WORKDIR /app
+COPY . /tmp/worldcat-searcher
+RUN pip install /tmp/worldcat-searcher && rm -rf /tmp/worldcat-searcher
 
-RUN pip install -r requirements.txt
-
-COPY ./src/app.py /app/app.py
-
-ENTRYPOINT [ "python" ]
-
-CMD [ "app.py" ]
+CMD ["python", "-m", "worldcat_searcher.app"]

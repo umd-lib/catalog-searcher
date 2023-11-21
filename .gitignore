@@ -1,5 +1,9 @@
+.coverage
 .env
 .venv
 .vscode
 __pycache__
+.pytest_cache
 *.code-workspace
+*.egg-info
+coverage.xml
