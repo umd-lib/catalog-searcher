@@ -1,0 +1,4 @@
+ALMA_SRU_BASE_URL=https://sandbox02-na.alma.exlibrisgroup.com/view/sru/01USMAI_SMCM
+
+NO_RESULTS_URL=https://umaryland.on.worldcat.org/discovery
+MODULE_URL=https://umaryland.on.worldcat.org/search

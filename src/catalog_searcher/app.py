@@ -16,7 +16,7 @@ env.read_env()
 debug = env.bool('FLASK_DEBUG', default=False)
 default_page = env.int('DEFAULT_PAGE', 1)
 default_per_page = env.int('DEFAULT_PER_PAGE', 3)
-default_backend = env.str('SEARCH_BACKEND', 'worldcat')
+default_backend = env.str('SEARCH_BACKEND', 'alma')
 
 logging.basicConfig(
     level=logging.DEBUG if debug else logging.INFO,
@@ -66,6 +66,9 @@ def search():
         case 'worldcat':
             from catalog_searcher.search.worldcat import WorldcatSearch
             search_class = WorldcatSearch
+        case 'alma':
+            from catalog_searcher.search.alma import AlmaSearch
+            search_class = AlmaSearch
         case _:
             return error_response(endpoint, message=f'unknown backend "{backend}"')
 

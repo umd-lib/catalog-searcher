@@ -14,13 +14,6 @@ from catalog_searcher.search.worldcat import WorldcatSearch
 
 
 @pytest.fixture
-def env(datadir) -> Env:
-    env = Env()
-    env.read_env(datadir / 'env')
-    return env
-
-
-@pytest.fixture
 def response_body(datadir) -> str:
     return (datadir / 'response.json').read_text()
 
