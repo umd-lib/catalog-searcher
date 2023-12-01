@@ -8,6 +8,7 @@ from environs import Env
 from furl import furl
 from lxml import etree
 from pymods import Genre, MODSReader, MODSRecord
+from uritemplate import URITemplate
 
 from catalog_searcher.search import Search, SearchError, SearchResponse, SearchResult
 from catalog_searcher.search.cql import cql
@@ -17,6 +18,7 @@ logger = logging.getLogger(__name__)
 
 class AlmaSearch(Search):
     xmlns = {
+        'mods': 'http://www.loc.gov/mods/v3',
         'srw': 'http://www.loc.gov/zing/srw/',
     }
 
@@ -26,7 +28,11 @@ class AlmaSearch(Search):
         self.page = page
         self.per_page = per_page
         with env.prefixed('ALMA_'):
-            self.sru_base_url = env.str('SRU_BASE_URL')
+            self.sru_url_template = URITemplate(env.str('SRU_URL_TEMPLATE'))
+            self.institution_code = env.str('INSTITUTION_CODE')
+        with env.prefixed('PRIMO_'):
+            self.search_url_template = URITemplate(env.str('SEARCH_URL_TEMPLATE'))
+            self.item_url_template = URITemplate(env.str('ITEM_URL_TEMPLATE'))
 
     def search(self) -> SearchResponse:
         # ALMA SRU uses a 1-base "startRecord" index instead of a 0-based offset
@@ -36,18 +42,17 @@ class AlmaSearch(Search):
         if self.endpoint == 'articles':
             cql_query = cql('alma.genre_form', '=', 'article') & cql_query
 
-        params = {
-            'version': '1.2',
-            'operation': 'searchRetrieve',
-            'recordSchema': 'mods',
-            'query': str(cql_query),
-            'maximumRecords': self.per_page,
-            'startRecord': start_record,
-        }
+        sru_request_url = self.sru_url_template.expand(
+            institutionCode=self.institution_code,
+            recordSchema='mods',
+            query=cql_query,
+            maximumRecords=self.per_page,
+            startRecord=start_record,
+        )
         try:
-            response = requests.get(self.sru_base_url, params=params)
+            response = requests.get(sru_request_url)
         except ConnectionError as e:
-            logger.error(f'Search error at url {self.sru_base_url}, params={params}\n{e}')
+            logger.error(f'Search error at url {sru_request_url}\n{e}')
             raise SearchError('Search error', endpoint=self.endpoint)
 
         if not response.ok:
@@ -62,9 +67,9 @@ class AlmaSearch(Search):
             total=total,
             module_link=self.module_link,
             raw={
-                'request_url': furl(url=self.sru_base_url, args=params).url,
-                'request_params': params,
-                #'xml_response': response.text,
+                'request_url': sru_request_url,
+                'request_params': dict(furl(sru_request_url).args),
+                'xml_response': response.text,
             },
         )
 
@@ -82,12 +87,20 @@ class AlmaSearch(Search):
             date='; '.join(date.text for date in item.dates or []),
             description='; '.join(note.text for note in item.note),
             item_format=item_format,
-            link=self.module_link,
+            link=self.get_preferred_link(item),
         )
 
     @property
     def module_link(self) -> str:
-        return "TODO"
+        return self.search_url_template.expand(query=self.query, vid='01USMAI_SMCM:THSLC1')
+    
+    def get_preferred_link(self, item: MODSRecord) -> str:
+        record_identifier = item.find('mods:recordInfo/mods:recordIdentifier', namespaces=self.xmlns)
+        if record_identifier is not None:
+            docid = 'alma' + record_identifier.text
+        else:
+            docid = ''
+        return self.item_url_template.expand(docid=docid, query=self.query, vid='01USMAI_SMCM:THSLC1')
 
 
 def get_item_format(item: MODSRecord) -> str:

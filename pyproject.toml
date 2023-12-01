@@ -9,6 +9,7 @@ dependencies = [
     "paste",
     "pymods",
     "requests",
+    "uritemplate",
     "waitress",
 ]
 

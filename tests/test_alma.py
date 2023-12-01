@@ -23,13 +23,13 @@ def register_search_url(search: AlmaSearch) -> Callable:
         if status >= HTTPStatus.BAD_REQUEST:
             # we are mocking an error response, omit the body form the response
             httpretty.register_uri(
-                uri=search.sru_base_url,
+                uri=search.sru_url_template.expand(institutionCode=search.institution_code),
                 method=httpretty.GET,
                 status=status,
             )
         else:
             httpretty.register_uri(
-                uri=search.sru_base_url,
+                uri=search.sru_url_template.expand(institutionCode=search.institution_code),
                 method=httpretty.GET,
                 status=status,
                 adding_headers={'Content-Type': 'application/json'},
