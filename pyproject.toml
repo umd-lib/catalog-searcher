@@ -2,6 +2,7 @@
 name = "catalog-searcher"
 version = "2.0.0-dev"
 dependencies = [
+    "cql-parser",
     "environs",
     "flask",
     "furl",

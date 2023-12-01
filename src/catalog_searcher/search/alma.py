@@ -10,6 +10,7 @@ from lxml import etree
 from pymods import Genre, MODSReader, MODSRecord
 
 from catalog_searcher.search import Search, SearchError, SearchResponse, SearchResult
+from catalog_searcher.search.cql import cql
 
 logger = logging.getLogger(__name__)
 
@@ -30,11 +31,16 @@ class AlmaSearch(Search):
     def search(self) -> SearchResponse:
         # ALMA SRU uses a 1-base "startRecord" index instead of a 0-based offset
         start_record = (self.page - 1) * self.per_page + 1
+        
+        cql_query = cql('alma.all_for_ui', '=', self.query) & ('alma.mms_tagSuppressed', '=', 'false')
+        if self.endpoint == 'articles':
+            cql_query = cql('alma.genre_form', '=', 'article') & cql_query
+
         params = {
             'version': '1.2',
             'operation': 'searchRetrieve',
             'recordSchema': 'mods',
-            'query': f'alma.all_for_ui={self.query} and alma.mms_tagSuppressed=false',
+            'query': str(cql_query),
             'maximumRecords': self.per_page,
             'startRecord': start_record,
         }
