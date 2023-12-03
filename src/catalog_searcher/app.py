@@ -8,7 +8,7 @@ from furl import furl
 from paste.translogger import TransLogger
 from waitress import serve
 
-from catalog_searcher.search import SearchError
+from catalog_searcher.search import Search, SearchError
 
 env = Env()
 env.read_env()
@@ -62,15 +62,10 @@ def search():
         return error_response(endpoint, message='page parameter value is invalid; must be an integer')
     
     backend = args.get('backend', default_backend)
-    match backend:
-        case 'worldcat':
-            from catalog_searcher.search.worldcat import WorldcatSearch
-            search_class = WorldcatSearch
-        case 'alma':
-            from catalog_searcher.search.alma import AlmaSearch
-            search_class = AlmaSearch
-        case _:
-            return error_response(endpoint, message=f'unknown backend "{backend}"')
+    try:
+        search_class = get_search_class(backend)
+    except ValueError as e:
+        return error_response(endpoint, message=str(e))
 
     try:
         response = search_class(env, endpoint, query, page, per_page).search()
@@ -105,6 +100,18 @@ def search():
         api_response['raw'] = response.raw
 
     return api_response
+
+
+def get_search_class(backend: str) -> Search:
+    match backend:
+        case 'worldcat':
+            from catalog_searcher.search.worldcat import WorldcatSearch
+            return WorldcatSearch
+        case 'alma':
+            from catalog_searcher.search.alma import AlmaSearch
+            return AlmaSearch
+        case _:
+            raise ValueError(f'unknown backend "{backend}"')
 
 
 def error_response(endpoint: str, message: str, status: int = HTTPStatus.BAD_REQUEST) -> tuple[dict, int]:
