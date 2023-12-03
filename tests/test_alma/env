@@ -1,4 +1,0 @@
-ALMA_INSTITUTION_CODE=01USMAI_SMCM
-ALMA_SRU_URL_TEMPLATE=https://sandbox02-na.alma.exlibrisgroup.com/view/sru{/institutionCode}?version=1.2&operation=searchRetrieve{&recordSchema}{&query}{&maximumRecords}{&startRecord}
-PRIMO_SEARCH_URL_TEMPLATE=https://sandbox02-na.primo.exlibrisgroup.com/discovery/search{?vid}{&query}&context=L&lang=en&search_scope=MyInst_and_CI&adaptor=Local+Search+Engine&tab=Everything&offset=0
-PRIMO_ITEM_URL_TEMPLATE=https://sandbox02-na.primo.exlibrisgroup.com/discovery/fulldisplay{?docid}{&vid}{&query}&context=L&lang=en&search_scope=MyInst_and_CI&adaptor=Local+Search+Engine&tab=Everything&offset=0

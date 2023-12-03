@@ -5,45 +5,17 @@ from typing import Callable
 import httpretty
 import pytest
 import requests
-from environs import Env
 from pytest import MonkeyPatch
 
 from catalog_searcher.search import SearchError
 from catalog_searcher.search.alma import AlmaSearch
 
 
-@pytest.fixture
-def search(env: Env) -> AlmaSearch:
-    return AlmaSearch(env=env, endpoint='books-and-more', query='maryland', page=1, per_page=3)
-
-
-@pytest.fixture
-def register_search_url(search: AlmaSearch) -> Callable:
-    def _register_search_url(body: str = '', status: int = HTTPStatus.OK):
-        if status >= HTTPStatus.BAD_REQUEST:
-            # we are mocking an error response, omit the body form the response
-            httpretty.register_uri(
-                uri=search.sru_url_template.expand(institutionCode=search.institution_code),
-                method=httpretty.GET,
-                status=status,
-            )
-        else:
-            httpretty.register_uri(
-                uri=search.sru_url_template.expand(institutionCode=search.institution_code),
-                method=httpretty.GET,
-                status=status,
-                adding_headers={'Content-Type': 'application/json'},
-                body=body,
-            )
-    
-    return _register_search_url
-
-
 @httpretty.activate
-def test_alma_search(datadir: Path, register_search_url: Callable, search: AlmaSearch):
-    register_search_url(body=(datadir / 'response.xml').read_text())
+def test_alma_search(shared_datadir: Path, register_search_url: Callable, alma_search: AlmaSearch):
+    register_search_url(body=(shared_datadir / 'alma_response.xml').read_text())
     
-    response = search()
+    response = alma_search()
 
     assert response.total == 108
     assert len(response.results) == 3
@@ -58,16 +30,16 @@ def test_alma_search(datadir: Path, register_search_url: Callable, search: AlmaS
 
 
 @httpretty.activate
-def test_alma_search_bad_request(register_search_url: Callable, search: AlmaSearch):
+def test_alma_search_bad_request(register_search_url: Callable, alma_search: AlmaSearch):
     register_search_url(status=HTTPStatus.BAD_REQUEST)
 
     with pytest.raises(SearchError):
-        search()
+        alma_search()
 
 
 @httpretty.activate
-def test_worldcat_search_connection_error(search: AlmaSearch, monkeypatch: MonkeyPatch, raise_connection_error: Callable):
+def test_worldcat_search_connection_error(alma_search: AlmaSearch, monkeypatch: MonkeyPatch, raise_connection_error: Callable):
     monkeypatch.setattr(requests, 'get', raise_connection_error)
     
     with pytest.raises(SearchError):
-        search()
+        alma_search()

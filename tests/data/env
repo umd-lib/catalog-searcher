@@ -1,3 +1,4 @@
+# worldcat backend
 WORLDCAT_CLIENT_ID=CLIENT_ID
 WORLDCAT_SECRET=SECRET
 WORLDCAT_API_BASE=https://discovery.api.oclc.org/worldcat-org-ci/search/detailed-bibs
@@ -7,3 +8,9 @@ WORLDCAT_ARTICLES_ITEM_SUBTYPES=artchap-artcl,artchap-chptr,artchap-digital,artc
 WORLDCAT_SUBTYPES_URL=subformat=Artchap::artchap_artcl&subformat=Artchap::artchap_chptr&subformat=Artchap::artchap_digital&subformat=Artchap::artchap_mss
 WORLDCAT_NO_RESULTS_URL=https://umaryland.on.worldcat.org/discovery
 WORLDCAT_MODULE_URL=https://umaryland.on.worldcat.org/search
+
+# alma backend
+ALMA_INSTITUTION_CODE=01USMAI_SMCM
+ALMA_SRU_URL_TEMPLATE=https://sandbox02-na.alma.exlibrisgroup.com/view/sru{/institutionCode}?version=1.2&operation=searchRetrieve{&recordSchema}{&query}{&maximumRecords}{&startRecord}
+PRIMO_SEARCH_URL_TEMPLATE=https://sandbox02-na.primo.exlibrisgroup.com/discovery/search{?vid}{&query}&context=L&lang=en&search_scope=MyInst_and_CI&adaptor=Local+Search+Engine&tab=Everything&offset=0
+PRIMO_ITEM_URL_TEMPLATE=https://sandbox02-na.primo.exlibrisgroup.com/discovery/fulldisplay{?docid}{&vid}{&query}&context=L&lang=en&search_scope=MyInst_and_CI&adaptor=Local+Search+Engine&tab=Everything&offset=0
