@@ -4,8 +4,8 @@ from math import ceil
 
 from environs import Env
 from flask import Flask, request
-from furl import furl
 from paste.translogger import TransLogger
+from urlobject import URLObject
 from waitress import serve
 
 from catalog_searcher.search import Search, SearchError
@@ -72,7 +72,6 @@ def search():
     except SearchError as e:
         return error_response(endpoint, message=str(e), status=HTTPStatus.INTERNAL_SERVER_ERROR)
     
-    first_page = 1
     last_page = ceil(response.total / per_page)
     
     api_response = {
@@ -84,18 +83,9 @@ def search():
         'per_page': per_page,
         'module_link': response.module_link,
         'backend': backend,
+        **get_pagination_links(request.url, last_page=last_page)
     }
-    url = furl(request.url)
-    url.query.params['page'] = first_page
-    api_response['first_page'] = str(url)
-    url.query.params['page'] = last_page
-    api_response['last_page'] = str(url)
-    if page > first_page:
-        url.query.params['page'] = page - 1
-        api_response['prev_page'] = str(url)
-    if page < last_page:
-        url.query.params['page'] = page + 1
-        api_response['next_page'] = str(url)
+    
     if debug:
         api_response['raw'] = response.raw
 
@@ -112,6 +102,21 @@ def get_search_class(backend: str) -> Search:
             return AlmaSearch
         case _:
             raise ValueError(f'unknown backend "{backend}"')
+
+
+def get_pagination_links(request_url: str, last_page: int, first_page: int = 1, page_param: str = 'page') -> dict[str, str]:
+    url = URLObject(request_url)
+    page = int(url.query_dict.get(page_param, 1))
+    links = {
+        'first_page': url.set_query_param(page_param, first_page),
+        'last_page': url.set_query_param(page_param, last_page),
+    }
+    if page > first_page:
+        links['prev_page'] = url.set_query_param(page_param, page - 1)
+    if page < last_page:
+        links['next_page'] = url.set_query_param(page_param, page + 1)
+    
+    return links
 
 
 def error_response(endpoint: str, message: str, status: int = HTTPStatus.BAD_REQUEST) -> tuple[dict, int]:
