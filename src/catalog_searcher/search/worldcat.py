@@ -17,7 +17,7 @@ class WorldcatSearch(Search):
     """Search class that uses the OCLC Discovery API. See:
     https://developer.api.oclc.org/worldcat-discovery#/Bibliographic%20Resources/search-bibs-details
     """
-    
+
     general_formats_map = {
         'Archv': 'archival_material',
         'Artcl': 'article',
@@ -120,7 +120,7 @@ class WorldcatSearch(Search):
             item_format=self.get_item_format(item),
             link=self.get_preferred_link(item),
         )
-        
+
     def get_preferred_link(self, item: Mapping[str, Any]) -> str:
         """Get the preferred link for a single item. If the result has an OCLC number,
         return a `umaryland.on.worldcat` URL. If the result has a DOI URI in its
@@ -142,7 +142,7 @@ class WorldcatSearch(Search):
             return url
 
         return 'https://umaryland.on.worldcat.org/discovery'
-    
+
     def get_item_format(self, item: Mapping[str, Any]) -> str:
         """Get the item format for a single item. Looks up the format in the
         `general_formats_map`. If there is no matching format found, returns

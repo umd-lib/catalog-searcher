@@ -74,7 +74,7 @@ def test_search_with_error(monkeypatch, client):
 
         def search(self):
             raise SearchError
-        
+
     monkeypatch.setattr(catalog_searcher.app, 'get_search_class', lambda _: BadSearch)
     response = client.get('/search?q=maryland')
     assert response.status_code == HTTPStatus.INTERNAL_SERVER_ERROR

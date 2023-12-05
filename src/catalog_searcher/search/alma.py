@@ -37,7 +37,7 @@ class AlmaSearch(Search):
     def search(self) -> SearchResponse:
         # ALMA SRU uses a 1-base "startRecord" index instead of a 0-based offset
         start_record = (self.page - 1) * self.per_page + 1
-        
+
         cql_query = cql('alma.all_for_ui', '=', self.query) & ('alma.mms_tagSuppressed', '=', 'false')
         if self.endpoint == 'articles':
             cql_query = cql('alma.genre_form', '=', 'article') & cql_query
@@ -93,7 +93,7 @@ class AlmaSearch(Search):
     @property
     def module_link(self) -> str:
         return self.search_url_template.expand(query=self.query, vid='01USMAI_SMCM:THSLC1')
-    
+
     def get_preferred_link(self, item: MODSRecord) -> str:
         record_identifier = item.find('mods:recordInfo/mods:recordIdentifier', namespaces=self.xmlns)
         if record_identifier is not None:
@@ -117,17 +117,17 @@ def get_item_format(item: MODSRecord) -> str:
             return 'e_book'
         if 'print' in item.form:
             return 'book'
-        
+
     if 'serial' in item.issuance:
         if 'newspaper' in genres.marcgt:
             return 'newspaper'
         if 'periodical' in genres.marcgt or 'Periodicals.' in genres.fast or 'series' in genres.marcgt:
             return 'journal'
-    
+
     if 'integrating resource' in item.issuance:
         if 'database' in genres.marcgt:
             return 'database'
-    
+
     return 'other'
 
 
@@ -142,4 +142,3 @@ class GenreLookup:
 
     def __getattr__(self, __name: str) -> list[str]:
         return self.genres.get(__name, [])
-        

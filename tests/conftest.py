@@ -19,9 +19,9 @@ def env(shared_datadir) -> Env:
 def raise_connection_error() -> Callable:
     def _raise_connection_error(*_args, **_kwargs):
         raise ConnectionError
-    
+
     return _raise_connection_error
-    
+
 
 @pytest.fixture
 def alma_search(env: Env) -> AlmaSearch:
@@ -46,5 +46,5 @@ def register_search_url(alma_search: AlmaSearch) -> Callable:
                 adding_headers={'Content-Type': 'application/json'},
                 body=body,
             )
-    
+
     return _register_search_url

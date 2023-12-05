@@ -25,3 +25,12 @@ test = [
 
 [project.scripts]
 catalog-searcher = 'catalog_searcher.server:run'
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = [
+    'E', # pycodestyle errors
+    'W', # pycodestyle warnings
+]

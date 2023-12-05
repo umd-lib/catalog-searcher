@@ -12,7 +12,7 @@ def test_simple_query():
 def test_simple_query_tuple():
     query = cql('title', '=', 'foo bar')
     assert str(query) == 'title = "foo bar"'
-    
+
 
 def test_complex_query():
     query = cql('title', '=', 'foo bar') & 'author = Smith' | 'author = Jones'
@@ -41,7 +41,7 @@ def test_parentheses():
 )
 def test_valid_boolean_other_types(other):
     query = cql('title', '=', 'foo') & other
-    assert isinstance(query, CQLExpression) 
+    assert isinstance(query, CQLExpression)
 
 
 @pytest.mark.parametrize(
@@ -60,4 +60,4 @@ def test_valid_boolean_other_types(other):
 def test_invalid_boolean_other_types(other):
     with pytest.raises(TypeError):
         cql('title', '=', 'foo') | other
-        
+

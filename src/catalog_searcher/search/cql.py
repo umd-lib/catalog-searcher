@@ -50,7 +50,7 @@ class CQLExpression:
     @property
     def cql(self):
         return self._cql
-    
+
     def __str__(self):
         return self.cql.toCQL()
 
@@ -69,7 +69,7 @@ class CQLExpression:
 
     def __and__(self, other: Union['CQLExpression', CQLSearchClause, CQLTriple, tuple]) -> 'CQLExpression':
         return CQLExpression(CQLTriple(left=self.cql, operator=CQLBoolean('and'), right=self.parse(other).cql))
-    
+
     def __or__(self, other: Union['CQLExpression', CQLSearchClause, CQLTriple, tuple]) -> 'CQLExpression':
         return CQLExpression(CQLTriple(left=self.cql, operator=CQLBoolean('or'), right=self.parse(other).cql))
 

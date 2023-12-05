@@ -1,6 +1,6 @@
 from abc import ABC
 from dataclasses import dataclass
-from typing import Any, Callable, Iterable, Mapping, NamedTuple
+from typing import Any, Callable, Mapping, NamedTuple
 
 from environs import Env
 
@@ -38,13 +38,13 @@ class Search(ABC):
     """Abstract base class for search implementations."""
     def __init__(self, env: Env, endpoint: str, query: str, page: int, per_page: int):
         raise NotImplementedError
-    
+
     def search(self) -> SearchResponse:
         raise NotImplementedError
 
     def __call__(self, *args, **kwargs) -> SearchResponse:
         """Alias for `search()`"""
         return self.search(*args, **kwargs)
-    
+
     def parse_result(self, item: Any) -> SearchResult:
         raise NotImplementedError

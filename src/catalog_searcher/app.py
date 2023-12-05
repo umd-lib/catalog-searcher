@@ -58,7 +58,7 @@ def search():
         page = int(args.get('page', default_page))
     except ValueError:
         return error_response(endpoint, message='page parameter value is invalid; must be an integer')
-    
+
     backend = args.get('backend', default_backend)
     try:
         search_class = get_search_class(backend)
@@ -69,9 +69,9 @@ def search():
         response = search_class(env, endpoint, query, page, per_page).search()
     except SearchError as e:
         return error_response(endpoint, message=str(e), status=HTTPStatus.INTERNAL_SERVER_ERROR)
-    
+
     last_page = ceil(response.total / per_page)
-    
+
     api_response = {
         'results': response.results,
         'total': response.total,
@@ -83,7 +83,7 @@ def search():
         'backend': backend,
         **get_pagination_links(request.url, last_page=last_page)
     }
-    
+
     if debug:
         api_response['raw'] = response.raw
 
@@ -102,7 +102,12 @@ def get_search_class(backend: str) -> Search:
             raise ValueError(f'unknown backend "{backend}"')
 
 
-def get_pagination_links(request_url: str, last_page: int, first_page: int = 1, page_param: str = 'page') -> dict[str, str]:
+def get_pagination_links(
+        request_url: str,
+        last_page: int,
+        first_page: int = 1,
+        page_param: str = 'page'
+) -> dict[str, str]:
     url = URLObject(request_url)
     page = int(url.query_dict.get(page_param, 1))
     links = {
@@ -113,7 +118,7 @@ def get_pagination_links(request_url: str, last_page: int, first_page: int = 1, 
         links['prev_page'] = url.set_query_param(page_param, page - 1)
     if page < last_page:
         links['next_page'] = url.set_query_param(page_param, page + 1)
-    
+
     return links
 
 

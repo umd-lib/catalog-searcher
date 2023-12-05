@@ -21,7 +21,7 @@ def response_body(datadir) -> str:
 @pytest.fixture
 def no_records_response_body(datadir) -> str:
     return (datadir / 'no_records_response.json').read_text()
-    
+
 
 @pytest.fixture
 def search(env: Env) -> WorldcatSearch:
@@ -64,7 +64,7 @@ def register_search_url(search: WorldcatSearch) -> Callable:
                 adding_headers={'Content-Type': 'application/json'},
                 body=body,
             )
-    
+
     return _register_search_url
 
 
@@ -82,7 +82,11 @@ def test_worldcat_search(register_search_url: Callable, response_body: str, sear
 
 
 @httpretty.activate
-def test_worldcat_no_records_response(register_search_url: Callable, no_records_response_body: str, search: WorldcatSearch):
+def test_worldcat_no_records_response(
+    register_search_url: Callable,
+    no_records_response_body: str,
+    search: WorldcatSearch,
+):
     register_auth_url()
     register_search_url(body=no_records_response_body)
 
@@ -95,7 +99,7 @@ def test_worldcat_no_records_response(register_search_url: Callable, no_records_
 def test_worldcat_search_bad_request(register_search_url: Callable, search: WorldcatSearch):
     register_auth_url()
     register_search_url(status=HTTPStatus.BAD_REQUEST)
-    
+
     with pytest.raises(SearchError):
         search()
 
@@ -107,7 +111,7 @@ def raise_connection_error(*_args, **_kwargs):
 @httpretty.activate
 def test_worldcat_search_connection_error(search: WorldcatSearch, monkeypatch: MonkeyPatch):
     register_auth_url()
-    
+
     monkeypatch.setattr(requests, 'get', raise_connection_error)
     with pytest.raises(SearchError):
         search()
@@ -149,7 +153,7 @@ def test_auth_empty_token(search: WorldcatSearch):
 )
 def test_item_format(search: WorldcatSearch, general_format: str, specific_format: str, expected_format: str):
     stub_item = {
-        'generalFormat': general_format, 
+        'generalFormat': general_format,
         'specificFormat': specific_format,
     }
     assert search.get_item_format(stub_item) == expected_format

@@ -60,5 +60,5 @@ def test_ping(server):
 def test_search(shared_datadir, register_search_url, server):
     register_search_url(body=(shared_datadir / 'alma_response.xml').read_text())
     response = requests.get(f'http://localhost:{server.port}/search', params={'q': 'maryland'})
-    
+
     assert response.ok
