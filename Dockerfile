@@ -1,8 +1,8 @@
-# Dockerfile for the generating worldcat-searcher application Docker image
+# Dockerfile for the generating catalog-searcher application Docker image
 #
 # To build:
 #
-# docker build -t docker.lib.umd.edu/worldcat-searcher:<VERSION> -f Dockerfile .
+# docker build -t docker.lib.umd.edu/catalog-searcher:<VERSION> -f Dockerfile .
 #
 # where <VERSION> is the Docker image version to create.
 FROM python:3.10.8-slim
@@ -15,7 +15,7 @@ EXPOSE 5000
 COPY ./requirements.txt /tmp/requirements.txt
 RUN pip install -r /tmp/requirements.txt && rm /tmp/requirements.txt
 
-COPY . /tmp/worldcat-searcher
-RUN pip install /tmp/worldcat-searcher && rm -rf /tmp/worldcat-searcher
+COPY . /tmp/catalog-searcher
+RUN pip install /tmp/catalog-searcher && rm -rf /tmp/catalog-searcher
 
-CMD ["python", "-m", "worldcat_searcher.app"]
+CMD ["catalog-searcher"]

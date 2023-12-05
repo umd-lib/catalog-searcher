@@ -4,9 +4,7 @@ from math import ceil
 
 from environs import Env
 from flask import Flask, request
-from paste.translogger import TransLogger
 from urlobject import URLObject
-from waitress import serve
 
 from catalog_searcher.search import Search, SearchError
 
@@ -122,13 +120,3 @@ def get_pagination_links(request_url: str, last_page: int, first_page: int = 1, 
 def error_response(endpoint: str, message: str, status: int = HTTPStatus.BAD_REQUEST) -> tuple[dict, int]:
     """Utility function for returning a simple error response."""
     return {'endpoint': endpoint, 'error': {'msg': message}}, status
-
-
-if __name__ == '__main__':
-    # This code is not reached when running "flask run". However, the Docker
-    # container runs "python app.py" and host='0.0.0.0' is set to ensure
-    # that flask listens on port 5000 on all interfaces.
-
-    # Run waitress WSGI server
-    serve(TransLogger(app, setup_console_handler=True),
-          host='0.0.0.0', port=5000, threads=10)

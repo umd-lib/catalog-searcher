@@ -17,7 +17,11 @@ dependencies = [
 [project.optional-dependencies]
 test = [
     "httpretty",
+    "psutil",
     "pytest",
     "pytest-cov",
     "pytest-datadir",
 ]
+
+[project.scripts]
+catalog-searcher = 'catalog_searcher.server:run'

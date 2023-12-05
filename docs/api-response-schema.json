@@ -1,0 +1,89 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Catalog Searcher API Response Schema",
+    "type": "object",
+    "properties": {
+        "backend": {
+            "description": "Backend provider for this search",
+            "type": "string",
+            "enum": ["alma", "wordlcat"]
+        },
+        "endpoint": {
+            "description": "Scope of this search",
+            "type": "string",
+            "enum": ["articles", "books-and-more"]
+        },
+        "first_page": {
+            "description": "Link to the first page of results",
+            "type": "string",
+            "format": "uri"
+        },
+        "last_page": {
+            "description": "Link to the last page of results",
+            "type": "string",
+            "format": "uri"
+        },
+        "module_link": {
+            "description": "Link to the backend provider's UI for this search",
+            "type": "string"
+        },
+        "next_page": {
+            "description": "Link to the next page of results. Only present if page is less than the total number of pages.",
+            "type": "string",
+            "format": "uri"
+        },
+        "page": {
+            "description": "Current page number",
+            "type": "integer",
+            "minimum": 1
+        },
+        "per_page": {
+            "description": "Number of results on each page",
+            "type": "integer",
+            "minimum": 1
+        },
+        "prev_page": {
+            "description": "Link to the previous page of results. Only present if page is greater than 1.",
+            "type": "string",
+            "format": "uri"
+        },
+        "query": {
+            "description": "Search terms for this search",
+            "type": "string"
+        },
+        "raw": {
+            "description": "Raw data returned by the backend. The exact contents and format will vary depending on the backend."
+        },
+        "results": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "author": {
+                        "type": "string"
+                    },
+                    "date": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "item_format": {
+                        "type": "string"
+                    },
+                    "link": {
+                        "type": "string",
+                        "format": "uri"
+                    },
+                    "title": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "total": {
+            "type": "integer",
+            "minimum": 0
+        }
+    }
+}
