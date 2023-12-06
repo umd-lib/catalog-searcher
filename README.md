@@ -18,7 +18,8 @@ Options:
   -l, --listen [HOST]:PORT  Port (and optional host) to listen on. Defaults to
                             "0.0.0.0:5000".
   -t, --threads INTEGER     Maximum number of threads to use. Defaults to 10.
-  --help                    Show this message and exit
+  -V, --version             Show the version and exit.
+  --help                    Show this message and exit.
 ```
 
 ## Development Setup
