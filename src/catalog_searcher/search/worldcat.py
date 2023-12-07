@@ -58,7 +58,11 @@ class WorldcatSearch(Search):
         self.query = query
         self.page = page
         self.per_page = per_page
-        self.offset = self.per_page * (page - 1)
+        # The bento search starts page numbering at 0 (this is a carryover from the
+        # original searchumd behavior), so we need to use "page * page_size" instead
+        # of the more usual "(page - 1) * page_size" to calculate the record offset
+        # for the first page.
+        self.offset = page * self.per_page
 
     def search(self) -> SearchResponse:
         """Run the search, and returns a dictionary representing the API response. If there are any

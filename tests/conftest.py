@@ -25,7 +25,7 @@ def raise_connection_error() -> Callable:
 
 @pytest.fixture
 def alma_search(env: Env) -> AlmaSearch:
-    return AlmaSearch(env=env, endpoint='books-and-more', query='maryland', page=1, per_page=3)
+    return AlmaSearch(env=env, endpoint='books-and-more', query='maryland', page=0, per_page=3)
 
 
 @pytest.fixture

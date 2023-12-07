@@ -12,7 +12,7 @@ env = Env()
 env.read_env()
 
 debug = env.bool('FLASK_DEBUG', default=False)
-default_page = env.int('DEFAULT_PAGE', 1)
+default_page = env.int('DEFAULT_PAGE', 0)
 default_per_page = env.int('DEFAULT_PER_PAGE', 3)
 default_backend = env.str('SEARCH_BACKEND', 'alma')
 
@@ -105,11 +105,11 @@ def get_search_class(backend: str) -> Search:
 def get_pagination_links(
         request_url: str,
         last_page: int,
-        first_page: int = 1,
+        first_page: int = 0,
         page_param: str = 'page'
 ) -> dict[str, str]:
     url = URLObject(request_url)
-    page = int(url.query_dict.get(page_param, 1))
+    page = int(url.query_dict.get(page_param, first_page))
     links = {
         'first_page': url.set_query_param(page_param, first_page),
         'last_page': url.set_query_param(page_param, last_page),

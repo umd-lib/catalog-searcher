@@ -35,8 +35,12 @@ class AlmaSearch(Search):
             self.item_url_template = URITemplate(env.str('ITEM_URL_TEMPLATE'))
 
     def search(self) -> SearchResponse:
-        # ALMA SRU uses a 1-base "startRecord" index instead of a 0-based offset
-        start_record = (self.page - 1) * self.per_page + 1
+        # The bento search starts page numbering at 0 (this is a carryover from the
+        # original searchumd behavior), so we need to use "page * page_size" instead
+        # of the more usual "(page - 1) * page_size" to calculate the record offset
+        # for the first page. In addition, the ALMA SRU uses a 1-base "startRecord"
+        # index instead of a 0-based offset, so we have to add 1 to our result.
+        start_record = (self.page * self.per_page) + 1
 
         cql_query = cql('alma.all_for_ui', '=', self.query) & ('alma.mms_tagSuppressed', '=', 'false')
         if self.endpoint == 'articles':

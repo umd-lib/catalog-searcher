@@ -61,7 +61,7 @@ def test_search(client, shared_datadir, register_search_url):
     assert api_response['total'] == 108
     assert len(api_response['results']) == 3
     assert api_response['backend'] == 'alma'
-    assert api_response['page'] == 1
+    assert api_response['page'] == 0
     assert api_response['per_page'] == 3
     assert api_response['query'] == 'maryland'
     assert 'prev_page' not in api_response
@@ -94,7 +94,7 @@ def test_get_search_class(backend, expected_class):
 
 def test_get_pagination_links():
     links = get_pagination_links('http://example.com?page=3', last_page=5)
-    assert links['first_page'] == 'http://example.com?page=1'
+    assert links['first_page'] == 'http://example.com?page=0'
     assert links['prev_page'] == 'http://example.com?page=2'
     assert links['next_page'] == 'http://example.com?page=4'
     assert links['last_page'] == 'http://example.com?page=5'
