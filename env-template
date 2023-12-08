@@ -1,4 +1,4 @@
-FLASK_APP=src/app.py
+FLASK_APP=src/catalog_searcher/app.py
 FLASK_DEBUG=False
 WORLDCAT_CLIENT_ID=
 WORLDCAT_SECRET=
