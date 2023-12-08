@@ -33,6 +33,7 @@ class AlmaSearch(Search):
         with env.prefixed('PRIMO_'):
             self.search_url_template = URITemplate(env.str('SEARCH_URL_TEMPLATE'))
             self.item_url_template = URITemplate(env.str('ITEM_URL_TEMPLATE'))
+            self.vid = env.str('VID')
 
     def search(self) -> SearchResponse:
         # The bento search starts page numbering at 0 (this is a carryover from the
@@ -96,7 +97,7 @@ class AlmaSearch(Search):
 
     @property
     def module_link(self) -> str:
-        return self.search_url_template.expand(query=self.query, vid='01USMAI_SMCM:THSLC1')
+        return self.search_url_template.expand(query=self.query, vid=self.vid)
 
     def get_preferred_link(self, item: MODSRecord) -> str:
         record_identifier = item.find('mods:recordInfo/mods:recordIdentifier', namespaces=self.xmlns)
@@ -104,7 +105,7 @@ class AlmaSearch(Search):
             docid = 'alma' + record_identifier.text
         else:
             docid = ''
-        return self.item_url_template.expand(docid=docid, query=self.query, vid='01USMAI_SMCM:THSLC1')
+        return self.item_url_template.expand(docid=docid, query=self.query, vid=self.vid)
 
 
 def get_item_format(item: MODSRecord) -> str:
