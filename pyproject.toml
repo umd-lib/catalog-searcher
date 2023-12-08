@@ -1,6 +1,7 @@
 [project]
 name = "catalog-searcher"
 version = "2.0.0-dev"
+requires-python = ">=3.10"
 dependencies = [
     "cql-parser",
     "environs",
@@ -29,6 +30,9 @@ catalog-searcher = 'catalog_searcher.server:run'
 
 [tool.ruff]
 line-length = 120
+
+[tool.ruff.format]
+quote-style = "single"
 
 [tool.ruff.lint]
 select = [
