@@ -12,6 +12,15 @@ WORLDCAT_MODULE_URL=https://umaryland.on.worldcat.org/search
 # alma backend
 ALMA_INSTITUTION_CODE=01USMAI_SMCM
 ALMA_SRU_URL_TEMPLATE=https://sandbox02-na.alma.exlibrisgroup.com/view/sru{/institutionCode}?version=1.2&operation=searchRetrieve{&recordSchema}{&query}{&maximumRecords}{&startRecord}
+ALMA_VID=01USMAI_UMCP:UMCP
+ALMA_SEARCH_URL_TEMPLATE=https://sandbox02-na.primo.exlibrisgroup.com/discovery/search{?vid}{&query}&context=L&lang=en&search_scope=MyInst_and_CI&adaptor=Local+Search+Engine&tab=Everything&offset=0
+ALMA_ITEM_URL_TEMPLATE=https://sandbox02-na.primo.exlibrisgroup.com/discovery/fulldisplay{?docid}{&vid}{&query}&context=L&lang=en&search_scope=MyInst_and_CI&adaptor=Local+Search+Engine&tab=Everything&offset=0
+
+# primo backend
+PRIMO_API_KEY=FAKE_KEY
 PRIMO_VID=01USMAI_UMCP:UMCP
-PRIMO_SEARCH_URL_TEMPLATE=https://sandbox02-na.primo.exlibrisgroup.com/discovery/search{?vid}{&query}&context=L&lang=en&search_scope=MyInst_and_CI&adaptor=Local+Search+Engine&tab=Everything&offset=0
-PRIMO_ITEM_URL_TEMPLATE=https://sandbox02-na.primo.exlibrisgroup.com/discovery/fulldisplay{?docid}{&vid}{&query}&context=L&lang=en&search_scope=MyInst_and_CI&adaptor=Local+Search+Engine&tab=Everything&offset=0
+PRIMO_ITEM_URL_TEMPLATE=https://usmai-umcp.primo.exlibrisgroup.com/discovery/fulldisplay{?docid}{&vid}{&query}&tab=LibraryCatalog&search_scope=MyInstitution&context=PC&lang=en&adaptor=Primo%20Central&offset=0
+PRIMO_BOOK_SEARCH_API_URL_TEMPLATE=https://api-na.hosted.exlibrisgroup.com/primo/v1/search{?vid}{&q}{&offset}{&limit}&tab=LibraryCatalog&scope=MyInstitution&qExclude=facet_rtype,exact,articles&pcAvailability=true&lang=eng&sort=rank&getMore=0&conVoc=true&skipDelivery=true&disableSplitFacets=true
+PRIMO_BOOK_SEARCH_URL_TEMPLATE=https://usmai-umcp.primo.exlibrisgroup.com/discovery/search{?vid}{&query}&tab=LibraryCatalog&search_scope=MyInstitution&offset=0
+PRIMO_ARTICLE_SEARCH_API_URL_TEMPLATE=https://api-na.hosted.exlibrisgroup.com/primo/v1/search{?vid}{&q}{&offset}{&limit}&tab=Articles&scope=CentralIndex&qInclude=facet_rtype,exact,articles&pcAvailability=true&lang=eng&sort=rank&getMore=0&conVoc=true&skipDelivery=true&disableSplitFacets=true
+PRIMO_ARTICLE_SEARCH_URL_TEMPLATE=https://usmai-umcp.primo.exlibrisgroup.com/discovery/search{?vid}{&query}&tab=Articles&search_scope=CentralIndex&offset=0

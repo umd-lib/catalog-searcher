@@ -30,7 +30,6 @@ class AlmaSearch(Search):
         with env.prefixed('ALMA_'):
             self.sru_url_template = URITemplate(env.str('SRU_URL_TEMPLATE'))
             self.institution_code = env.str('INSTITUTION_CODE')
-        with env.prefixed('PRIMO_'):
             self.search_url_template = URITemplate(env.str('SEARCH_URL_TEMPLATE'))
             self.item_url_template = URITemplate(env.str('ITEM_URL_TEMPLATE'))
             self.vid = env.str('VID')
