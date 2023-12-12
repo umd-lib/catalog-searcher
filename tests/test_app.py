@@ -2,58 +2,61 @@ from http import HTTPStatus
 
 import httpretty
 import pytest
+from flask import Flask
+from flask.testing import FlaskClient
 
 import catalog_searcher.app
 from catalog_searcher.app import app as catalog_searcher_app
 from catalog_searcher.app import get_pagination_links, get_search_class
 from catalog_searcher.search import Search, SearchError
 from catalog_searcher.search.alma import AlmaSearch
+from catalog_searcher.search.primo import PrimoSearch
 from catalog_searcher.search.worldcat import WorldcatSearch
 
 
 @pytest.fixture()
-def app():
+def app() -> Flask:
     return catalog_searcher_app
 
 
 @pytest.fixture()
-def client(app):
+def client(app) -> FlaskClient:
     return app.test_client()
 
 
-def test_get_root(client):
+def test_get_root(client: FlaskClient):
     response = client.get('/')
     assert response.json == {'status': 'ok'}
 
 
-def test_get_ping(client):
+def test_get_ping(client: FlaskClient):
     response = client.get('/ping')
     assert response.json == {'status': 'ok'}
 
 
-def test_search_no_query(client):
+def test_search_no_query(client: FlaskClient):
     response = client.get('/search')
     assert response.status_code == HTTPStatus.BAD_REQUEST
 
 
-def test_search_bad_page(client):
+def test_search_bad_page(client: FlaskClient):
     response = client.get('/search?q=maryland&page=one')
     assert response.status_code == HTTPStatus.BAD_REQUEST
 
 
-def test_search_bad_per_page(client):
+def test_search_bad_per_page(client: FlaskClient):
     response = client.get('/search?q=maryland&per_page=five')
     assert response.status_code == HTTPStatus.BAD_REQUEST
 
 
-def test_search_bad_backend(client):
+def test_search_bad_backend(client: FlaskClient):
     response = client.get('/search?q=maryland&backend=foo')
     assert response.status_code == HTTPStatus.BAD_REQUEST
 
 
 @httpretty.activate
-def test_search(client, shared_datadir, register_search_url):
-    register_search_url(body=(shared_datadir / 'alma_response.xml').read_text())
+def test_search(client: FlaskClient, alma_search_request_args: dict[str, str]):
+    httpretty.register_uri(**alma_search_request_args)
     response = client.get('/search?q=maryland&backend=alma')
     assert response.status_code == HTTPStatus.OK
     assert response.content_type == 'application/json'
@@ -84,6 +87,7 @@ def test_search_with_error(monkeypatch, client):
     ('backend', 'expected_class'),
     [
         ('alma', AlmaSearch),
+        ('primo', PrimoSearch),
         ('worldcat', WorldcatSearch),
     ]
 )

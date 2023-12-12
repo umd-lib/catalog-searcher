@@ -14,7 +14,7 @@ env.read_env()
 debug = env.bool('FLASK_DEBUG', default=False)
 default_page = env.int('DEFAULT_PAGE', 0)
 default_per_page = env.int('DEFAULT_PER_PAGE', 3)
-default_backend = env.str('SEARCH_BACKEND', 'alma')
+default_backend = env.str('SEARCH_BACKEND', 'primo')
 
 logging.basicConfig(
     level=logging.DEBUG if debug else logging.INFO,
@@ -98,6 +98,9 @@ def get_search_class(backend: str) -> Search:
         case 'alma':
             from catalog_searcher.search.alma import AlmaSearch
             return AlmaSearch
+        case 'primo':
+            from catalog_searcher.search.primo import PrimoSearch
+            return PrimoSearch
         case _:
             raise ValueError(f'unknown backend "{backend}"')
 

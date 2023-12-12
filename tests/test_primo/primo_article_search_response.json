@@ -1,0 +1,897 @@
+{
+  "info" : {
+    "totalResultsLocal" : -1,
+    "totalResultsPC" : 377254,
+    "total" : 377254,
+    "first" : 1,
+    "last" : 3
+  },
+  "highlights" : {
+    "snippet" : [ "Maryland’s" ],
+    "title" : [ "Maryland" ],
+    "termsUnion" : [ "Maryland’s", "Maryland" ]
+  },
+  "docs" : [ {
+    "pnx" : {
+      "sort" : {
+        "creationdate" : [ "20230901" ],
+        "author" : [ "Haines, Chelsea E." ],
+        "title" : [ "Maryland" ]
+      },
+      "control" : {
+        "sourceid" : [ "crossref" ],
+        "recordid" : [ "cdi_crossref_primary_10_3138_jehr_2023_0023" ],
+        "sourcerecordid" : [ "10_3138_jehr_2023_0023" ],
+        "originalsourceid" : [ "FETCH-crossref_primary_10_3138_jehr_2023_00230" ],
+        "recordtype" : [ "article" ],
+        "addsrcrecordid" : [ "eNpjYBAzNNAzNjS20M9KzSjSNTIwMtY1ABJMDJxGpmZGuuYWxhEsSGwOBt7i4swkA2NzA0szUyNzTgYO38SiypzEvBQeBta0xJziVF4ozc2g5-Ya4uyhm1yUX1xclJoWX1CUmQtUHG9oEA-yMh5kZTzIyniQlQYkawAA_y0yag" ],
+        "sourcetype" : [ "Aggregation Database" ],
+        "sourceformat" : [ "XML" ],
+        "sourcesystem" : [ "Other" ],
+        "iscdi" : [ "true" ],
+        "score" : [ "0.012852964" ]
+      },
+      "search" : {
+        "description" : [ "The equity of Maryland’s P–12 education formula has long been scrutinized and challenged in court. Changes to Maryland’s P–12 funding formula occurred following a successful legislative override during the 2021 session following the governor’s 2020 veto of the Blueprint for Maryland’s Future Act. The new P–12 formula includes 13 categories: Foundation Aid, Transportation Aid, Compensatory Education Aid, English Learner Aid, Special Education Aid, Guaranteed Tax Base Aid, Comparable Wage Index Aid, Post College and Career Readiness Pathways Aid, Concentration of Poverty Aid, Transitional Supplemental Instruction Aid, Prekindergarten Aid, and Career Ladder Aid. Funding formula changes were implemented in FY2023, following delays in reporting and the COVID-19 pandemic. No changes were made to higher education funding formulas. The state allocated $7.3 billion for P–12 education in FY2022, 15.2% of the state budget. The state allocated $4.8 billion for higher education in FY2022, 7.9% of the state budget. FY2023 allocations for higher education will include a $59.5 million settlement for Maryland’s historically Black colleges and universities." ],
+        "creatorcontrib" : [ "Haines, Chelsea E." ],
+        "rsrctype" : [ "article" ],
+        "recordid" : [ "eNpjYBAzNNAzNjS20M9KzSjSNTIwMtY1ABJMDJxGpmZGuuYWxhEsSGwOBt7i4swkA2NzA0szUyNzTgYO38SiypzEvBQeBta0xJziVF4ozc2g5-Ya4uyhm1yUX1xclJoWX1CUmQtUHG9oEA-yMh5kZTzIyniQlQYkawAA_y0yag" ],
+        "recordtype" : [ "article" ],
+        "orcidid" : [ "https://orcid.org/0000-0003-4148-8789" ],
+        "creator" : [ "Haines, Chelsea E." ],
+        "issn" : [ "2562-783X", "2562-783X" ],
+        "fulltext" : [ "false" ],
+        "startdate" : [ "20230901" ],
+        "enddate" : [ "20230901" ],
+        "scope" : [ "AAYXX", "CITATION" ],
+        "creationdate" : [ "2023" ],
+        "title" : [ "Maryland", "Journal of Education Human Resources" ]
+      },
+      "delivery" : {
+        "delcategory" : [ "Remote Search Resource" ],
+        "fulltext" : [ "no_fulltext" ]
+      },
+      "display" : {
+        "description" : [ "The equity of Maryland’s P–12 education formula has long been scrutinized and challenged in court. Changes to Maryland’s P–12 funding formula occurred following a successful legislative override during the 2021 session following the governor’s 2020 veto of the Blueprint for Maryland’s Future Act. The new P–12 formula includes 13 categories: Foundation Aid, Transportation Aid, Compensatory Education Aid, English Learner Aid, Special Education Aid, Guaranteed Tax Base Aid, Comparable Wage Index Aid, Post College and Career Readiness Pathways Aid, Concentration of Poverty Aid, Transitional Supplemental Instruction Aid, Prekindergarten Aid, and Career Ladder Aid. Funding formula changes were implemented in FY2023, following delays in reporting and the COVID-19 pandemic. No changes were made to higher education funding formulas. The state allocated $7.3 billion for P–12 education in FY2022, 15.2% of the state budget. The state allocated $4.8 billion for higher education in FY2022, 7.9% of the state budget. FY2023 allocations for higher education will include a $59.5 million settlement for Maryland’s historically Black colleges and universities." ],
+        "type" : [ "article" ],
+        "ispartof" : [ "Journal of Education Human Resources, 2023, Vol.41 (S1), p.63-67" ],
+        "identifier" : [ "ISSN: 2562-783X", "EISSN: 2562-783X", "DOI: 10.3138/jehr-2023-0023" ],
+        "snippet" : [ "The equity of Maryland’s P–12 education formula has long been scrutinized and challenged in court..." ],
+        "lds50" : [ "peer_reviewed" ],
+        "language" : [ "eng" ],
+        "creator" : [ "Haines, Chelsea E." ],
+        "title" : [ "Maryland" ]
+      },
+      "links" : {
+        "openurl" : [ "$$Topenurl_article" ],
+        "thumbnail" : [ "$$Tsyndetics_thumb_exl" ]
+      },
+      "addata" : {
+        "format" : [ "journal" ],
+        "jtitle" : [ "Journal of Education Human Resources" ],
+        "genre" : [ "article" ],
+        "orcidid" : [ "https://orcid.org/0000-0003-4148-8789" ],
+        "issn" : [ "2562-783X" ],
+        "abstract" : [ "The equity of Maryland’s P–12 education formula has long been scrutinized and challenged in court. Changes to Maryland’s P–12 funding formula occurred following a successful legislative override during the 2021 session following the governor’s 2020 veto of the Blueprint for Maryland’s Future Act. The new P–12 formula includes 13 categories: Foundation Aid, Transportation Aid, Compensatory Education Aid, English Learner Aid, Special Education Aid, Guaranteed Tax Base Aid, Comparable Wage Index Aid, Post College and Career Readiness Pathways Aid, Concentration of Poverty Aid, Transitional Supplemental Instruction Aid, Prekindergarten Aid, and Career Ladder Aid. Funding formula changes were implemented in FY2023, following delays in reporting and the COVID-19 pandemic. No changes were made to higher education funding formulas. The state allocated $7.3 billion for P–12 education in FY2022, 15.2% of the state budget. The state allocated $4.8 billion for higher education in FY2022, 7.9% of the state budget. FY2023 allocations for higher education will include a $59.5 million settlement for Maryland’s historically Black colleges and universities." ],
+        "au" : [ "Haines, Chelsea E." ],
+        "atitle" : [ "Maryland" ],
+        "date" : [ "2023-09-01" ],
+        "risdate" : [ "2023" ],
+        "volume" : [ "41" ],
+        "issue" : [ "S1" ],
+        "spage" : [ "63" ],
+        "epage" : [ "67" ],
+        "pages" : [ "63-67" ],
+        "eissn" : [ "2562-783X" ],
+        "ristype" : [ "JOUR" ],
+        "doi" : [ "10.3138/jehr-2023-0023" ]
+      },
+      "facets" : {
+        "language" : [ "eng" ],
+        "creatorcontrib" : [ "Haines, Chelsea E." ],
+        "prefilter" : [ "articles" ],
+        "rsrctype" : [ "articles" ],
+        "collection" : [ "CrossRef" ],
+        "toplevel" : [ "peer_reviewed" ],
+        "frbrgroupid" : [ "cdi_FETCH-crossref_primary_10_3138_jehr_2023_00230" ],
+        "frbrtype" : [ "5" ],
+        "jtitle" : [ "Journal of Education Human Resources" ],
+        "creationdate" : [ "2023" ]
+      }
+    },
+    "delivery" : {
+      "link" : [ ],
+      "deliveryCategory" : [ "Remote Search Resource" ],
+      "availability" : [ "no_fulltext" ],
+      "displayLocation" : false,
+      "additionalLocations" : false,
+      "physicalItemTextCodes" : "",
+      "feDisplayOtherLocations" : false,
+      "displayedAvailability" : "false",
+      "holding" : [ ],
+      "almaOpenurl" : "https://na04.alma.exlibrisgroup.com/view/uresolver/01USMAI_UMCP/openurl?ctx_enc=info:ofi/enc:UTF-8&ctx_id=10_1&ctx_tim=2023-12-11 09:30:24&ctx_ver=Z39.88-2004&url_ctx_fmt=info:ofi/fmt:kev:mtx:ctx&url_ver=Z39.88-2004&rfr_id=info:sid/primo.exlibrisgroup.com-crossref&rft_val_fmt=info:ofi/fmt:kev:mtx:journal&rft.genre=article&rft.atitle=Maryland&rft.jtitle=Journal+of+Education+Human+Resources&rft.au=Haines%2C+Chelsea+E.&rft.date=2023-09-01&rft.volume=41&rft.issue=S1&rft.spage=63&rft.epage=67&rft.pages=63-67&rft.issn=2562-783X&rft.eissn=2562-783X&rft_id=info:doi/10.3138%2Fjehr-2023-0023&rft_dat=<crossref>10_3138_jehr_2023_0023</crossref>&svc_dat=viewit"
+    },
+    "context" : "PC",
+    "adaptor" : "Primo Central",
+    "extras" : {
+      "citationTrails" : {
+        "citing" : [ ],
+        "citedby" : [ ]
+      },
+      "timesCited" : { }
+    },
+    "@id" : "https://na04.alma.exlibrisgroup.com/primaws/rest/pub/pnxs/PC/cdi_crossref_primary_10_3138_jehr_2023_0023"
+  }, {
+    "pnx" : {
+      "sort" : {
+        "creationdate" : [ "20230101" ],
+        "author" : [ "Pendarvis, Jack" ],
+        "title" : [ "Maryland" ]
+      },
+      "control" : {
+        "sourceid" : [ "proquest" ],
+        "recordid" : [ "cdi_proquest_journals_2809782097" ],
+        "sourcerecordid" : [ "2809782097" ],
+        "originalsourceid" : [ "FETCH-proquest_journals_28097820973" ],
+        "recordtype" : [ "article" ],
+        "addsrcrecordid" : [ "eNpjYuA0MjSz0DU1sTBnYeA0MDC20DUxNzTiYOAqLs4yAAIjC2NOBg7fxKLKnMS8FB4G1rTEnOJUXijNzaDs5hri7KFbUJRfWJpaXBKflV9alAeUijeyMLA0tzACEsbEqQIAK70lbA" ],
+        "sourcetype" : [ "Aggregation Database" ],
+        "sourceformat" : [ "XML" ],
+        "sourcesystem" : [ "Other" ],
+        "pqid" : [ "2809782097" ],
+        "iscdi" : [ "true" ],
+        "score" : [ "0.012697923" ]
+      },
+      "search" : {
+        "creatorcontrib" : [ "Pendarvis, Jack" ],
+        "rsrctype" : [ "article" ],
+        "sourceid" : [ "AZQEC", "BENPR", "PQLNA", "PROLI" ],
+        "recordid" : [ "eNpjYuA0MjSz0DU1sTBnYeA0MDC20DUxNzTiYOAqLs4yAAIjC2NOBg7fxKLKnMS8FB4G1rTEnOJUXijNzaDs5hri7KFbUJRfWJpaXBKflV9alAeUijeyMLA0tzACEsbEqQIAK70lbA" ],
+        "recordtype" : [ "article" ],
+        "creator" : [ "Pendarvis, Jack" ],
+        "subject" : [ "Poetry" ],
+        "issn" : [ "0038-4712", "2168-5487" ],
+        "fulltext" : [ "true" ],
+        "general" : [ "Southwest Review" ],
+        "startdate" : [ "20230101" ],
+        "enddate" : [ "20230101" ],
+        "scope" : [ "3V.", "7XB", "8FK", "8G5", "ABUWG", "AFKRA", "AIMQZ", "AVQMV", "AZQEC", "BEC", "BENPR", "CLO", "DWQXO", "GNUQQ", "GUQSH", "K50", "LIQON", "M1D", "M2O", "MBDVC", "PAF", "PPXUT", "PQEST", "PQLNA", "PQQKQ", "PQUKI", "PRINS", "PROLI", "Q9U" ],
+        "creationdate" : [ "2023" ],
+        "title" : [ "Maryland", "Southwest review" ]
+      },
+      "delivery" : {
+        "delcategory" : [ "Remote Search Resource" ],
+        "fulltext" : [ "fulltext" ]
+      },
+      "display" : {
+        "type" : [ "article" ],
+        "source" : [ "Literature Online (LION eBooks)", "Literature Online (LION) - US Customers Only", "ProQuest Central" ],
+        "publisher" : [ "Dallas: Southwest Review" ],
+        "ispartof" : [ "Southwest review, 2023, Vol.108 (1), p.9-3" ],
+        "identifier" : [ "ISSN: 0038-4712", "EISSN: 2168-5487" ],
+        "rights" : [ "Copyright Southwest Review Spring 2023" ],
+        "language" : [ "eng" ],
+        "creator" : [ "Pendarvis, Jack" ],
+        "subject" : [ "Poetry" ],
+        "title" : [ "Maryland" ]
+      },
+      "links" : {
+        "openurl" : [ "$$Topenurl_article" ],
+        "openurlfulltext" : [ "$$Topenurlfull_article" ],
+        "thumbnail" : [ "$$Tsyndetics_thumb_exl" ],
+        "linktohtml" : [ "$$Uhttps://proxy-um.researchport.umd.edu/login?&url=https://www.proquest.com/docview/2809782097?pq-origsite=primo$$EHTML$$P50$$Gproquest$$H" ]
+      },
+      "addata" : {
+        "format" : [ "journal" ],
+        "jtitle" : [ "Southwest review" ],
+        "genre" : [ "article" ],
+        "issn" : [ "0038-4712" ],
+        "au" : [ "Pendarvis, Jack" ],
+        "atitle" : [ "Maryland" ],
+        "date" : [ "2023-01-01" ],
+        "risdate" : [ "2023" ],
+        "volume" : [ "108" ],
+        "issue" : [ "1" ],
+        "spage" : [ "9" ],
+        "epage" : [ "3" ],
+        "pages" : [ "9-3" ],
+        "eissn" : [ "2168-5487" ],
+        "ristype" : [ "JOUR" ],
+        "cop" : [ "Dallas" ],
+        "pub" : [ "Southwest Review" ]
+      },
+      "facets" : {
+        "language" : [ "eng" ],
+        "creatorcontrib" : [ "Pendarvis, Jack" ],
+        "topic" : [ "Poetry" ],
+        "prefilter" : [ "articles" ],
+        "rsrctype" : [ "articles" ],
+        "collection" : [ "ProQuest Central (Corporate)", "ProQuest Central (purchase pre-March 2016)", "ProQuest Central (Alumni) (purchase pre-March 2016)", "Research Library (Alumni Edition)", "ProQuest Central (Alumni)", "ProQuest Central UK/Ireland", "ProQuest One Literature", "Arts Premium Collection", "ProQuest Central Essentials", "eLibrary", "ProQuest Central", "Literature Online Core (LION Core) (legacy)", "ProQuest Central Korea", "ProQuest Central Student", "Research Library Prep", "Art, Design & Architecture Collection", "ProQuest One Literature - U.S. Customers Only", "Arts & Humanities Database", "Research Library", "Research Library (Corporate)", "ProQuest Learning: Literature", "Literature Online Premium (LION Premium) (legacy)", "ProQuest One Academic Eastern Edition (DO NOT USE)", "Literature Online (LION) - US Customers Only", "ProQuest One Academic", "ProQuest One Academic UKI Edition", "ProQuest Central China", "Literature Online (LION eBooks)", "ProQuest Central Basic" ],
+        "toplevel" : [ "online_resources" ],
+        "frbrgroupid" : [ "cdi_FETCH-proquest_journals_28097820973" ],
+        "frbrtype" : [ "5" ],
+        "jtitle" : [ "Southwest review" ],
+        "creationdate" : [ "2023" ]
+      }
+    },
+    "delivery" : {
+      "link" : [ ],
+      "deliveryCategory" : [ "Remote Search Resource" ],
+      "availability" : [ "fulltext" ],
+      "displayLocation" : false,
+      "additionalLocations" : false,
+      "physicalItemTextCodes" : "",
+      "feDisplayOtherLocations" : false,
+      "displayedAvailability" : "true",
+      "holding" : [ ],
+      "almaOpenurl" : "https://na04.alma.exlibrisgroup.com/view/uresolver/01USMAI_UMCP/openurl?ctx_enc=info:ofi/enc:UTF-8&ctx_id=10_1&ctx_tim=2023-12-11 09:30:24&ctx_ver=Z39.88-2004&url_ctx_fmt=info:ofi/fmt:kev:mtx:ctx&url_ver=Z39.88-2004&rfr_id=info:sid/primo.exlibrisgroup.com-proquest&rft_val_fmt=info:ofi/fmt:kev:mtx:journal&rft.genre=article&rft.atitle=Maryland&rft.jtitle=Southwest+review&rft.au=Pendarvis%2C+Jack&rft.date=2023-01-01&rft.volume=108&rft.issue=1&rft.spage=9&rft.epage=3&rft.pages=9-3&rft.issn=0038-4712&rft.eissn=2168-5487&rft.pub=Southwest+Review&rft.place=Dallas&rft_dat=<proquest>2809782097</proquest>&svc_dat=viewit&rft_pqid=2809782097"
+    },
+    "context" : "PC",
+    "adaptor" : "Primo Central",
+    "extras" : {
+      "citationTrails" : {
+        "citing" : [ ],
+        "citedby" : [ ]
+      },
+      "timesCited" : { }
+    },
+    "@id" : "https://na04.alma.exlibrisgroup.com/primaws/rest/pub/pnxs/PC/cdi_proquest_journals_2809782097"
+  }, {
+    "pnx" : {
+      "sort" : {
+        "creationdate" : [ "20210101" ],
+        "author" : [ "Lyles, Chelsea" ],
+        "title" : [ "Maryland" ]
+      },
+      "control" : {
+        "sourceid" : [ "gale" ],
+        "recordid" : [ "cdi_gale_infotracmisc_A659749026" ],
+        "sourcerecordid" : [ "A659749026" ],
+        "originalsourceid" : [ "FETCH-gale_infotracmisc_A6597490263" ],
+        "recordtype" : [ "article" ],
+        "addsrcrecordid" : [ "eNpjYuA0tDQx0TUzMTdgYeA0MLC00LU0sTTlYOAqLs4yMDA0MjA34mTg8E0sqsxJzEvhYWBNS8wpTuWF0twMym6uIc4euumJOanxmXlp-SVFicm5mcXJ8Y5mppbmJpYGRmbGxKkCABfyJOY" ],
+        "sourcetype" : [ "Aggregation Database" ],
+        "sourceformat" : [ "XML" ],
+        "sourcesystem" : [ "Other" ],
+        "galeid" : [ "A659749026" ],
+        "iscdi" : [ "true" ],
+        "score" : [ "0.012426931" ]
+      },
+      "search" : {
+        "creatorcontrib" : [ "Lyles, Chelsea" ],
+        "rsrctype" : [ "article" ],
+        "recordid" : [ "eNpjYuA0tDQx0TUzMTdgYeA0MLC00LU0sTTlYOAqLs4yMDA0MjA34mTg8E0sqsxJzEvhYWBNS8wpTuWF0twMym6uIc4euumJOanxmXlp-SVFicm5mcXJ8Y5mppbmJpYGRmbGxKkCABfyJOY" ],
+        "recordtype" : [ "article" ],
+        "creator" : [ "Lyles, Chelsea" ],
+        "subject" : [ "Education", "Finance" ],
+        "issn" : [ "0098-9495", "1944-6470" ],
+        "fulltext" : [ "true" ],
+        "general" : [ "University of Illinois Press" ],
+        "startdate" : [ "20210101" ],
+        "enddate" : [ "20210101" ],
+        "scope" : [ "ACJTS" ],
+        "creationdate" : [ "2021" ],
+        "title" : [ "Maryland", "Journal of education finance" ]
+      },
+      "delivery" : {
+        "delcategory" : [ "Remote Search Resource" ],
+        "fulltext" : [ "fulltext" ]
+      },
+      "display" : {
+        "type" : [ "article" ],
+        "source" : [ "Project MUSE eJournals - Premium Collection" ],
+        "publisher" : [ "University of Illinois Press" ],
+        "ispartof" : [ "Journal of education finance, 2021, Vol.46 (3), p.293" ],
+        "identifier" : [ "ISSN: 0098-9495", "EISSN: 1944-6470" ],
+        "rights" : [ "COPYRIGHT 2021 University of Illinois Press" ],
+        "lds50" : [ "peer_reviewed" ],
+        "language" : [ "eng" ],
+        "creator" : [ "Lyles, Chelsea" ],
+        "subject" : [ "Education ; Finance" ],
+        "title" : [ "Maryland" ]
+      },
+      "links" : {
+        "openurl" : [ "$$Topenurl_article" ],
+        "openurlfulltext" : [ "$$Topenurlfull_article" ],
+        "thumbnail" : [ "$$Tsyndetics_thumb_exl" ]
+      },
+      "addata" : {
+        "format" : [ "journal" ],
+        "jtitle" : [ "Journal of education finance" ],
+        "genre" : [ "article" ],
+        "issn" : [ "0098-9495" ],
+        "au" : [ "Lyles, Chelsea" ],
+        "atitle" : [ "Maryland" ],
+        "date" : [ "2021-01-01" ],
+        "risdate" : [ "2021" ],
+        "volume" : [ "46" ],
+        "issue" : [ "3" ],
+        "spage" : [ "293" ],
+        "pages" : [ "293-" ],
+        "eissn" : [ "1944-6470" ],
+        "ristype" : [ "JOUR" ],
+        "pub" : [ "University of Illinois Press" ]
+      },
+      "facets" : {
+        "language" : [ "eng" ],
+        "creatorcontrib" : [ "Lyles, Chelsea" ],
+        "topic" : [ "Education", "Finance" ],
+        "prefilter" : [ "articles" ],
+        "rsrctype" : [ "articles" ],
+        "collection" : [ "Gale OneFile: LegalTrac (A&I only)" ],
+        "toplevel" : [ "peer_reviewed", "online_resources" ],
+        "frbrgroupid" : [ "cdi_FETCH-gale_infotracmisc_A6597490263" ],
+        "frbrtype" : [ "5" ],
+        "jtitle" : [ "Journal of education finance" ],
+        "creationdate" : [ "2021" ]
+      }
+    },
+    "delivery" : {
+      "link" : [ ],
+      "deliveryCategory" : [ "Remote Search Resource" ],
+      "availability" : [ "fulltext" ],
+      "displayLocation" : false,
+      "additionalLocations" : false,
+      "physicalItemTextCodes" : "",
+      "feDisplayOtherLocations" : false,
+      "displayedAvailability" : "true",
+      "holding" : [ ],
+      "almaOpenurl" : "https://na04.alma.exlibrisgroup.com/view/uresolver/01USMAI_UMCP/openurl?ctx_enc=info:ofi/enc:UTF-8&ctx_id=10_1&ctx_tim=2023-12-11 09:30:24&ctx_ver=Z39.88-2004&url_ctx_fmt=info:ofi/fmt:kev:mtx:ctx&url_ver=Z39.88-2004&rfr_id=info:sid/primo.exlibrisgroup.com-gale&rft_val_fmt=info:ofi/fmt:kev:mtx:journal&rft.genre=article&rft.atitle=Maryland&rft.jtitle=Journal+of+education+finance&rft.au=Lyles%2C+Chelsea&rft.date=2021-01-01&rft.volume=46&rft.issue=3&rft.spage=293&rft.pages=293-&rft.issn=0098-9495&rft.eissn=1944-6470&rft.pub=University+of+Illinois+Press&rft_dat=<gale>A659749026</gale>&svc_dat=viewit&rft_galeid=A659749026"
+    },
+    "context" : "PC",
+    "adaptor" : "Primo Central",
+    "extras" : {
+      "citationTrails" : {
+        "citing" : [ ],
+        "citedby" : [ ]
+      },
+      "timesCited" : { }
+    },
+    "@id" : "https://na04.alma.exlibrisgroup.com/primaws/rest/pub/pnxs/PC/cdi_gale_infotracmisc_A659749026"
+  } ],
+  "timelog" : {
+    "PC_SEARCH_CALL_TIME" : "644",
+    "PC_BUILD_JSON_AND_HIGLIGHTS" : "34",
+    "PC_SEARCH_TIME_TOTAL" : "678",
+    "BUILD_BLEND_AND_CACHE_RESULTS" : 1,
+    "BUILD_COMBINED_RESULTS_MAP" : 679,
+    "COMBINED_SEARCH_TIME" : 681,
+    "PROCESS_COMBINED_RESULTS" : 0,
+    "FEATURED_SEARCH_TIME" : 0
+  },
+  "facets" : [ {
+    "name" : "jtitle",
+    "values" : [ {
+      "value" : "Obesity, Fitness, & Wellness Week",
+      "count" : "14152"
+    }, {
+      "value" : "Baltimore Business Journal",
+      "count" : "9930"
+    }, {
+      "value" : "Plos One",
+      "count" : "9092"
+    }, {
+      "value" : "Cancer Research",
+      "count" : "5667"
+    }, {
+      "value" : "Niles' Weekly Register",
+      "count" : "4627"
+    }, {
+      "value" : "Maryland Law Review",
+      "count" : "3879"
+    }, {
+      "value" : "American Journal Of Otolaryngology",
+      "count" : "3612"
+    }, {
+      "value" : "Journal Of Virology",
+      "count" : "3342"
+    }, {
+      "value" : "Maryland State Medical Journal",
+      "count" : "3056"
+    }, {
+      "value" : "Maryland Medical Journal",
+      "count" : "3027"
+    } ]
+  }, {
+    "name" : "lang",
+    "values" : [ {
+      "value" : "eng",
+      "count" : "370972"
+    }, {
+      "value" : "chi",
+      "count" : "3739"
+    }, {
+      "value" : "jpn",
+      "count" : "516"
+    }, {
+      "value" : "por",
+      "count" : "505"
+    }, {
+      "value" : "spa",
+      "count" : "442"
+    }, {
+      "value" : "ger",
+      "count" : "339"
+    }, {
+      "value" : "fre",
+      "count" : "318"
+    }, {
+      "value" : "kor",
+      "count" : "197"
+    }, {
+      "value" : "ita",
+      "count" : "116"
+    }, {
+      "value" : "ndo",
+      "count" : "115"
+    }, {
+      "value" : "rus",
+      "count" : "107"
+    }, {
+      "value" : "tur",
+      "count" : "59"
+    }, {
+      "value" : "nor",
+      "count" : "42"
+    }, {
+      "value" : "cat",
+      "count" : "24"
+    }, {
+      "value" : "ara",
+      "count" : "23"
+    }, {
+      "value" : "per",
+      "count" : "21"
+    }, {
+      "value" : "dut",
+      "count" : "18"
+    }, {
+      "value" : "hrv",
+      "count" : "15"
+    }, {
+      "value" : "swe",
+      "count" : "14"
+    } ]
+  }, {
+    "name" : "topic",
+    "values" : [ {
+      "value" : "Science & Technology",
+      "count" : "149698"
+    }, {
+      "value" : "Life Sciences & Biomedicine",
+      "count" : "123641"
+    }, {
+      "value" : "Humans",
+      "count" : "91714"
+    }, {
+      "value" : "Female",
+      "count" : "46978"
+    }, {
+      "value" : "Male",
+      "count" : "43531"
+    }, {
+      "value" : "Animals",
+      "count" : "37863"
+    }, {
+      "value" : "Biological And Medical Sciences",
+      "count" : "33774"
+    }, {
+      "value" : "Adult",
+      "count" : "25447"
+    }, {
+      "value" : "Maryland",
+      "count" : "23600"
+    }, {
+      "value" : "Medical Sciences",
+      "count" : "23095"
+    }, {
+      "value" : "Middle Aged",
+      "count" : "22131"
+    }, {
+      "value" : "Research Article",
+      "count" : "18182"
+    }, {
+      "value" : "United States",
+      "count" : "16932"
+    }, {
+      "value" : "Aged",
+      "count" : "16059"
+    }, {
+      "value" : "Physical Sciences",
+      "count" : "15279"
+    }, {
+      "value" : "Microbiology",
+      "count" : "14495"
+    }, {
+      "value" : "Health Aspects",
+      "count" : "14357"
+    }, {
+      "value" : "Medicine",
+      "count" : "14338"
+    }, {
+      "value" : "Mice",
+      "count" : "14338"
+    }, {
+      "value" : "Science & Technology - Other Topics",
+      "count" : "14221"
+    } ]
+  }, {
+    "name" : "rtype",
+    "values" : [ {
+      "value" : "articles",
+      "count" : "377254"
+    }, {
+      "value" : "review_article",
+      "count" : "13499"
+    }, {
+      "value" : "preprint",
+      "count" : "285"
+    }, {
+      "value" : "retracted_publication",
+      "count" : "81"
+    }, {
+      "value" : "publication_corrigendum",
+      "count" : "37"
+    }, {
+      "value" : "retraction_notice",
+      "count" : "16"
+    } ]
+  }, {
+    "name" : "domain",
+    "values" : [ {
+      "value" : "EBSCOhost EJS",
+      "count" : "210876"
+    }, {
+      "value" : "PubMed",
+      "count" : "150221"
+    }, {
+      "value" : "ProQuest Central",
+      "count" : "148902"
+    }, {
+      "value" : "Medline",
+      "count" : "126990"
+    }, {
+      "value" : "MEDLINE",
+      "count" : "126990"
+    }, {
+      "value" : "MEDLINE",
+      "count" : "126990"
+    }, {
+      "value" : "Get It Now",
+      "count" : "123562"
+    }, {
+      "value" : "E-Journals Database",
+      "count" : "120187"
+    }, {
+      "value" : "ProQuest Central Essentials",
+      "count" : "100249"
+    }, {
+      "value" : "IngentaConnect",
+      "count" : "85227"
+    }, {
+      "value" : "SciTech Premium Collection",
+      "count" : "68475"
+    }, {
+      "value" : "PubMed Central",
+      "count" : "68356"
+    }, {
+      "value" : "Journals@Ovid Ovid Full Text",
+      "count" : "65785"
+    }, {
+      "value" : "Factiva",
+      "count" : "54481"
+    }, {
+      "value" : "Academic Search Complete",
+      "count" : "53570"
+    }, {
+      "value" : "Nursing & Allied Health Database",
+      "count" : "52384"
+    }, {
+      "value" : "EBSCOhost Academic Search Ultimate - eBooks",
+      "count" : "48581"
+    }, {
+      "value" : "DOAJ Directory of Open Access Journals",
+      "count" : "45182"
+    }, {
+      "value" : "Public Health Database",
+      "count" : "43240"
+    }, {
+      "value" : "ScienceDirect Journals",
+      "count" : "35746"
+    } ]
+  }, {
+    "name" : "tlevel",
+    "values" : [ {
+      "value" : "open_access",
+      "count" : "130405"
+    }, {
+      "value" : "peer_reviewed",
+      "count" : "201794"
+    }, {
+      "value" : "online_resources",
+      "count" : "247499"
+    } ]
+  }, {
+    "name" : "attribute",
+    "values" : [ {
+      "value" : "review_article",
+      "count" : "13499"
+    }, {
+      "value" : "preprint",
+      "count" : "285"
+    }, {
+      "value" : "retracted_publication",
+      "count" : "81"
+    }, {
+      "value" : "publication_corrigendum",
+      "count" : "37"
+    }, {
+      "value" : "retraction_notice",
+      "count" : "16"
+    } ]
+  }, {
+    "name" : "newrecords",
+    "values" : [ {
+      "value" : "30 days back",
+      "count" : "280"
+    }, {
+      "value" : "07 days back",
+      "count" : "14"
+    }, {
+      "value" : "90 days back",
+      "count" : "4223"
+    } ]
+  }, {
+    "name" : "creationdate",
+    "values" : [ {
+      "value" : "1601",
+      "count" : "1"
+    }, {
+      "value" : "1700",
+      "count" : "6"
+    }, {
+      "value" : "1800",
+      "count" : "183"
+    }, {
+      "value" : "1900",
+      "count" : "13775"
+    }, {
+      "value" : "1910",
+      "count" : "2407"
+    }, {
+      "value" : "1920",
+      "count" : "1566"
+    }, {
+      "value" : "1930",
+      "count" : "1198"
+    }, {
+      "value" : "1940",
+      "count" : "1461"
+    }, {
+      "value" : "1950",
+      "count" : "2869"
+    }, {
+      "value" : "1951",
+      "count" : "371"
+    }, {
+      "value" : "1952",
+      "count" : "486"
+    }, {
+      "value" : "1953",
+      "count" : "516"
+    }, {
+      "value" : "1954",
+      "count" : "466"
+    }, {
+      "value" : "1955",
+      "count" : "450"
+    }, {
+      "value" : "1956",
+      "count" : "443"
+    }, {
+      "value" : "1957",
+      "count" : "543"
+    }, {
+      "value" : "1958",
+      "count" : "506"
+    }, {
+      "value" : "1959",
+      "count" : "551"
+    }, {
+      "value" : "1960",
+      "count" : "560"
+    }, {
+      "value" : "1961",
+      "count" : "543"
+    }, {
+      "value" : "1962",
+      "count" : "644"
+    }, {
+      "value" : "1963",
+      "count" : "750"
+    }, {
+      "value" : "1964",
+      "count" : "835"
+    }, {
+      "value" : "1965",
+      "count" : "999"
+    }, {
+      "value" : "1966",
+      "count" : "976"
+    }, {
+      "value" : "1967",
+      "count" : "1125"
+    }, {
+      "value" : "1968",
+      "count" : "1286"
+    }, {
+      "value" : "1969",
+      "count" : "1868"
+    }, {
+      "value" : "1970",
+      "count" : "1451"
+    }, {
+      "value" : "1971",
+      "count" : "1500"
+    }, {
+      "value" : "1972",
+      "count" : "1607"
+    }, {
+      "value" : "1973",
+      "count" : "1787"
+    }, {
+      "value" : "1974",
+      "count" : "1994"
+    }, {
+      "value" : "1975",
+      "count" : "1462"
+    }, {
+      "value" : "1976",
+      "count" : "1595"
+    }, {
+      "value" : "1977",
+      "count" : "1875"
+    }, {
+      "value" : "1978",
+      "count" : "1902"
+    }, {
+      "value" : "1979",
+      "count" : "1916"
+    }, {
+      "value" : "1980",
+      "count" : "2060"
+    }, {
+      "value" : "1981",
+      "count" : "2167"
+    }, {
+      "value" : "1982",
+      "count" : "2119"
+    }, {
+      "value" : "1983",
+      "count" : "2180"
+    }, {
+      "value" : "1984",
+      "count" : "2207"
+    }, {
+      "value" : "1985",
+      "count" : "2508"
+    }, {
+      "value" : "1986",
+      "count" : "2877"
+    }, {
+      "value" : "1987",
+      "count" : "3306"
+    }, {
+      "value" : "1988",
+      "count" : "3854"
+    }, {
+      "value" : "1989",
+      "count" : "4125"
+    }, {
+      "value" : "1990",
+      "count" : "3904"
+    }, {
+      "value" : "1991",
+      "count" : "3439"
+    }, {
+      "value" : "1992",
+      "count" : "3896"
+    }, {
+      "value" : "1993",
+      "count" : "3997"
+    }, {
+      "value" : "1994",
+      "count" : "3943"
+    }, {
+      "value" : "1995",
+      "count" : "4166"
+    }, {
+      "value" : "1996",
+      "count" : "5113"
+    }, {
+      "value" : "1997",
+      "count" : "4810"
+    }, {
+      "value" : "1998",
+      "count" : "5122"
+    }, {
+      "value" : "1999",
+      "count" : "4803"
+    }, {
+      "value" : "2000",
+      "count" : "5556"
+    }, {
+      "value" : "2001",
+      "count" : "6125"
+    }, {
+      "value" : "2002",
+      "count" : "6107"
+    }, {
+      "value" : "2003",
+      "count" : "6293"
+    }, {
+      "value" : "2004",
+      "count" : "6774"
+    }, {
+      "value" : "2005",
+      "count" : "6255"
+    }, {
+      "value" : "2006",
+      "count" : "7118"
+    }, {
+      "value" : "2007",
+      "count" : "7372"
+    }, {
+      "value" : "2008",
+      "count" : "8457"
+    }, {
+      "value" : "2009",
+      "count" : "9652"
+    }, {
+      "value" : "2010",
+      "count" : "9887"
+    }, {
+      "value" : "2011",
+      "count" : "11278"
+    }, {
+      "value" : "2012",
+      "count" : "11917"
+    }, {
+      "value" : "2013",
+      "count" : "11242"
+    }, {
+      "value" : "2014",
+      "count" : "10849"
+    }, {
+      "value" : "2015",
+      "count" : "11767"
+    }, {
+      "value" : "2016",
+      "count" : "12518"
+    }, {
+      "value" : "2017",
+      "count" : "16186"
+    }, {
+      "value" : "2018",
+      "count" : "17985"
+    }, {
+      "value" : "2019",
+      "count" : "18893"
+    }, {
+      "value" : "2020",
+      "count" : "15782"
+    }, {
+      "value" : "2021",
+      "count" : "14457"
+    }, {
+      "value" : "2022",
+      "count" : "11373"
+    }, {
+      "value" : "2023",
+      "count" : "7734"
+    }, {
+      "value" : "2024",
+      "count" : "8"
+    } ]
+  } ]
+}

@@ -1,4 +1,3 @@
-from http import HTTPStatus
 from pathlib import Path
 from typing import Callable
 
@@ -12,8 +11,8 @@ from catalog_searcher.search.alma import AlmaSearch
 
 
 @httpretty.activate
-def test_alma_search(shared_datadir: Path, register_search_url: Callable, alma_search: AlmaSearch):
-    register_search_url(body=(shared_datadir / 'alma_response.xml').read_text())
+def test_alma_search(alma_search: AlmaSearch, alma_search_request_args: dict[str, str]):
+    httpretty.register_uri(**alma_search_request_args)
 
     response = alma_search()
 
@@ -34,15 +33,15 @@ def test_alma_search(shared_datadir: Path, register_search_url: Callable, alma_s
 
 
 @httpretty.activate
-def test_alma_search_bad_request(register_search_url: Callable, alma_search: AlmaSearch):
-    register_search_url(status=HTTPStatus.BAD_REQUEST)
+def test_alma_search_bad_request(register_bad_request: Callable, alma_search: AlmaSearch, alma_search_url: str):
+    register_bad_request(alma_search_url)
 
     with pytest.raises(SearchError):
         alma_search()
 
 
 @httpretty.activate
-def test_worldcat_search_connection_error(
+def test_alma_search_connection_error(
     alma_search: AlmaSearch,
     monkeypatch: MonkeyPatch,
     raise_connection_error: Callable,
