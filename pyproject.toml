@@ -30,6 +30,9 @@ catalog-searcher = 'catalog_searcher.server:run'
 
 [tool.ruff]
 line-length = 120
+# enable rules that are in "preview" status
+# see also: https://docs.astral.sh/ruff/rules/
+preview = true
 
 [tool.ruff.format]
 quote-style = "single"

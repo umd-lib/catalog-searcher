@@ -117,10 +117,10 @@ class WorldcatSearch(Search):
 
     def parse_result(self, item: Any) -> SearchResult:
         return SearchResult(
-            title = item['title'],
-            date = item.get('date', ''),
-            author = item.get('creator', ''),
-            description = item.get('summary', ''),
+            title=item['title'],
+            date=item.get('date', ''),
+            author=item.get('creator', ''),
+            description=item.get('summary', ''),
             item_format=self.get_item_format(item),
             link=self.get_preferred_link(item),
         )
