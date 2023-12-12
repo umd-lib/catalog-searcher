@@ -70,11 +70,11 @@ class WorldcatSearch(Search):
         logger.debug(f'Pagination debug offset={self.offset} page={self.page} limit={self.per_page}')
 
         # Prepare OCLC API search
-        params = {
-            'dbIds': 638,
+        params: dict[str, str] = {
+            'dbIds': '638',
             'q': self.query,
-            'limit': self.per_page,
-            'offset': self.offset,
+            'limit': str(self.per_page),
+            'offset': str(self.offset),
             'orderBy': 'library',
             'groupRelatedEditions': 'true',
         }

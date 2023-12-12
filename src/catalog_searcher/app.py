@@ -90,7 +90,7 @@ def search():
     return api_response
 
 
-def get_search_class(backend: str) -> Search:
+def get_search_class(backend: str) -> type[Search]:
     match backend:
         case 'worldcat':
             from catalog_searcher.search.worldcat import WorldcatSearch

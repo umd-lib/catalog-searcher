@@ -46,10 +46,10 @@ pyenv install 3.10
     ```
 
 4. Run `pip install` to download dependencies, including those required
-   to run the test suite:
+   to run the development tools and test suite:
 
     ```bash
-    pip install -e '.[test]'
+    pip install -e '.[dev,test]'
     ```
 
 5. Verify the install by running the tests with [pytest]:
@@ -98,6 +98,16 @@ The enabled rule sets are the pycodestyle errors (`E`) and warnings (`W`).
 ruff check
 ```
 
+## Type Checking
+
+This repository is configured to use the [mypy] static type checker. By default,
+it will check everything in the [src](../src/) directory.
+
+```bash
+mypy
+```
+
 [PEP 8]: https://www.python.org/dev/peps/pep-0008/
 [pytest]: https://pytest.org/
 [ruff]: https://docs.astral.sh/ruff/
+[mypy]: https://www.mypy-lang.org/

@@ -57,7 +57,10 @@ class CQLExpression:
     @classmethod
     def parse(cls, other) -> 'CQLExpression':
         if isinstance(other, str):
-            return CQLExpression(parse(other).root)
+            cql_query = parse(other)
+            if cql_query is None:
+                raise ValueError
+            return CQLExpression(cql_query.root)
         if isinstance(other, CQLSearchClause) or isinstance(other, CQLTriple):
             return CQLExpression(other)
         if isinstance(other, tuple) and len(other) == 3:

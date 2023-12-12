@@ -49,7 +49,7 @@ class AlmaSearch(Search):
         sru_request_url = self.sru_url_template.expand(
             institutionCode=self.institution_code,
             recordSchema='mods',
-            query=cql_query,
+            query=str(cql_query),
             maximumRecords=self.per_page,
             startRecord=start_record,
         )
@@ -64,7 +64,7 @@ class AlmaSearch(Search):
             raise SearchError(f'Received {response.status_code} for q={self.query}', endpoint=self.endpoint)
 
         doc = etree.fromstring(response.content)
-        total = int(doc.xpath('//srw:numberOfRecords/text()', namespaces=self.xmlns, smart_strings=False)[0])
+        total = int(doc.xpath('//srw:numberOfRecords/text()', namespaces=self.xmlns, smart_strings=False)[0])  # type: ignore
 
         return SearchResponse(
             results=[self.parse_result(record) for record in MODSReader(BytesIO(response.content))],

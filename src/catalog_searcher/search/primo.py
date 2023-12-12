@@ -1,6 +1,6 @@
 import logging
 import re
-from typing import Iterable, Mapping, TypeVar
+from typing import Any, Iterable, Mapping, TypeVar
 
 import requests
 from environs import Env
@@ -68,7 +68,7 @@ class PrimoSearch(Search):
             raw={'request_url': api_search_url, 'data': data},
         )
 
-    def parse_result(self, item: Mapping[str, any]) -> SearchResult:
+    def parse_result(self, item: Mapping[str, Any]) -> SearchResult:
         display = item['pnx'].get('display', {})
         links = item['pnx'].get('links', {})
         mms = first(get_values(display, 'mms'))
@@ -84,7 +84,9 @@ class PrimoSearch(Search):
         else:
             link = ''
 
-        creators = [get_values(parse_field(v), 'Q', '') for v in get_values(display, 'creator', 'contributor')]
+        creator_data = get_values(display, 'creator', 'contributor')
+        creator_fields = [parse_field(v) for v in creator_data]
+        creators = [f.get('Q', f.get('', '')) for f in creator_fields]
 
         return SearchResult(
             title=first(get_values(display, 'title')) or '',

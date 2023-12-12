@@ -16,6 +16,9 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+dev = [
+    "mypy",
+]
 test = [
     "httpretty",
     "jsonschema",
@@ -28,6 +31,16 @@ test = [
 
 [project.scripts]
 catalog-searcher = 'catalog_searcher.server:run'
+
+[tool.mypy]
+files = "src"
+overrides = [
+    # third-party modules that we do not have type stubs for (yet)
+    {module = "furl", ignore_missing_imports = true },
+    {module = "paste.translogger", ignore_missing_imports = true },
+    {module = "pymods", ignore_missing_imports = true },
+    {module = "urlobject", ignore_missing_imports = true},
+]
 
 [tool.ruff]
 line-length = 120

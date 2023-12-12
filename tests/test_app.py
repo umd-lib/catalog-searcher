@@ -1,13 +1,13 @@
-from http import HTTPStatus
 import json
+from http import HTTPStatus
 from pathlib import Path
-from typing import Any
 
 import httpretty
-from jsonschema import Draft202012Validator, Validator
 import pytest
 from flask import Flask
 from flask.testing import FlaskClient
+from jsonschema import Draft202012Validator
+from jsonschema.protocols import Validator
 
 import catalog_searcher.app
 from catalog_searcher.app import app as catalog_searcher_app
