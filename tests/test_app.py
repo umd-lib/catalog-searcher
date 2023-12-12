@@ -1,6 +1,10 @@
 from http import HTTPStatus
+import json
+from pathlib import Path
+from typing import Any
 
 import httpretty
+from jsonschema import Draft202012Validator, Validator
 import pytest
 from flask import Flask
 from flask.testing import FlaskClient
@@ -68,6 +72,38 @@ def test_search(client: FlaskClient, alma_search_request_args: dict[str, str]):
     assert api_response['per_page'] == 3
     assert api_response['query'] == 'maryland'
     assert 'prev_page' not in api_response
+
+
+@pytest.fixture
+def api_response_validator() -> Validator:
+    schema_file = Path(__file__).parent.parent / 'docs/api-response-schema.json'
+    with schema_file.open() as fh:
+        schema = json.load(fh)
+    return Draft202012Validator(schema)
+
+
+@httpretty.activate
+def test_primo_book_search_response_validates(
+    client: FlaskClient,
+    primo_book_search: PrimoSearch,
+    primo_book_search_request_args: dict[str, str],
+    api_response_validator: Validator,
+):
+    httpretty.register_uri(**primo_book_search_request_args)
+    response = client.get(f'/search?q={primo_book_search.query}&backend=primo')
+    assert api_response_validator.is_valid(response.json)
+
+
+@httpretty.activate
+def test_primo_article_search_response_validates(
+    client: FlaskClient,
+    primo_article_search: PrimoSearch,
+    primo_article_search_request_args: dict[str, str],
+    api_response_validator: Validator,
+):
+    httpretty.register_uri(**primo_article_search_request_args)
+    response = client.get(f'/search?q={primo_article_search.query}&backend=primo')
+    assert api_response_validator.is_valid(response.json)
 
 
 def test_search_with_error(monkeypatch, client):

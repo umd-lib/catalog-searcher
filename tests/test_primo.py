@@ -10,33 +10,6 @@ from catalog_searcher.search import SearchError
 from catalog_searcher.search.primo import PrimoSearch, parse_field
 
 
-@pytest.fixture
-def primo_article_search(env):
-    return PrimoSearch(env=env, endpoint='articles', query='maryland', page=0, per_page=3)
-
-
-@pytest.fixture
-def primo_article_search_url(primo_article_search):
-    return primo_article_search.article_search_api_url_template.expand(
-        vid=primo_article_search.vid,
-        q=primo_article_search.query,
-        offset=(primo_article_search.page * primo_article_search.per_page),
-        limit=primo_article_search.per_page,
-    )
-
-
-@pytest.fixture
-def primo_article_search_request_args(datadir: Path, primo_article_search_url: str) -> dict[str, str]:
-    return {
-        'uri': primo_article_search_url,
-        'method': httpretty.GET,
-        'adding_headers': {
-            'Content-Type': 'application/json',
-        },
-        'body': (datadir / 'primo_article_search_response.json').read_text(),
-    }
-
-
 @httpretty.activate
 def test_primo_article_search(primo_article_search, primo_article_search_request_args):
     httpretty.register_uri(**primo_article_search_request_args)
@@ -61,33 +34,6 @@ def test_primo_article_search(primo_article_search, primo_article_search_request
     assert response.results[0].item_format == "article"
 
     assert response.results[1].link == 'https://proxy-um.researchport.umd.edu/login?&url=https://www.proquest.com/docview/2809782097?pq-origsite=primo'
-
-
-@pytest.fixture
-def primo_book_search(env: Env) -> PrimoSearch:
-    return PrimoSearch(env=env, endpoint='books-and-more', query='black metal', page=5, per_page=3)
-
-
-@pytest.fixture
-def primo_book_search_url(primo_book_search: PrimoSearch) -> str:
-    return primo_book_search.book_search_api_url_template.expand(
-        vid=primo_book_search.vid,
-        q=primo_book_search.query,
-        offset=(primo_book_search.page * primo_book_search.per_page),
-        limit=primo_book_search.per_page,
-    )
-
-
-@pytest.fixture
-def primo_book_search_request_args(datadir: Path, primo_book_search_url) -> dict[str, str]:
-    return {
-        'uri': primo_book_search_url,
-        'method': httpretty.GET,
-        'adding_headers': {
-            'Content-Type': 'application/json',
-        },
-        'body': (datadir / 'primo_book_search_response.json').read_text(),
-    }
 
 
 @httpretty.activate

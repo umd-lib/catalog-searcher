@@ -6,7 +6,7 @@
         "backend": {
             "description": "Backend provider for this search",
             "type": "string",
-            "enum": ["alma", "wordlcat"]
+            "enum": ["alma", "primo", "worldcat"]
         },
         "endpoint": {
             "description": "Scope of this search",
@@ -35,7 +35,7 @@
         "page": {
             "description": "Current page number",
             "type": "integer",
-            "minimum": 1
+            "minimum": 0
         },
         "per_page": {
             "description": "Number of results on each page",
@@ -43,7 +43,7 @@
             "minimum": 1
         },
         "prev_page": {
-            "description": "Link to the previous page of results. Only present if page is greater than 1.",
+            "description": "Link to the previous page of results. Only present if page is greater than 0.",
             "type": "string",
             "format": "uri"
         },

@@ -47,12 +47,13 @@ See [docs/DevelopmentSetup.md](docs/DevelopmentSetup.md).
   * Methods: `GET`
   * Parameters:
     * `q` (**Required**): text of the query
-    * `endpoint` (*Optional*): selects the type of search: `books-and-more` or `articles`;
-      defaults to `books-and-more`
-    * `page` (*Optional*): page of results to display; defaults to `1`
-    * `per_page` (*Optional*): number of results to display on each page; defaults to `3`
-    * `backend` (*Optional*): catalog backend implementation to use: `alma` or `worldcat`;
-      defaults to `alma`
+    * `endpoint` (*Optional*): selects the type of search: `books-and-more` or
+      `articles`; defaults to `books-and-more`
+    * `page` (*Optional*): page of results to display; defaults to `0`
+    * `per_page` (*Optional*): number of results to display on each page;
+      defaults to `3`
+    * `backend` (*Optional*): catalog backend implementation to use: `alma`,
+      `primo`, or `worldcat`; defaults to `primo`
   * Responses:
     * Success:
       * Status: `200 OK`

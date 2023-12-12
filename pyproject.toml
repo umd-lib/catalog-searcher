@@ -18,6 +18,7 @@ dependencies = [
 [project.optional-dependencies]
 test = [
     "httpretty",
+    "jsonschema",
     "psutil",
     "pytest",
     "pytest-cov",
