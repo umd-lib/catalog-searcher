@@ -7,67 +7,107 @@ information useful for developers to be aware of.
 
 ## Prerequisites
 
-The following instructions assume that "pyenv" and "pyenv-virtualenv" are
-installed to enable the setup of an isolated Python environment.
+* Python 3.10
+
+### Installing Python with pyenv
+
+The following instructions assume that "pyenv" is installed to enable the
+setup of an isolated Python environment.
 
 See the following for setup instructions:
 
 * https://github.com/pyenv/pyenv
-* https://github.com/pyenv/pyenv-virtualenv
 
-Once "pyenv" and "pyenv-virtualenv" have been installed, install Python 3.10.8
+Once "pyenv" has been installed, install Python 3.10:
 
 ```bash
-> pyenv install 3.10.8
+pyenv install 3.10
 ```
 
 ## Installation for development
 
-1) Clone the "worldcat-searcher" Git repository:
+1. Clone the "catalog-searcher" Git repository:
 
-```bash
-> git clone https://github.com/umd-lib/worldcat-searcher.git
-```
+    ```bash
+    git clone https://github.com/umd-lib/catalog-searcher.git
+    ```
 
-2) Switch to the "worldcat-searcher" directory:
+2. Switch to the "catalog-searcher" directory:
 
-```bash
-> cd worldcat-searcher
-```
+    ```bash
+    cd catalog-searcher
+    ```
 
-3) Set up the virtual environment:
+3. Set up and activate the virtual environment:
 
-```bash
-> pyenv virtualenv 3.10.8 worldcat-searcher
-> pyenv shell worldcat-searcher
-```
+    ```bash
+    python -m venv .venv --prompt 'catalog-searcher-py3.10'
+    source .venv/bin/activate
+    ```
 
-4) Run "pip install" to download dependencies:
+4. Run `pip install` to download dependencies, including those required
+   to run the development tools and test suite:
 
-```bash
-> pip3 install -r requirements.txt
-```
+    ```bash
+    pip install -e '.[dev,test]'
+    ```
+
+5. Verify the install by running the tests with [pytest]:
+
+    ```bash
+    pytest
+    ```
 
 ## Running the Webapp
 
-Create a .env file (then manually update environment variables):
+Create a `.env` file, then manually update environment variables:
 
 ```bash
-$ cp env-template .env
+cp env-template .env
 ```
 
 To start the app:
 
 ```bash
-> python3 -m flask run
+python -m flask run
+```
+
+The app will be available at <http://localhost:5000>
+
+## Running in Docker
+
+```bash
+docker build -t docker.lib.umd.edu/catalog-searcher .
+docker run -it --rm -p 5000:5000 --env-file=.env --read-only docker.lib.umd.edu/catalog-searcher
+```
+
+### Building for Kubernetes
+
+```bash
+docker buildx build . --builder=kube -t docker.lib.umd.edu/catalog-searcher:VERSION --push
 ```
 
 ## Code Style
 
-Application code style should generally conform to the guidelines in
-[PEP 8](https://www.python.org/dev/peps/pep-0008/). The "pycodestyle" tool
-to check compliance with the guidelines can be run using:
+Application code style should generally conform to the guidelines in [PEP 8].
+
+This repository is configured to use the [ruff] linter to check code style.
+The enabled rule sets are the pycodestyle errors (`E`) and warnings (`W`).
 
 ```bash
-> pycodestyle .
+ruff check
 ```
+
+## Type Checking
+
+This repository is configured to use the [mypy] static type checker. By default,
+it will check everything in the [src](../src/) directory.
+
+```bash
+mypy
+```
+
+[PEP 8]: https://www.python.org/dev/peps/pep-0008/
+[pytest]: https://pytest.org/
+[ruff]: https://docs.astral.sh/ruff/
+[mypy]: https://www.mypy-lang.org/

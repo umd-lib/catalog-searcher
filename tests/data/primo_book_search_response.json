@@ -1,0 +1,517 @@
+{
+  "info" : {
+    "totalResultsLocal" : 387,
+    "totalResultsPC" : -1,
+    "total" : 387,
+    "first" : 16,
+    "last" : 18
+  },
+  "highlights" : {
+    "subject" : [ "metal", "Black", "black", "Metal" ],
+    "description" : [ "black", "metal", "metal's" ],
+    "toc" : [ "Black", "Metal" ],
+    "title" : [ "metal", "black", "Black", "Metal" ],
+    "addtitle" : [ "black", "metal" ],
+    "termsUnion" : [ "metal", "Black", "black", "Metal", "metal's" ]
+  },
+  "docs" : [ {
+    "context" : "L",
+    "adaptor" : "Local Search Engine",
+    "@id" : "https://na04.alma.exlibrisgroup.com/primaws/rest/pub/pnxs/L/9963619025208238",
+    "pnx" : {
+      "display" : {
+        "source" : [ "Alma" ],
+        "type" : [ "video" ],
+        "language" : [ "spa" ],
+        "title" : [ "Feriado " ],
+        "subject" : [ "Teenage boys -- Ecuador$$QTeenage boys -- Ecuador -- Drama", "Coming out (Sexual orientation)$$QComing out (Sexual orientation) -- Drama", "Ecuador$$QEcuador -- Drama" ],
+        "format" : [ "1 online resource (83 minutes)", "data file" ],
+        "identifier" : [ "$$COCLC$$V(OCoLC)1009106548" ],
+        "creationdate" : [ "2014" ],
+        "publisher" : [ "Philadelphia, PA : Breaking Glass Pictures" ],
+        "description" : [ "In a time of turmoil for Ecuador, Juan Pablo, 16, travels to the family hacienda in the Andes, where his uncle, facing a corruption scandal, has taken refuge with his wife and teenage children. There he meets Juano, 17, an enigmatic, self-assured black-metal fan from the nearby pueblo, who opens his eyes to a new, liberating universe. As his country and family is heading for the abyss, the two boys budding friendship develops into a fragile romance and Juan Pablo is forced to define himself against his chaotic surroundings." ],
+        "mms" : [ "9963619025208238" ],
+        "contributor" : [ "Araujo, Diego, director.$$QAraujo, Diego", "Skartveit, Hanne-Lovise, 1974- producer.$$QSkartveit, Hanne-Lovise", "Luna Films, production company.$$QLuna Films", "Centro de Estudios para la Producción Audiovisual (Argentina), production company.$$QCentro de Estudios para la Producción Audiovisual (Argentina)", "Abaca Films, production company.$$QAbaca Films" ],
+        "addtitle" : [ "Holiday" ],
+        "genre" : [ "Drama", "Feature films", "Fiction films" ],
+        "place" : [ "Philadelphia, PA :" ],
+        "version" : [ "1" ]
+      },
+      "control" : {
+        "sourcerecordid" : [ "9963619025208238" ],
+        "recordid" : [ "alma9963619025208238" ],
+        "sourceid" : "alma",
+        "originalsourceid" : [ "994940000000221455" ],
+        "sourcesystem" : [ "NON_SFX" ],
+        "sourceformat" : [ "MARC21" ],
+        "score" : [ "7.981702E-4" ],
+        "isDedup" : false
+      },
+      "addata" : {
+        "aulast" : [ "Araujo", "Skartveit" ],
+        "aufirst" : [ "Diego", "Hanne-Lovise" ],
+        "auinit" : [ "D", "H" ],
+        "addau" : [ "Araujo, Diego", "Skartveit, Hanne-Lovise" ],
+        "contributorfull" : [ "$$NAraujo, Diego$$LAraujo$$FDiego$$Rdirector", "$$NSkartveit, Hanne-Lovise$$Rcontributor" ],
+        "addtitle" : [ "Holiday" ],
+        "date" : [ "2014" ],
+        "abstract" : [ "In a time of turmoil for Ecuador, Juan Pablo, 16, travels to the family hacienda in the Andes, where his uncle, facing a corruption scandal, has taken refuge with his wife and teenage children. There he meets Juano, 17, an enigmatic, self-assured black-metal fan from the nearby pueblo, who opens his eyes to a new, liberating universe. As his country and family is heading for the abyss, the two boys budding friendship develops into a fragile romance and Juan Pablo is forced to define himself against his chaotic surroundings." ],
+        "cop" : [ "Philadelphia, PA" ],
+        "pub" : [ "Breaking Glass Pictures" ],
+        "oclcid" : [ "(ocolc)1009106548" ],
+        "format" : [ "book" ],
+        "genre" : [ "unknown" ],
+        "ristype" : [ "VIDEO" ],
+        "btitle" : [ "Feriado" ]
+      },
+      "sort" : {
+        "title" : [ "Feriado /" ],
+        "author" : [ "Araujo, Diego, director." ],
+        "creationdate" : [ "2014" ]
+      },
+      "facets" : {
+        "frbrtype" : [ "6" ],
+        "frbrgroupid" : [ "9047519548551079591" ]
+      }
+    }
+  }, {
+    "context" : "L",
+    "adaptor" : "Local Search Engine",
+    "@id" : "https://na04.alma.exlibrisgroup.com/primaws/rest/pub/pnxs/L/9963551431608238",
+    "pnx" : {
+      "display" : {
+        "source" : [ "Alma" ],
+        "type" : [ "book" ],
+        "language" : [ "eng" ],
+        "title" : [ "Unpopular Culture" ],
+        "subject" : [ "Popular culture" ],
+        "format" : [ "1 online resource (341 pages)" ],
+        "identifier" : [ "$$CISBN$$V90-485-2870-4;$$COCLC$$V(OCoLC)1038479612;$$COCLC$$V(OCoLC)1111318853;$$CISBN$$V90-8964-966-2" ],
+        "creationdate" : [ "2016" ],
+        "creator" : [ "Pohlmann, Sascha, author.$$QPohlmann, Sascha" ],
+        "publisher" : [ "Amsterdam : Amsterdam University Press" ],
+        "description" : [ "This volume introduces a new concept that boldly breaks through the traditional dichotomy of high and low culture while offering a fresh approach to both: unpopular culture. From the works of David Foster Wallace and Ernest Hemingway to fanfiction and The Simpsons, from natural disasters to 9/11 and beyond, the essays find the unpopular across media and genres, analysing the politics and aesthetics of a side to culture that has been overlooked by previous theories and methods in cultural studies." ],
+        "mms" : [ "9963551431608238" ],
+        "contributor" : [ "Pöhlmann, Sascha, ditor.$$QPöhlmann, Sascha", "Lüthe, Martin, editor.$$QLüthe, Martin" ],
+        "series" : [ "Televisual culture$$QTelevisual culture" ],
+        "contents" : [ "Front matter -- Table of Contents -- Introduction / Lüthe, Martin / Pöhlmann, Sascha -- Why We Talk the Talk We Talk / Butler, Martin -- Big Fish / Ferens, Dominika -- How (Not) to Make People Like You / Dorson, James -- Dissenting Commodities / Kovach, Elizabeth -- Secrets, Lies and The Real Housewives / Udy, Dan -- Karaoke Americanism Gangnam Style / Kloet, Jeroen de / Kooijman, Jaap -- 'When order is lost, time spits' / Zappe, Florian -- 'Famous in a Small Town' The Authenticity of Unpopularity in Contemporary Country Music / Schmidt, Christian -- Making Christianity Cool / Harju, Bärbel -- Listening to Bad Music / King, C. Richard -- Hipster Black Metal? / Ferrero, Paola -- Unpopular Culture and the American Reception of Tinariwen / Shank, Barry -- Cultural Studies and the Un/Popular / Meinel, Dietmar -- Unpopular Sport Teams and the Social Psychology of 'Anti-Fans' / Senkbeil, Karsten -- The Unpopular Profession? / Herrmann, Sebastian M. -- Contributors -- Index" ],
+        "place" : [ "Amsterdam :" ],
+        "version" : [ "1" ]
+      },
+      "control" : {
+        "sourcerecordid" : [ "9963551431608238" ],
+        "recordid" : [ "alma9963551431608238" ],
+        "sourceid" : "alma",
+        "originalsourceid" : [ "994100000004821696" ],
+        "sourcesystem" : [ "NON_SFX" ],
+        "sourceformat" : [ "MARC21" ],
+        "score" : [ "7.5452373E-4" ],
+        "isDedup" : false
+      },
+      "addata" : {
+        "aulast" : [ "Pohlmann" ],
+        "aufirst" : [ "Sascha" ],
+        "auinit" : [ "S" ],
+        "au" : [ "Pohlmann, Sascha" ],
+        "addau" : [ "Pöhlmann, Sascha", "Lüthe, Martin" ],
+        "creatorfull" : [ "$$NPohlmann, Sascha$$LPohlmann$$FSascha$$Rauthor" ],
+        "contributorfull" : [ "$$NPöhlmann, Sascha$$LPöhlmann$$FSascha$$Rcontributor", "$$NLüthe, Martin$$Reditor" ],
+        "date" : [ "2016" ],
+        "isbn" : [ "90-485-2870-4", "90-8964-966-2" ],
+        "notes" : [ "Includes bibliographical references and index." ],
+        "abstract" : [ "This volume introduces a new concept that boldly breaks through the traditional dichotomy of high and low culture while offering a fresh approach to both: unpopular culture. From the works of David Foster Wallace and Ernest Hemingway to fanfiction and The Simpsons, from natural disasters to 9/11 and beyond, the essays find the unpopular across media and genres, analysing the politics and aesthetics of a side to culture that has been overlooked by previous theories and methods in cultural studies." ],
+        "cop" : [ "Amsterdam" ],
+        "pub" : [ "Amsterdam University Press" ],
+        "oclcid" : [ "(ocolc)1038479612", "(ocolc)1111318853" ],
+        "doi" : [ "10.1515/9789048528707" ],
+        "lccn" : [ "2016510291" ],
+        "seriestitle" : [ "Televisual culture" ],
+        "format" : [ "book" ],
+        "genre" : [ "book" ],
+        "ristype" : [ "BOOK" ],
+        "btitle" : [ "Unpopular Culture" ]
+      },
+      "sort" : {
+        "title" : [ "Unpopular Culture" ],
+        "author" : [ "Pohlmann, Sascha, author." ],
+        "creationdate" : [ "2016" ]
+      },
+      "facets" : {
+        "frbrtype" : [ "6" ],
+        "frbrgroupid" : [ "9058652306339110962" ]
+      }
+    }
+  }, {
+    "context" : "L",
+    "adaptor" : "Local Search Engine",
+    "@id" : "https://na04.alma.exlibrisgroup.com/primaws/rest/pub/pnxs/L/990049382220108238",
+    "pnx" : {
+      "display" : {
+        "source" : [ "Alma" ],
+        "type" : [ "book" ],
+        "language" : [ "eng" ],
+        "title" : [ "Equipment for living : on poetry and pop music " ],
+        "subject" : [ "Art -- Philosophy", "Art -- History", "Poetry", "Poetry -- History and criticism", "Popular music -- Philosophy", "Popular music -- History and criticism" ],
+        "format" : [ "207 pages ; 22 cm" ],
+        "identifier" : [ "$$CISBN$$V9781476747095;$$CISBN$$V1476747091;$$COCLC$$V(OCoLC)961003539" ],
+        "creationdate" : [ "2017" ],
+        "lds01" : [ "004938222" ],
+        "creator" : [ "Robbins, Michael, 1972- author.$$QRobbins, Michael" ],
+        "publisher" : [ "New York : Simon & Schuster" ],
+        "description" : [ "\"How can art help us make sense--or nonsense--of the world? If wrong life cannot be lived rightly, as Theodor Adorno had it, what weapons and strategies for living wrongly can art provide? With the same intelligence that animates his poetry, Michael Robbins addresses this weighty question while contemplating the idea of how strange it is that we need art at all. Ranging from Prince to Def Leppard, Lucille Clifton to Frederick Seidel, Robbins's mastery of poetry and popular music shines in Equipment for Living. He has a singular ability to illustrate points with seemingly disparate examples (Friedrich Kittler and Taylor Swift, to W.B. Yeats and Anna Kendrick's \"Cups\"). Robbins weaves a discussion on poet Juliana Spahr with the different subsets of Scandinavian black metal, illuminating subjects in ways that few scholars can achieve. Equipment for Living is also a wonderful guide to essential poetry and popular music\"--Jacket flap." ],
+        "mms" : [ "990049382220108238" ],
+        "edition" : [ "First Simon & Shuster hardcover edition." ],
+        "contents" : [ "Equipment for living -- Wisconsin chair -- Holes -- Journey force -- The child that sucketh long -- Destroy your safe and happy lives -- Rhyme is a drug -- How to write a Charles Simic poem -- Kill Rock Stars' memoirs -- Dark, dark, dark -- No taste of my own -- Real God, roll -- Red -- Make the machine sing -- Hooked up -- Visible republic -- Are you smeared with the juice of cherries? -- Frederick Seidel's bad taste -- Equipment for sinking -- Playlist." ],
+        "genre" : [ "Essays" ],
+        "unititle" : [ "Essays. Selections" ],
+        "includes" : [ "Robbins, Michael, 1972- Essays. Selections$$QRobbins, Michael, 1972- Essays. Selections" ],
+        "place" : [ "New York :" ],
+        "version" : [ "1" ]
+      },
+      "control" : {
+        "sourcerecordid" : [ "990049382220108238" ],
+        "recordid" : [ "alma990049382220108238" ],
+        "sourceid" : "alma",
+        "originalsourceid" : [ "004938222-MAI01" ],
+        "sourcesystem" : [ "ILS" ],
+        "sourceformat" : [ "MARC21" ],
+        "score" : [ "6.651419E-4" ],
+        "isDedup" : false
+      },
+      "addata" : {
+        "aulast" : [ "Robbins" ],
+        "aufirst" : [ "Michael" ],
+        "auinit" : [ "M" ],
+        "au" : [ "Robbins, Michael" ],
+        "creatorfull" : [ "$$NRobbins, Michael$$LRobbins$$FMichael$$Rauthor" ],
+        "date" : [ "2017" ],
+        "isbn" : [ "9781476747095", "1476747091" ],
+        "notes" : [ "Includes bibliographical references (pages 201-207)." ],
+        "abstract" : [ "\"How can art help us make sense--or nonsense--of the world? If wrong life cannot be lived rightly, as Theodor Adorno had it, what weapons and strategies for living wrongly can art provide? With the same intelligence that animates his poetry, Michael Robbins addresses this weighty question while contemplating the idea of how strange it is that we need art at all. Ranging from Prince to Def Leppard, Lucille Clifton to Frederick Seidel, Robbins's mastery of poetry and popular music shines in Equipment for Living. He has a singular ability to illustrate points with seemingly disparate examples (Friedrich Kittler and Taylor Swift, to W.B. Yeats and Anna Kendrick's \"Cups\"). Robbins weaves a discussion on poet Juliana Spahr with the different subsets of Scandinavian black metal, illuminating subjects in ways that few scholars can achieve. Equipment for Living is also a wonderful guide to essential poetry and popular music\"--Jacket flap." ],
+        "cop" : [ "New York" ],
+        "pub" : [ "Simon & Schuster" ],
+        "oclcid" : [ "(ocolc)961003539" ],
+        "edition" : [ "First Simon & Shuster hardcover edition." ],
+        "format" : [ "book" ],
+        "genre" : [ "book" ],
+        "ristype" : [ "BOOK" ],
+        "btitle" : [ "Equipment for living : on poetry and pop music" ]
+      },
+      "sort" : {
+        "title" : [ "Equipment for living : on poetry and pop music /" ],
+        "author" : [ "Robbins, Michael, 1972- author." ],
+        "creationdate" : [ "2017" ]
+      },
+      "facets" : {
+        "frbrtype" : [ "6" ],
+        "frbrgroupid" : [ "9022484076820348309" ]
+      }
+    }
+  } ],
+  "timelog" : {
+    "BUILD_RESULTS_RETRIVE_FROM_DB" : "247",
+    "CALL_SOLR_GET_IDS_LIST" : "346",
+    "RETRIVE_FROM_DB_COURSE_INFO" : "3",
+    "RETRIVE_FROM_DB_RECORDS" : "109",
+    "RETRIVE_FROM_DB_RELATIONS" : "2",
+    "PRIMA_LOCAL_INFO_FACETS_BUILD_DOCS_HIGHLIGHTS" : "74",
+    "PRIMA_LOCAL_SEARCH_TOTAL" : "726",
+    "BUILD_BLEND_AND_CACHE_RESULTS" : 0,
+    "BUILD_COMBINED_RESULTS_MAP" : 875,
+    "COMBINED_SEARCH_TIME" : 879,
+    "PROCESS_COMBINED_RESULTS" : 0,
+    "FEATURED_SEARCH_TIME" : 0
+  },
+  "facets" : [ {
+    "name" : "lang",
+    "values" : [ {
+      "value" : "eng",
+      "count" : "373"
+    }, {
+      "value" : "fre",
+      "count" : "6"
+    }, {
+      "value" : "spa",
+      "count" : "4"
+    }, {
+      "value" : "ger",
+      "count" : "3"
+    }, {
+      "value" : "jpn",
+      "count" : "2"
+    }, {
+      "value" : "heb",
+      "count" : "1"
+    }, {
+      "value" : "mul",
+      "count" : "1"
+    }, {
+      "value" : "por",
+      "count" : "1"
+    }, {
+      "value" : "swe",
+      "count" : "1"
+    } ]
+  }, {
+    "name" : "creationdate",
+    "values" : [ {
+      "value" : "1904",
+      "count" : "1"
+    }, {
+      "value" : "2023",
+      "count" : "11"
+    } ]
+  }, {
+    "name" : "rtype",
+    "values" : [ {
+      "value" : "books",
+      "count" : "320"
+    }, {
+      "value" : "conference_proceedings",
+      "count" : "30"
+    }, {
+      "value" : "videos",
+      "count" : "17"
+    }, {
+      "value" : "audios",
+      "count" : "13"
+    }, {
+      "value" : "journals",
+      "count" : "5"
+    }, {
+      "value" : "dissertations",
+      "count" : "2"
+    } ]
+  }, {
+    "name" : "topic",
+    "values" : [ {
+      "value" : "Heavy Metal Music",
+      "count" : "14"
+    }, {
+      "value" : "N A",
+      "count" : "13"
+    }, {
+      "value" : "Heavy Metal Music History And Criticism",
+      "count" : "11"
+    }, {
+      "value" : "Technology General Issues",
+      "count" : "9"
+    }, {
+      "value" : "Black Sabbath Musical Group",
+      "count" : "7"
+    }, {
+      "value" : "Materials Science Congresses",
+      "count" : "7"
+    }, {
+      "value" : "Environment",
+      "count" : "6"
+    }, {
+      "value" : "History Of Engineering Technology",
+      "count" : "6"
+    }, {
+      "value" : "United States",
+      "count" : "6"
+    }, {
+      "value" : "Culture",
+      "count" : "5"
+    }, {
+      "value" : "Nanostructured Materials",
+      "count" : "5"
+    }, {
+      "value" : "Physics",
+      "count" : "5"
+    }, {
+      "value" : "Antiquities",
+      "count" : "4"
+    }, {
+      "value" : "Biotechnology",
+      "count" : "4"
+    }, {
+      "value" : "Electrospinning",
+      "count" : "4"
+    }, {
+      "value" : "Environmental Sciences",
+      "count" : "4"
+    }, {
+      "value" : "Graphene",
+      "count" : "4"
+    }, {
+      "value" : "Materials Congresses",
+      "count" : "4"
+    }, {
+      "value" : "Materials Science",
+      "count" : "4"
+    }, {
+      "value" : "Mos2",
+      "count" : "4"
+    } ]
+  }, {
+    "name" : "creator",
+    "values" : [ {
+      "value" : "Geological Survey U S",
+      "count" : "9"
+    }, {
+      "value" : "Animaze Inc",
+      "count" : "4"
+    }, {
+      "value" : "Kikuchi Yasuhito",
+      "count" : "4"
+    }, {
+      "value" : "Pioneer Entertainment Usa",
+      "count" : "4"
+    }, {
+      "value" : "Scott Niall",
+      "count" : "4"
+    }, {
+      "value" : "Zro Limit Productions",
+      "count" : "4"
+    }, {
+      "value" : "Black Sabbath Musical Group",
+      "count" : "3"
+    }, {
+      "value" : "Naxos Digital Services Us",
+      "count" : "3"
+    }, {
+      "value" : "Tayade Rahesh J",
+      "count" : "3"
+    }, {
+      "value" : "American Chemical Society Meeting",
+      "count" : "2"
+    }, {
+      "value" : "Auður Ýr Sveinsdóttir",
+      "count" : "2"
+    }, {
+      "value" : "Black Paul H",
+      "count" : "2"
+    }, {
+      "value" : "Bode Arndt",
+      "count" : "2"
+    }, {
+      "value" : "Bringas John E",
+      "count" : "2"
+    }, {
+      "value" : "Fossett Judith Jackson",
+      "count" : "2"
+    }, {
+      "value" : "Irwin William",
+      "count" : "2"
+    }, {
+      "value" : "Joint Hlrb And Konwihr Status And Result Workshop",
+      "count" : "2"
+    }, {
+      "value" : "Mason Robert P",
+      "count" : "2"
+    }, {
+      "value" : "Nieling Jens",
+      "count" : "2"
+    }, {
+      "value" : "North Atlantic Treaty Organization",
+      "count" : "2"
+    } ]
+  }, {
+    "name" : "library",
+    "values" : [ {
+      "value" : "8238–164024850008238",
+      "count" : "37"
+    }, {
+      "value" : "8238–164026120008238",
+      "count" : "32"
+    }, {
+      "value" : "8238–164024520008238",
+      "count" : "21"
+    }, {
+      "value" : "8238–164025460008238",
+      "count" : "13"
+    }, {
+      "value" : "8238–164025790008238",
+      "count" : "13"
+    }, {
+      "value" : "8238–164023300008238",
+      "count" : "12"
+    }, {
+      "value" : "8238–164026450008238",
+      "count" : "5"
+    }, {
+      "value" : "8238–164026780008238",
+      "count" : "3"
+    }, {
+      "value" : "8238–164022970008238",
+      "count" : "2"
+    } ]
+  }, {
+    "name" : "location_code",
+    "values" : [ {
+      "value" : "8238–164024850008238–stack",
+      "count" : "30"
+    }, {
+      "value" : "8238–164026120008238–stack",
+      "count" : "26"
+    }, {
+      "value" : "8238–164024520008238–stack",
+      "count" : "20"
+    }, {
+      "value" : "8238–164025790008238–hold",
+      "count" : "12"
+    }, {
+      "value" : "8238–164025460008238–dedvd",
+      "count" : "11"
+    }, {
+      "value" : "8238–164023300008238–folio",
+      "count" : "8"
+    }, {
+      "value" : "8238–164026120008238–rdref",
+      "count" : "6"
+    }, {
+      "value" : "8238–164023300008238–stack",
+      "count" : "4"
+    }, {
+      "value" : "8238–164026780008238–stack",
+      "count" : "3"
+    }, {
+      "value" : "8238–164022970008238–stack",
+      "count" : "2"
+    }, {
+      "value" : "8238–164024850008238–gvsu",
+      "count" : "2"
+    }, {
+      "value" : "8238–164025460008238–devdv",
+      "count" : "2"
+    }, {
+      "value" : "8238–164026450008238–arunv",
+      "count" : "2"
+    }, {
+      "value" : "8238–164024520008238–hold1",
+      "count" : "1"
+    }, {
+      "value" : "8238–164024850008238–gvmfc",
+      "count" : "1"
+    }, {
+      "value" : "8238–164024850008238–juv",
+      "count" : "1"
+    }, {
+      "value" : "8238–164024850008238–pres",
+      "count" : "1"
+    }, {
+      "value" : "8238–164024850008238–restk",
+      "count" : "1"
+    }, {
+      "value" : "8238–164024850008238–tptxb",
+      "count" : "1"
+    }, {
+      "value" : "8238–164025790008238–cicsr",
+      "count" : "1"
+    } ]
+  }, {
+    "name" : "tlevel",
+    "values" : [ {
+      "value" : "available_p",
+      "count" : "131"
+    }, {
+      "value" : "open_access",
+      "count" : "3"
+    }, {
+      "value" : "online_resources",
+      "count" : "273"
+    } ]
+  } ]
+}

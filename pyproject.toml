@@ -1,0 +1,58 @@
+[project]
+name = "catalog-searcher"
+version = "2.0.0-dev"
+requires-python = ">=3.10"
+dependencies = [
+    "cql-parser",
+    "environs",
+    "flask",
+    "furl",
+    "paste",
+    "pymods",
+    "requests",
+    "uritemplate",
+    "urlobject",
+    "waitress",
+]
+
+[project.optional-dependencies]
+dev = [
+    "mypy",
+]
+test = [
+    "httpretty",
+    "jsonschema",
+    "psutil",
+    "pytest",
+    "pytest-cov",
+    "pytest-datadir",
+    "ruff",
+]
+
+[project.scripts]
+catalog-searcher = 'catalog_searcher.server:run'
+
+[tool.mypy]
+files = "src"
+overrides = [
+    # third-party modules that we do not have type stubs for (yet)
+    {module = "furl", ignore_missing_imports = true },
+    {module = "paste.translogger", ignore_missing_imports = true },
+    {module = "pymods", ignore_missing_imports = true },
+    {module = "urlobject", ignore_missing_imports = true},
+]
+
+[tool.ruff]
+line-length = 120
+# enable rules that are in "preview" status
+# see also: https://docs.astral.sh/ruff/rules/
+preview = true
+
+[tool.ruff.format]
+quote-style = "single"
+
+[tool.ruff.lint]
+select = [
+    'E', # pycodestyle errors
+    'W', # pycodestyle warnings
+]
