@@ -17,6 +17,7 @@ class PrimoSearch(Search):
         self.query = query
         self.page = page
         self.per_page = per_page
+        self.api_key = env.str('ALMA_API_KEY')
         with env.prefixed('PRIMO_'):
             self.vid = env.str('VID')
             self.book_search_api_url_template = URITemplate(env.str('BOOK_SEARCH_API_URL_TEMPLATE'))
@@ -24,7 +25,6 @@ class PrimoSearch(Search):
             self.item_url_template = URITemplate(env.str('ITEM_URL_TEMPLATE'))
             self.book_search_url_template = URITemplate(env.str('BOOK_SEARCH_URL_TEMPLATE'))
             self.article_search_url_template = URITemplate(env.str('ARTICLE_SEARCH_URL_TEMPLATE'))
-            self.api_key = env.str('API_KEY')
 
     def search(self) -> SearchResponse:
         # The bento search starts page numbering at 0 (this is a carryover from the
@@ -69,9 +69,13 @@ class PrimoSearch(Search):
         )
 
     def parse_result(self, item: Mapping[str, Any]) -> SearchResult:
+        if 'delivery' in item:
+            open_url = item['delivery'].get('almaOpenurl', '')
         display = item['pnx'].get('display', {})
         links = item['pnx'].get('links', {})
+        control = item['pnx'].get('control', {})
         mms = first(get_values(display, 'mms'))
+        record_id = first(get_values(control, 'recordid'))
 
         if 'linktohtml' in links:
             link = parse_field(links['linktohtml'][0]).get('U', '')
@@ -81,6 +85,14 @@ class PrimoSearch(Search):
                 vid=self.vid,
                 query=self.q,
             )
+        elif record_id is not None:
+            link = self.item_url_template.expand(
+                docid=f'{record_id}',
+                vid=self.vid,
+                query=self.q,
+            )
+        elif open_url is not None:
+            link = open_url
         else:
             link = ''
 

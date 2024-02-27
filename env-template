@@ -15,7 +15,7 @@ ALMA_SRU_URL_TEMPLATE=https://sandbox02-na.alma.exlibrisgroup.com/view/sru{/inst
 PRIMO_SEARCH_URL_TEMPLATE=https://sandbox02-na.primo.exlibrisgroup.com/discovery/search{?vid}{&query}&context=L&lang=en&search_scope=MyInst_and_CI&adaptor=Local+Search+Engine&tab=Everything&offset=0
 PRIMO_ITEM_URL_TEMPLATE=https://sandbox02-na.primo.exlibrisgroup.com/discovery/fulldisplay{?docid}{&vid}{&query}&context=L&lang=en&search_scope=MyInst_and_CI&adaptor=Local+Search+Engine&tab=Everything&offset=0
 
-PRIMO_API_KEY=
+ALMA_API_KEY=
 PRIMO_VID=01USMAI_UMCP:UMCP
 PRIMO_ITEM_URL_TEMPLATE=https://usmai-umcp.primo.exlibrisgroup.com/discovery/fulldisplay{?docid}{&vid}{&query}&tab=LibraryCatalog&search_scope=MyInstitution&context=PC&lang=en&adaptor=Primo%20Central&offset=0
 PRIMO_BOOK_SEARCH_API_URL_TEMPLATE=https://api-na.hosted.exlibrisgroup.com/primo/v1/search{?vid}{&q}{&offset}{&limit}&tab=LibraryCatalog&scope=MyInstitution&qExclude=facet_rtype,exact,articles&pcAvailability=true&lang=eng&sort=rank&getMore=0&conVoc=true&skipDelivery=true&disableSplitFacets=true
