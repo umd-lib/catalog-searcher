@@ -22,3 +22,4 @@ PRIMO_BOOK_SEARCH_API_URL_TEMPLATE=https://api-na.hosted.exlibrisgroup.com/primo
 PRIMO_BOOK_SEARCH_URL_TEMPLATE=https://usmai-umcp.primo.exlibrisgroup.com/discovery/search{?vid}{&query}&tab=LibraryCatalog&search_scope=MyInstitution&offset=0
 PRIMO_ARTICLE_SEARCH_API_URL_TEMPLATE=https://api-na.hosted.exlibrisgroup.com/primo/v1/search{?vid}{&q}{&offset}{&limit}&tab=Articles&scope=CentralIndex&qInclude=facet_rtype,exact,articles&pcAvailability=true&lang=eng&sort=rank&getMore=0&conVoc=true&skipDelivery=true&disableSplitFacets=true
 PRIMO_ARTICLE_SEARCH_URL_TEMPLATE=https://usmai-umcp.primo.exlibrisgroup.com/discovery/search{?vid}{&query}&tab=Articles&search_scope=CentralIndex&offset=0
+LINK_RESOLVER_TEMPLATE=http://usmai-umcp.alma.exlibrisgroup.com/openurl/01USMAI_UMCP/01USMAI_UMCP:UMCP{?rft_id}{&rft_volume}{&jtitle}{&atitle}

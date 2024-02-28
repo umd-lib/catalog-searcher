@@ -18,6 +18,7 @@ class PrimoSearch(Search):
         self.page = page
         self.per_page = per_page
         self.api_key = env.str('ALMA_API_KEY')
+        self.link_resolver_template = URITemplate(env.str('LINK_RESOLVER_TEMPLATE'))
         with env.prefixed('PRIMO_'):
             self.vid = env.str('VID')
             self.book_search_api_url_template = URITemplate(env.str('BOOK_SEARCH_API_URL_TEMPLATE'))
@@ -74,6 +75,8 @@ class PrimoSearch(Search):
         display = item['pnx'].get('display', {})
         links = item['pnx'].get('links', {})
         control = item['pnx'].get('control', {})
+        addata = item['pnx'].get('addata', {})
+        doi = first(get_values(addata, 'doi'))
         mms = first(get_values(display, 'mms'))
         record_id = first(get_values(control, 'recordid'))
 
@@ -84,6 +87,16 @@ class PrimoSearch(Search):
                 docid=f'alma{mms}',
                 vid=self.vid,
                 query=self.q,
+            )
+        elif doi is not None:
+            atitle = first(get_values(addata, 'atitle'))
+            jtitle = first(get_values(addata, 'jtitle'))
+            rft_volume = first(get_values(addata, 'volume'))
+            link = self.link_resolver_template.expand(
+                rft_id=f'{doi}',
+                atitle=f'{atitle}',
+                jtitle=f'{jtitle}',
+                rft_volume=f'{rft_volume}',
             )
         elif record_id is not None:
             link = self.item_url_template.expand(
