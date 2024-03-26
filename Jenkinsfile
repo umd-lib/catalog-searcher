@@ -108,12 +108,14 @@ pipeline {
       steps {
         sh '''
           . .venv/bin/activate
-          pytest -v --junitxml=reports/results.xml -o junit_family=xunit1
+          pytest --cov-report xml:reports/coverage.xml --cov=whpool -v --junitxml=reports/results.xml -o junit_family=xunit1
         '''
       }
       post {
         always {
           junit '**/reports/results.xml'
+
+          recordCoverage(tools: [[parser: 'COBERTURA', pattern: 'reports/coverage.xml']])
         }
       }
     }
