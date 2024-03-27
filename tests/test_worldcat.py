@@ -143,6 +143,7 @@ def test_auth_empty_token(search: WorldcatSearch):
     with pytest.raises(RuntimeError):
         search.get_auth_token()
 
+
 @pytest.mark.parametrize(
     ('general_format', 'specific_format', 'expected_format'),
     [
