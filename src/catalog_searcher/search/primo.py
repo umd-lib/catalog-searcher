@@ -12,6 +12,11 @@ logger = logging.getLogger(__name__)
 
 
 class PrimoSearch(Search):
+
+    general_formats_map = {
+        'null': 'other'
+    }
+
     def __init__(self, env: Env, endpoint: str, query: str, page: int, per_page: int):
         self.endpoint = endpoint
         self.query = query
@@ -114,11 +119,11 @@ class PrimoSearch(Search):
         creators = [f.get('Q', f.get('', '')) for f in creator_fields]
 
         return SearchResult(
-            title=first(get_values(display, 'title')) or '',
+            title=first(get_values(display, 'vertitle')) or first(get_values(display, 'title')) or '',
             date=first(get_values(display, 'date', 'creationdate')) or '',
             author='; '.join(creators),
             description=first(get_values(display, 'description', 'contents')) or '',
-            item_format=first(get_values(display, 'type')) or 'other',
+            item_format=get_item_format(self, first(get_values(display, 'type'))) or 'other',
             link=link,
         )
 
@@ -126,6 +131,11 @@ class PrimoSearch(Search):
     def q(self) -> str:
         return ','.join(('any', 'contains', self.query))
 
+
+def get_item_format(self, raw_type: str) -> str:
+    if raw_type in self.general_formats_map:
+        return self.general_formats_map[raw_type]
+    return raw_type
 
 
 def get_values(metadata: Mapping[str, list[str]], *keys) -> list[str]:
