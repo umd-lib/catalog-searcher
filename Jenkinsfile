@@ -108,12 +108,14 @@ pipeline {
       steps {
         sh '''
           . .venv/bin/activate
-          pytest -v --junitxml=reports/results.xml -o junit_family=xunit1
+          pytest --cov-report xml:reports/coverage.xml --cov=whpool -v --junitxml=reports/results.xml -o junit_family=xunit1
         '''
       }
       post {
         always {
           junit '**/reports/results.xml'
+
+          recordCoverage(tools: [[parser: 'COBERTURA', pattern: 'reports/coverage.xml']])
         }
       }
     }
@@ -130,7 +132,9 @@ pipeline {
       post {
         always {
           // Collect pycodestyle reports
-          recordIssues(tools: [pyLint(reportEncoding: 'UTF-8', name: 'ruff check')], unstableTotalAll: 1)
+          recordIssues(tools: [pyLint(reportEncoding: 'UTF-8', name: 'ruff check')],
+                       qualityGates: [[threshold: 1, type: 'TOTAL', criticality: 'UNSTABLE']]
+          )
         }
       }
     }
