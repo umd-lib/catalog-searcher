@@ -60,4 +60,3 @@ def test_valid_boolean_other_types(other):
 def test_invalid_boolean_other_types(other):
     with pytest.raises(TypeError):
         cql('title', '=', 'foo') | other
-
