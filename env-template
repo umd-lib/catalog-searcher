@@ -17,9 +17,11 @@ PRIMO_ITEM_URL_TEMPLATE=https://sandbox02-na.primo.exlibrisgroup.com/discovery/f
 
 ALMA_API_KEY=
 PRIMO_VID=01USMAI_UMCP:UMCP
-PRIMO_ITEM_URL_TEMPLATE=https://usmai-umcp.primo.exlibrisgroup.com/discovery/fulldisplay{?docid}{&vid}{&query}&tab=LibraryCatalog&search_scope=MyInstitution&context=PC&lang=en&adaptor=Primo%20Central&offset=0
-PRIMO_BOOK_SEARCH_API_URL_TEMPLATE=https://api-na.hosted.exlibrisgroup.com/primo/v1/search{?vid}{&q}{&offset}{&limit}&tab=LibraryCatalog&scope=MyInstitution&qExclude=facet_rtype,exact,articles&pcAvailability=true&lang=eng&sort=rank&getMore=0&conVoc=true&skipDelivery=true&disableSplitFacets=true
-PRIMO_BOOK_SEARCH_URL_TEMPLATE=https://usmai-umcp.primo.exlibrisgroup.com/discovery/search{?vid}{&query}&tab=LibraryCatalog&search_scope=MyInstitution&offset=0
-PRIMO_ARTICLE_SEARCH_API_URL_TEMPLATE=https://api-na.hosted.exlibrisgroup.com/primo/v1/search{?vid}{&q}{&offset}{&limit}&tab=Articles&scope=CentralIndex&qInclude=facet_rtype,exact,articles&pcAvailability=true&lang=eng&sort=rank&getMore=0&conVoc=true&skipDelivery=true&disableSplitFacets=true
-PRIMO_ARTICLE_SEARCH_URL_TEMPLATE=https://usmai-umcp.primo.exlibrisgroup.com/discovery/search{?vid}{&query}&tab=Articles&search_scope=CentralIndex&offset=0
+PRIMO_ITEM_URL_TEMPLATE=https://usmai-umcp.primo.exlibrisgroup.com/discovery/fulldisplay{?docid}{&vid}{&query}&tab=Everything&context=PC&lang=en&adaptor=Primo%20Central&offset=0
+PRIMO_BOOK_SEARCH_API_URL_TEMPLATE=https://api-na.hosted.exlibrisgroup.com/primo/v1/search{?vid}{&q}{&offset}{&limit}&tab=Everything&qInclude=facet_rtype,exact,books&pcAvailability=true&lang=eng&sort=rank&getMore=0&conVoc=true&skipDelivery=true&disableSplitFacets=true
+PRIMO_BOOK_SEARCH_URL_TEMPLATE=https://usmai-umcp.primo.exlibrisgroup.com/discovery/search{?vid}{&query}&tab=Everything&offset=0&mfacet=rtype,include,books,1
+PRIMO_ARTICLE_SEARCH_API_URL_TEMPLATE=https://api-na.hosted.exlibrisgroup.com/primo/v1/search{?vid}{&q}{&offset}{&limit}&tab=Articles&qInclude=facet_rtype,exact,articles&pcAvailability=true&lang=eng&sort=rank&getMore=0&conVoc=true&skipDelivery=true&disableSplitFacets=true
+PRIMO_ARTICLE_SEARCH_URL_TEMPLATE=https://usmai-umcp.primo.exlibrisgroup.com/discovery/search{?vid}{&query}&tab=Articles&offset=0&mfacet=rtype,include,articles,1
+PRIMO_JOURNAL_SEARCH_API_URL_TEMPLATE=https://api-na.hosted.exlibrisgroup.com/primo/v1/search{?vid}{&q}{&jq}{&offset}{&limit}&tab=jsearch_slot&qInclude=facet_rtype,exact,journals&pcAvailability=true&lang=eng&sort=rank&getMore=0&conVoc=true&skipDelivery=true&disableSplitFacets=true
+PRIMO_JOURNAL_SEARCH_URL_TEMPLATE=https://usmai-umcp.primo.exlibrisgroup.com/discovery/jsearch?{?vid}{&query}{&journalsquery}&tab=jsearch_slot&offset=0&mfacet=rtype,include,journals,1
 LINK_RESOLVER_TEMPLATE=http://usmai-umcp.alma.exlibrisgroup.com/openurl/01USMAI_UMCP/01USMAI_UMCP:UMCP{?rft_id}{&rft_volume}{&jtitle}{&atitle}
