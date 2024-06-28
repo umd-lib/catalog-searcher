@@ -119,7 +119,7 @@ class PrimoSearch(Search):
                         availability.append('Online')
                     case 'available_in_library':
                         availability.append('Available in library')
- 
+
         # Fallback of previous options fail
         if len(availability) == 0:
             if get_category == "Alma-P":
