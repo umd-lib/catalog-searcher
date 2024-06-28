@@ -83,6 +83,9 @@ class PrimoSearch(Search):
     def parse_result(self, item: Mapping[str, Any]) -> SearchResult:
         if 'delivery' in item:
             open_url = item['delivery'].get('almaOpenurl', '')
+            bestlocation = item['delivery'].get('bestlocation', {})
+            getit = first(item['delivery'].get('GetIt1', {}))
+            alma_avail = first(item['delivery'].get('availability'))
         display = item['pnx'].get('display', {})
         links = item['pnx'].get('links', {})
         control = item['pnx'].get('control', {})
@@ -90,6 +93,42 @@ class PrimoSearch(Search):
         doi = first(get_values(addata, 'doi'))
         mms = first(get_values(display, 'mms'))
         record_id = first(get_values(control, 'recordid'))
+
+        availability = []
+        get_category = None
+        if getit is not None:
+            if 'category' in getit:
+                get_category = get_values(getit, 'category')
+        # Try to get call number and location first
+        if get_category != "Alma-E" and bestlocation is not None:
+            logger.debug(bestlocation)
+            if 'mainLocation' in bestlocation:
+                location = get_values(bestlocation, 'mainLocation')
+                availability.append(location)
+            if 'callNumber' in bestlocation:
+                callnum = get_values(bestlocation, 'callNumber')
+                availability.append(callnum)
+
+        # See if online or not
+        if len(availability) == 0:
+            if alma_avail is not None:
+                match alma_avail:
+                    case 'fulltext':
+                        availability.append('Online')
+                    case 'fulltext_multiple':
+                        availability.append('Online')
+                    case 'available_in_library':
+                        availability.append('Available in library')
+ 
+        # Fallback of previous options fail
+        if len(availability) == 0:
+            if get_category == "Alma-P":
+                availability.append('Click for availability')
+            if get_category == "Alma-E":
+                availability.append('Online')
+
+        if len(availability) == 0:
+            availability.append('Click for availability')
 
         if 'linktohtml' in links:
             link = parse_field(links['linktohtml'][0]).get('U', '')
@@ -124,12 +163,17 @@ class PrimoSearch(Search):
         creator_fields = [parse_field(v) for v in creator_data]
         creators = [f.get('Q', f.get('', '')) for f in creator_fields]
 
+        available = ''
+        if availability is not None and len(availability) > 0:
+            available = ' / '.join(availability)
+
         return SearchResult(
             title=first(get_values(display, 'vertitle')) or first(get_values(display, 'title')) or '',
             date=first(get_values(display, 'date', 'creationdate')) or '',
             author='; '.join(creators),
             description=first(get_values(display, 'description', 'contents')) or '',
             item_format=get_item_format(self, first(get_values(display, 'type'))) or 'other',
+            availability=available,
             link=link,
         )
 

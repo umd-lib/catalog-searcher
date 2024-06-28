@@ -25,6 +25,7 @@ class SearchResult:
     description: str = ''
     item_format: str = ''
     link: str = ''
+    availability: str = ''
 
 
 class SearchResponse(NamedTuple):
