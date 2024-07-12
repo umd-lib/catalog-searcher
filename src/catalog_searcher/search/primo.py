@@ -81,11 +81,16 @@ class PrimoSearch(Search):
         )
 
     def parse_result(self, item: Mapping[str, Any]) -> SearchResult:
+        getit = None
+        delivery_cat = None
+        alma_avail = None
+        bestlocation = None
         if 'delivery' in item:
             open_url = item['delivery'].get('almaOpenurl', '')
             bestlocation = item['delivery'].get('bestlocation', {})
             getit = first(item['delivery'].get('GetIt1', {}))
             alma_avail = first(item['delivery'].get('availability'))
+            delivery_cat = item['delivery'].get('deliveryCategory')
         display = item['pnx'].get('display', {})
         links = item['pnx'].get('links', {})
         control = item['pnx'].get('control', {})
@@ -95,13 +100,28 @@ class PrimoSearch(Search):
         record_id = first(get_values(control, 'recordid'))
 
         availability = []
+        # See if online or not
+        is_online = False
+        if alma_avail is not None:
+            match alma_avail:
+                case 'fulltext':
+                    is_online = True
+                case 'fulltext_multiple':
+                    is_online = True
+
+        if delivery_cat is not None:
+            if 'Alma-E' in delivery_cat:
+                is_online = True
+
         get_category = None
         if getit is not None:
             if 'category' in getit:
                 get_category = get_values(getit, 'category')
-        # Try to get call number and location first
-        if get_category != "Alma-E" and bestlocation is not None:
-            logger.debug(bestlocation)
+                if get_category == "Alma-E":
+                    is_online = True
+
+        # Try to get call number and location
+        if bestlocation is not None:
             if 'mainLocation' in bestlocation:
                 location = get_values(bestlocation, 'mainLocation')
                 availability.append(location)
@@ -109,36 +129,18 @@ class PrimoSearch(Search):
                 callnum = get_values(bestlocation, 'callNumber')
                 availability.append(callnum)
 
-        # See if online or not
-        if len(availability) == 0:
-            if alma_avail is not None:
-                match alma_avail:
-                    case 'fulltext':
-                        availability.append('Online')
-                    case 'fulltext_multiple':
-                        availability.append('Online')
-                    case 'available_in_library':
-                        availability.append('Available in library')
-
-        # Fallback of previous options fail
-        if len(availability) == 0:
-            if get_category == "Alma-P":
-                availability.append('Click for availability')
-            if get_category == "Alma-E":
-                availability.append('Online')
-
-        if len(availability) == 0:
-            availability.append('Click for availability')
-
-        if 'linktohtml' in links:
+        if open_url is not None and len(open_url) > 5:
+            logger.debug(open_url)
+            link = open_url
+        elif 'linktohtml' in links:
             link = parse_field(links['linktohtml'][0]).get('U', '')
-        elif mms is not None:
+        elif mms is not None and len(mms) > 5:
             link = self.item_url_template.expand(
                 docid=f'alma{mms}',
                 vid=self.vid,
                 query=self.q,
             )
-        elif doi is not None:
+        elif doi is not None and len(doi) > 2:
             atitle = first(get_values(addata, 'atitle'))
             jtitle = first(get_values(addata, 'jtitle'))
             rft_volume = first(get_values(addata, 'volume'))
@@ -148,14 +150,12 @@ class PrimoSearch(Search):
                 jtitle=f'{jtitle}',
                 rft_volume=f'{rft_volume}',
             )
-        elif record_id is not None:
+        elif record_id is not None and len(record_id) > 5:
             link = self.item_url_template.expand(
                 docid=f'{record_id}',
                 vid=self.vid,
                 query=self.q,
             )
-        elif open_url is not None:
-            link = open_url
         else:
             link = ''
 
@@ -165,7 +165,13 @@ class PrimoSearch(Search):
 
         available = ''
         if availability is not None and len(availability) > 0:
-            available = ' / '.join(availability)
+            available = ' - '.join(availability)
+            if is_online:
+                available = 'Online / ' + available
+        elif is_online:
+            available = 'Online'
+        else:
+            available = 'Click for availability'
 
         return SearchResult(
             title=first(get_values(display, 'vertitle')) or first(get_values(display, 'title')) or '',
