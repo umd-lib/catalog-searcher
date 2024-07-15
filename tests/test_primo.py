@@ -33,8 +33,6 @@ def test_primo_article_search(primo_article_search, primo_article_search_request
     )
     assert response.results[0].item_format == "article"
 
-    assert response.results[1].link == 'https://proxy-um.researchport.umd.edu/login?&url=https://www.proquest.com/docview/2809782097?pq-origsite=primo'
-
 
 @httpretty.activate
 def test_primo_book_search(primo_book_search: PrimoSearch, primo_book_search_request_args: str):

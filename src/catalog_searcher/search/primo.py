@@ -85,6 +85,7 @@ class PrimoSearch(Search):
         delivery_cat = None
         alma_avail = None
         bestlocation = None
+        open_url = None
         if 'delivery' in item:
             open_url = item['delivery'].get('almaOpenurl', '')
             bestlocation = item['delivery'].get('bestlocation', {})
