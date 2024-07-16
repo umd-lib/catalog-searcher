@@ -130,7 +130,7 @@ class PrimoSearch(Search):
                 callnum = get_values(bestlocation, 'callNumber')
                 availability.append(callnum)
 
-        if open_url is not None and len(open_url) > 5:
+        if open_url is not None and len(open_url) > 5 and is_online:
             logger.debug(open_url)
             link = open_url
         elif 'linktohtml' in links:
