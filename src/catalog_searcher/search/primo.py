@@ -130,17 +130,23 @@ class PrimoSearch(Search):
                 callnum = get_values(bestlocation, 'callNumber')
                 availability.append(callnum)
 
-        if open_url is not None and len(open_url) > 5 and is_online:
-            logger.debug(open_url)
-            link = open_url
-        elif 'linktohtml' in links:
-            link = parse_field(links['linktohtml'][0]).get('U', '')
+        if record_id is not None and len(record_id) > 5:
+            link = self.item_url_template.expand(
+                docid=f'{record_id}',
+                vid=self.vid,
+                query=self.q,
+            )
         elif mms is not None and len(mms) > 5:
             link = self.item_url_template.expand(
                 docid=f'alma{mms}',
                 vid=self.vid,
                 query=self.q,
             )
+        elif open_url is not None and len(open_url) > 5 and is_online:
+            logger.debug(open_url)
+            link = open_url
+        elif 'linktohtml' in links:
+            link = parse_field(links['linktohtml'][0]).get('U', '')
         elif doi is not None and len(doi) > 2:
             atitle = first(get_values(addata, 'atitle'))
             jtitle = first(get_values(addata, 'jtitle'))
@@ -150,12 +156,6 @@ class PrimoSearch(Search):
                 atitle=f'{atitle}',
                 jtitle=f'{jtitle}',
                 rft_volume=f'{rft_volume}',
-            )
-        elif record_id is not None and len(record_id) > 5:
-            link = self.item_url_template.expand(
-                docid=f'{record_id}',
-                vid=self.vid,
-                query=self.q,
             )
         else:
             link = ''
