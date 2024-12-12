@@ -26,10 +26,12 @@ class PrimoSearch(Search):
         self.link_resolver_template = URITemplate(env.str('LINK_RESOLVER_TEMPLATE'))
         with env.prefixed('PRIMO_'):
             self.vid = env.str('VID')
+            self.general_search_api_url_template = URITemplate(env.str('GENERAL_SEARCH_API_URL_TEMPLATE'))
             self.book_search_api_url_template = URITemplate(env.str('BOOK_SEARCH_API_URL_TEMPLATE'))
             self.article_search_api_url_template = URITemplate(env.str('ARTICLE_SEARCH_API_URL_TEMPLATE'))
             self.journal_search_api_url_template = URITemplate(env.str('JOURNAL_SEARCH_API_URL_TEMPLATE'))
             self.item_url_template = URITemplate(env.str('ITEM_URL_TEMPLATE'))
+            self.general_search_url_template = URITemplate(env.str('GENERAL_SEARCH_URL_TEMPLATE'))
             self.book_search_url_template = URITemplate(env.str('BOOK_SEARCH_URL_TEMPLATE'))
             self.article_search_url_template = URITemplate(env.str('ARTICLE_SEARCH_URL_TEMPLATE'))
             self.journal_search_url_template = URITemplate(env.str('JOURNAL_SEARCH_URL_TEMPLATE'))
@@ -47,9 +49,12 @@ class PrimoSearch(Search):
         elif self.endpoint == 'journals':
             api_url_template = self.journal_search_api_url_template
             search_url_template = self.journal_search_url_template
-        else:
+        elif self.endpoint == 'books':
             api_url_template = self.book_search_api_url_template
             search_url_template = self.book_search_url_template
+        else:
+            api_url_template = self.general_search_api_url_template
+            search_url_template = self.general_search_url_template
 
         api_search_url = api_url_template.expand(
             vid=self.vid,

@@ -45,6 +45,10 @@ def search():
         endpoint = 'articles'
     elif 'endpoint' in args and args['endpoint'] == 'journals':
         endpoint = 'journals'
+    elif 'endpoint' in args and args['endpoint'] == 'books-and-more':
+        endpoint = 'books'
+    elif 'endpoint' in args and args['endpoint'] == 'general':
+        endpoint = 'general'
 
     # Check query param
     if 'q' not in args or args['q'] == '':
