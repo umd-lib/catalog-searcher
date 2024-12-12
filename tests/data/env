@@ -26,4 +26,6 @@ PRIMO_ARTICLE_SEARCH_API_URL_TEMPLATE=https://api-na.hosted.exlibrisgroup.com/pr
 PRIMO_ARTICLE_SEARCH_URL_TEMPLATE=https://usmai-umcp.primo.exlibrisgroup.com/discovery/search{?vid}{&query}&tab=Articles&offset=0&mfacet=rtype,include,articles,1
 PRIMO_JOURNAL_SEARCH_API_URL_TEMPLATE=https://api-na.hosted.exlibrisgroup.com/primo/v1/search{?vid}{&q}{&jq}{&offset}{&limit}&tab=jsearch_slot&qInclude=facet_rtype,exact,journals&pcAvailability=true&lang=eng&sort=rank&getMore=0&conVoc=true&skipDelivery=true&disableSplitFacets=true
 PRIMO_JOURNAL_SEARCH_URL_TEMPLATE=https://usmai-umcp.primo.exlibrisgroup.com/discovery/jsearch?{?vid}{&query}{&journalsquery}&tab=jsearch_slot&offset=0&mfacet=rtype,include,journals,1
+PRIMO_GENERAL_SEARCH_API_URL_TEMPLATE=https://api-na.hosted.exlibrisgroup.com/primo/v1/search?{?vid}{&q}{&offset}{&limit}&tab=Everything&scope=DN_and_CI&pcAvailability=true&lang=eng&sort=rank&getMore=0&conVoc=true&skipDelivery=false&disableSplitFacets=true
+PRIMO_GENERAL_SEARCH_URL_TEMPLATE=https://usmai-umcp.primo.exlibrisgroup.com/discovery/search{?vid}{&query}&tab=Everything&scope=DN_and_CI&offset=0
 LINK_RESOLVER_TEMPLATE=http://usmai-umcp.alma.exlibrisgroup.com/openurl/01USMAI_UMCP/01USMAI_UMCP:UMCP{?rft_id}{&rft_volume}{&jtitle}{&atitle}
