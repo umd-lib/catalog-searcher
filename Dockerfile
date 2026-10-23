@@ -5,7 +5,7 @@
 # docker build -t docker.lib.umd.edu/catalog-searcher:<VERSION> -f Dockerfile .
 #
 # where <VERSION> is the Docker image version to create.
-FROM python:3.10.8-slim
+FROM python:3.13.17-slim
 
 LABEL MAINTAINER SSDR "lib-ssdr@umd.edu"
 
